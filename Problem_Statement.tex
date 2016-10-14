@@ -1,6 +1,12 @@
-\documentclass[letterpaper, 10pt, titlepage]{article}
-\author{Prepared By:\\Nic Desilets, Nathaniel Whitlock,\\ and James Stallkamp}
+\documentclass[letterpaper, 10pt]{article}
+
 \title{\huge HP Big Data Analytics: Effects of Memory Management and Parallelism on Query Performance}
+\author{Prepared By:\\Nic Desilets, Nathaniel Whitlock,\\ and James Stallkamp}
+
+
+
+\usepackage{titling}
+
 
 \usepackage{geometry}
 
@@ -12,14 +18,19 @@
 
 
 \begin{document}
+\begin{titlingpage}
+    \maketitle
+    
+%%    \vspace*{1cm} 
+    \begin{abstract}
+		Computational efficiency and performance are paramount to 			    being able to quickly and effectively analyze data within a 			reasonable time frame when working with very large data 				sets. Oracle 12c, a cloud enabled relational database, 					performs sub-optimally by default when it comes to analyzing 		the massive amounts of telemetry data generated from HP 				PageWide Web Press printers. In order to achieve better 				performance from Oracle 12c, we experimented with various 				memory management methods as well as parallelizing database 			queries which was made possible by table partition designs. 			Additionally, we developed a toolkit alongside this project 			in order to accurately measure and compare the efficiency of 		different methods of memory management and parallelism on 				database queries. Using this toolkit, we have found the most 		efficient modifications to the relational database to be 				\ldots based on quantitative comparative analysis of 					partition designs.
+    \end{abstract}
+\end{titlingpage}
 
-\maketitle
+
 \begin{center}
 	\section*{\huge Problem Statement}
 \end{center}
-
-\section*{Abstract}
-Computational efficiency and performance are paramount to being able to quickly and effectively analyze data within a reasonable time frame when working with very large data sets. Oracle 12c, a cloud enabled relational database, performs sub-optimally by default when it comes to analyzing the massive amounts of telemetry data generated from HP PageWide Web Press printers. In order to achieve better performance from Oracle 12c, we experimented with various memory management methods as well as parallelizing database queries which was made possible by table partition designs. Additionally, we developed a toolkit alongside this project in order to accurately measure and compare the efficiency of different methods of memory management and parallelism on database queries. Using this toolkit, we have found the most efficient modifications to the relational database to be \ldots based on quantitative comparative analysis of partition designs.
 
 \section*{Problem Definition}
 Each and every day, HP’s PageWide Web Presses generate roughly 250GB of data per device. The data generated is normalized and loaded into databases in order to store it so it can be queried for troubleshooting and performing engineering analytics. The current database configuration only utilizes a small portion of the available 72 processor cores and 3TB of RAM it has available. Even though there is plenty of physical resources available, the current database configuration tends to misallocate memory to the programming global area (PGA). When the PGA reaches a memory threshold the process much reach out to disk in order to complete. Reading or writing to disk is one of the most costly operations for a program. Additionally, there are instances where a query process is allocated a large amount of cores to work with but when the processor use ratio is evaluated it shows that only a couple of cores were used on average.
