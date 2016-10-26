@@ -18,7 +18,7 @@
 \begin{titlingpage}
     \maketitle
     
-%%    \vspace*{1cm} 
+%%  \vspace*{1cm} 
     \begin{abstract}
 		Computational efficiency and performance are paramount to being able to quickly and effectively analyze data within a reasonable time frame when working with very large data sets. 
 		Oracle 12c, a cloud enabled relational database, performs sub-optimally by default when it comes to analyzing the massive amounts of telemetry data generated from HP PageWide Web Press printers.
@@ -39,14 +39,14 @@
 \section*{Problem Definition}
 Modern relational database systems are crucial in fields such as business and research.
 The ability to read, write and perform computations on data within a table does not maximize its potential unless the results are accessible within a reasonable time frame.
-HP’s PageWide Web Presses manages such relational servers and generate generate roughly 250GB of data each day.
+HP’s PageWide Web Presses manages such relational servers and generate roughly 250GB of data each day.
 The data generated is normalized and loaded into databases in order to store it so it can be queried for troubleshooting and performing engineering analytics.
-The machine that the server is on is extremely powerful and should be able to perform operations very quickly, however the server is very slow because it is not fully utilizing the machines resources.
-The core of this problem is to investigate why the server is under utilizing the physical resources of the machine.
+The server that the database is on is extremely powerful and should be able to perform database operations very quickly. However, the database itself is performing very slowly because it is not fully utilizing the server's resources.
+The core of this problem is to investigate why the database is underutilizing the physical resources of the server.
 This involves experimenting with many database configuration settings and table partition designs to help improve the performance of the server. 
 
 
-Currently nightly reports against the database can take up to two hours to complete, the client requested that this process be reduced as much as possible.
+Currently nightly reports against the database can take up to two hours to complete. The client requested that this process be reduced as much as possible.
 Ideally this would mean that when engineers ran queries against the database they would have their response in five seconds or less.
 The under allocation of resources leads to longer periods of wall time during data aggregation and prevents accessibility to real time performance metrics.
 By experimenting with database configuration settings and table partition designs, we hope to reduce the wall time observed during routine analytics.
