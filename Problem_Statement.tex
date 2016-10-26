@@ -36,10 +36,10 @@
 
 \section*{Problem Definition}
 Modern relational database systems are crucial in fields such as business and research.
-The ability to read, write and perform computations on data within a table does not maximize its potential unless the results are accessible within a reasonable time frame.
-HP’s PageWide Web Presses manages such relational servers and generate generate roughly 250GB of data each day.
+The servers ability to read, write and perform computations on data within a table is not fully utilized until the results are accessible within a reasonable time frame.
+HP’s PageWide Web Press Big Data team manages such relational servers and generate roughly 250GB of data each day.
 The data generated is normalized and loaded into databases in order to store it so it can be queried for troubleshooting and performing engineering analytics.
-The machine that the server is on is extremely powerful and should be able to perform operations very quickly, however the server is very slow because it is not fully utilizing the machines resources.
+The machine that the server is on is extremely powerful and should be able to perform operations very quickly, however, the server can be slow when it has not fully utilized the available resources.
 The core of this problem is to investigate why the server is under utilizing the physical resources of the machine.
 This involves experimenting with many database configuration settings and table partition designs to help improve the performance of the server. 
 
@@ -55,7 +55,7 @@ By experimenting with database configuration settings and table partition design
 In short, the problem is that the server is taking an overabundance of time processing queries despite having idle resources.
 Our goal is to increase the efficiency of the server by configuring the memory allocation settings and ensuring the majority of the available processors are utilized during a request.
 To do this we will develop a toolkit that will allow users to examine information pertaining to the performance specs of the query in process.
-This toolkit will consist of database query statements which will query the dynamic performance view to generate a report.
+This toolkit will consist of database query statements which will query the dynamic performance views to generate a report.
 Each report will represent the performance results of a query on the database.
 A report will be generated for each unique database setting configuration and partition design, these will allow for a comparative analysis of each designs performance run-time.
 The results of this analysis will be used to adjust settings on the server and in queries to improve resource usage and run time. 
