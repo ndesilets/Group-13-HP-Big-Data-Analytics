@@ -1,0 +1,111 @@
+\documentclass[draftclsnofoot, onecolumn, 10pt]{IEEEtran}
+
+\title{\huge Software Requirements Specifications}
+
+\author{Oregon State University\\CS 461\\2016-2017\\\\Prepared By:\\Nic Desilets, James Stallkamp,\\and Nathaniel Whitlock}
+
+\usepackage{titling}
+
+\usepackage[margin=0.75in]{geometry}
+
+\usepackage{graphicx}
+
+\parindent=0.0in
+
+\parskip=0.2in
+
+\begin{document}
+\begin{titlingpage}
+    \maketitle 
+\end{titlingpage}
+
+%% Potentially add figure here
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{DB_Memory_Arch_Overview22.eps}
+%  \caption{Some figure}
+%\end{figure}
+
+\section{Introduction}
+\subsection{Purpose}
+The purpose of this document is to define the primary objective and details of the toolkit. This document will contain guidelines that describe the purpose, features, general design, interactions with Oracle 12c database, and the constraints that the toolkit must operate within. The target audience for this document includes any relevant stakeholders as well as any Database Administrator (DBA) or software developer that works with Oracle database 12c in any capacity.
+
+\subsection{Scope}
+The main purpose of this toolkit is primarily to assist with collecting and visualizing performance metrics when running database queries. By doing so, this toolkit will allow us to benchmark database performance based on different configuration schemes in order to find the best solution. Some of the configuration schemes will include modifying memory management, experimenting with varying degrees of parallelism, and altering database table partitioning. 
+
+The primary performance metric that the toolkit will be measuring is the Performance Efficiency Index (PEI), which is database time divided by wall clock time, in order to better gauge query efficiency. A higher PEI ratio (e.g. more database time spent per real world elapsed time) indicates higher database query efficiency. Another useful metric that this toolkit will monitor is real world elapsed time which ultimately determines the perceived responsive of queries made against the database.
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\begin{center}
+  \begin{tabular}{ | l | r | }
+    \hline
+    Term & Definition \\ \hline
+    \hline
+    Stakeholder & Anyone who does not fall under the role of database administrator or developer but is otherwise directly or indirectly involved. \\ \hline
+    \hline
+    Database & Software which stores information in an organized, easy to access manner. \\ \hline
+    \hline
+    Wall clock time & Real world elapsed time. \\ \hline
+    \hline
+    Database time & The amount of real world time the database spends consuming CPU resources. \\ \hline
+    \hline
+    Performance Efficiency Index (PEI) & Wall clock time divided by database time. Indicates database query efficiency. \\ \hline
+    \hline
+    Database Administrator (DBA) & Ensures availability, reliability, performance, security, and scalability of database systems. \\ \hline
+    \hline
+    Software Developer & Performs research, design, implementation, and testing of software products. \\ \hline    
+  \end{tabular}
+\end{center}
+
+\subsection{References}
+IEEE.   IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements 
+Specifications. IEEE Computer Society, 1998.
+
+\subsection{Overview}
+The second section of this document, Overall Description, gives an overview of software dependencies, the intended function, characteristics, constraints, and assumptions of the toolkit. This section is more geared towards general stakeholders given that it is more of a high level examination of the toolkit. The third section of this document, Specific Requirements, is primarily intended for database administrators and software developers who are familiar with the technical aspects and relevant terminology of this toolkit. These two sections are both designed to give a comprehensive overview of the toolkit to two different target audiences, one high level and one low level.
+
+\section{Overall Description}
+
+\subsection{Product Perspective}
+The toolkit itself is not designed to be a standalone software application that runs independently of other software systems. Rather, it is a component that is designed to integrate specifically with Oracle 12c in order to give DBAs and software developers quantitative metrics and information with respect to different database configurations.
+
+\subsection{Toolkit Environment}
+<figure/diagram of users interacting with toolkit which interacts with database>
+Figure 1 - Toolkit Environment
+
+The toolkit environment is comprised of four entities: Users which can be DBAs and software developers, the toolkit itself, the Oracle 12c database, and the host operating system that contains the database. Users interact with the toolkit by executing commands which can range from modifying various database parameters to executing queries on the database. While the database is the processing the queries, the toolkit will then begin monitoring critical performance metrics. The sources of the metrics can come from both the database itself and by polling the host operating system for more information about the database’s running processes.
+
+\subsection{User Interfaces}
+The user interface of the toolkit will be a command line interface in which the user can define parameters and execute commands that are supported by the toolkit. The minimum required screen format must at least support a standard 80 character width by 24 character long terminal.
+
+\subsection{Software Interfaces}
+This toolkit is intended to be used in a Linux environment running Oracle 12c database.
+
+\subsection{Toolkit Environment}
+
+\subsection{Toolkit Environment}
+
+\subsection{Toolkit Environment}
+
+\subsection{Toolkit Environment}
+
+\subsection{Toolkit Environment}
+
+%\pagebreak
+
+\vspace{2 in}
+
+\noindent\begin{tabular}{ll}
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+Kirby Sand & Date\\[8ex]% adds space between the two sets of signatures
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+Andy Weiss & Date\\[8ex]%
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+Nic Desilets & Date\\[8ex]%
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+James Stallkamp & Date\\[8ex]%
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+Nathaniel Whitlock & Date\\[8ex]%
+\end{tabular}
+
+\end{document}
