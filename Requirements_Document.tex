@@ -10,6 +10,8 @@
 
 \usepackage{graphicx}
 
+\linespread{1.0} % 1.0 = single, 1.3 = 1.5, 1.6 = double
+
 % Lines to force the TOC to arabic numerials
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
@@ -69,7 +71,8 @@ Another useful metric that this toolkit will monitor is real world elapsed time 
 
 \subsection{Definitions, Acronyms, Abbreviations}
 
-
+\bgroup
+\def\arraystretch{1.5}
 \resizebox{\textwidth}{!}{  
 \begin{tabular}{| l | l |} % centered columns (4 columns)
 \hline
@@ -101,6 +104,7 @@ Temp & Fill in definition here \\ [0.5ex]
 \hline
 \end{tabular}
 }
+\egroup
 
 \subsection{References}
 IEEE.   IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements 
@@ -117,16 +121,16 @@ The toolkit itself is not designed to be a standalone software application that 
 
 %% Subsubsection for Product Perspective %%
 \subsubsection{System Interfaces}
-temp
+The primary system interfaces are Oracle Database 12c and Oracle Linux 7. This toolkit will connect to an Oracle Database 12c instance to gather metrics information from the database itself. Additionally, the toolkit will be able to make system calls to Oracle Linux 7 in order to gather any other necessary metrics information relating to the database's processes.
 
 \subsubsection{User Interfaces}
 The user interface of the toolkit will be a command line interface in which the user can define parameters and execute commands that are supported by the toolkit. The minimum required screen format must at least support a standard 80 character width by 24 character long terminal.
 
 \subsubsection{Hardware Interfaces}
-temp
+The toolkit is purely software based and does not involve any specific piece of hardware.
 
 \subsubsection{Software Interfaces}
-This toolkit is intended to be used in a Linux environment running Oracle 12c database.
+This toolkit is intended to be used with Oracle Database 12c running in an Oracle Linux 7 environment.
 
 \subsubsection{Communications Interfaces}
 This should specify the various interfaces to communications such as local network protocols.
