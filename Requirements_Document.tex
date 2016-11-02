@@ -10,9 +10,32 @@
 
 \usepackage{graphicx}
 
+% Lines to force the TOC to arabic numerials
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand*{\thesection}{\arabic{section}}
+\renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+
+% Force indent subsubsections
+%\makeatletter
+%renewcommand\section{\leftskip 0pt\@startsection {section}{1}{\z@}%
+%                                  {-3.5ex \@plus -1ex \@minus -.2ex}%
+%                                  {2.3ex \@plus.2ex}%
+%                                   {\normalfont\Large\bfseries}}
+%\renewcommand\subsection{\leftskip 0pt\@startsection{subsection}{2}{\z@}%
+%                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+%                                    {1.5ex \@plus .2ex}%
+%                                     {\normalfont\large\bfseries}}
+%\newcommand\Xsubsubsection{\@startsection{subsubsection}{3}{\z@}%
+%                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+%                                     {1.5ex \@plus .2ex}%
+%                                     {\normalfont\normalsize\bfseries\leftskip 3ex}}
+%\renewcommand\subsubsection[1]{\Xsubsubsection{#1}\leftskip 3ex}
+%\makeatother
 
 \parindent=0.0in
 
@@ -28,6 +51,7 @@
 
 % Section One
 \section{Introduction}
+
 \subsection{Purpose}
 The purpose of this document is to define the primary objective and details of the toolkit.
 This document will contain guidelines that describe the purpose, features, general design, interactions with Oracle 12c database, and the constraints that the toolkit must operate within.
@@ -91,6 +115,31 @@ The second section of this document, Overall Description, gives an overview of s
 \subsection{Product Perspective}
 The toolkit itself is not designed to be a standalone software application that runs independently of other software systems. Rather, it is a component that is designed to integrate specifically with Oracle 12c in order to give DBAs and software developers quantitative metrics and information with respect to different database configurations.
 
+%% Subsubsection for Product Perspective %%
+\subsubsection{System Interfaces}
+temp
+
+\subsubsection{User Interfaces}
+The user interface of the toolkit will be a command line interface in which the user can define parameters and execute commands that are supported by the toolkit. The minimum required screen format must at least support a standard 80 character width by 24 character long terminal.
+
+\subsubsection{Hardware Interfaces}
+temp
+
+\subsubsection{Software Interfaces}
+This toolkit is intended to be used in a Linux environment running Oracle 12c database.
+
+\subsubsection{Communications Interfaces}
+This should specify the various interfaces to communications such as local network protocols.
+
+\subsubsection{Memory constraints}
+The blade server that we will be running our experiments on will have 500GB of memory. 
+
+\subsubsection{Operations}
+temp
+
+\subsubsection{Site Adaptation Requirements}
+temp
+
 \subsection{Product Functions}
 
 \subsection{User Characteristics}
@@ -98,7 +147,11 @@ The users of our tool kit will be technicians that are writing queries on a serv
 
 \subsection{Constraints}
 temp
+
 \subsection{Assumptions and Dependencies}
+temp
+
+\subsection{Apportioning of Requirements}
 temp
 
 \subsection{Toolkit Environment}
@@ -107,24 +160,7 @@ Figure 1 - Toolkit Environment
 
 The toolkit environment is comprised of four entities: Users which can be DBAs and software developers, the toolkit itself, the Oracle 12c database, and the host operating system that contains the database. Users interact with the toolkit by executing commands which can range from modifying various database parameters to executing queries on the database. While the database is the processing the queries, the toolkit will then begin monitoring critical performance metrics. The sources of the metrics can come from both the database itself and by polling the host operating system for more information about the database’s running processes.
 
-\subsection{User Interfaces}
-The user interface of the toolkit will be a command line interface in which the user can define parameters and execute commands that are supported by the toolkit. The minimum required screen format must at least support a standard 80 character width by 24 character long terminal.
 
-\subsection{Software Interfaces}
-This toolkit is intended to be used in a Linux environment running Oracle 12c database.
-
-\subsection{Communications Interfaces}
-This should specify the various interfaces to communications such as local network protocols.
-
-\subsection{Memory constraints}
-The blade server that we will be running our experiments on will have 500GB of memory. 
-
-\subsection{Operations}
-
-\subsection{Site Aadapation Requirements}
-
-
-\subsection{Apportioning Requirements}
 
 % Section Three
 \section{Specific Requirements}
