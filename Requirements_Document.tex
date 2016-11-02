@@ -19,43 +19,59 @@
     \maketitle 
 \end{titlingpage}
 
-%% Potentially add figure here
-%\begin{figure}
-%  \centering
-%  \includegraphics[width=0.8\textwidth]{DB_Memory_Arch_Overview22.eps}
-%  \caption{Some figure}
-%\end{figure}
+\tableofcontents
+
 
 \section{Introduction}
 \subsection{Purpose}
-The purpose of this document is to define the primary objective and details of the toolkit. This document will contain guidelines that describe the purpose, features, general design, interactions with Oracle 12c database, and the constraints that the toolkit must operate within. The target audience for this document includes any relevant stakeholders as well as any Database Administrator (DBA) or software developer that works with Oracle database 12c in any capacity.
+The purpose of this document is to define the primary objective and details of the toolkit.
+This document will contain guidelines that describe the purpose, features, general design, interactions with Oracle 12c database, and the constraints that the toolkit must operate within.
+The target audience for this document includes any relevant stakeholders as well as any Database Administrator (DBA) or software developer that works with Oracle database 12c in any capacity.
+
 
 \subsection{Scope}
-The main purpose of this toolkit is primarily to assist with collecting and visualizing performance metrics when running database queries. By doing so, this toolkit will allow us to benchmark database performance based on different configuration schemes in order to find the best solution. Some of the configuration schemes will include modifying memory management, experimenting with varying degrees of parallelism, and altering database table partitioning. 
+The main purpose of this toolkit is primarily to assist with collecting and visualizing performance metrics when running database queries.
+By doing so, this toolkit will allow us to benchmark database performance based on different configuration schemes in order to find the best solution.
+Some of the configuration schemes will include modifying memory management, experimenting with varying degrees of parallelism, and altering database table partitioning. 
 
-The primary performance metric that the toolkit will be measuring is the Performance Efficiency Index (PEI), which is database time divided by wall clock time, in order to better gauge query efficiency. A higher PEI ratio (e.g. more database time spent per real world elapsed time) indicates higher database query efficiency. Another useful metric that this toolkit will monitor is real world elapsed time which ultimately determines the perceived responsive of queries made against the database.
+The primary performance metric that the toolkit will be measuring is the Performance Efficiency Index (PEI), which is database time divided by wall clock time, in order to better gauge query efficiency.
+A higher PEI ratio (e.g. more database time spent per real world elapsed time) indicates higher database query efficiency.
+Another useful metric that this toolkit will monitor is real world elapsed time which ultimately determines the perceived responsive of queries made against the database.
 
 \subsection{Definitions, Acronyms, Abbreviations}
-\begin{center}
-  \begin{tabular}{ | l | r | }
-    \hline
-    Term & Definition \\ \hline
-    \hline
-    Stakeholder & Anyone who does not fall under the role of database administrator or developer but is otherwise directly or indirectly involved. \\ \hline
-    \hline
-    Database & Software which stores information in an organized, easy to access manner. \\ \hline
-    \hline
-    Wall clock time & Real world elapsed time. \\ \hline
-    \hline
-    Database time & The amount of real world time the database spends consuming CPU resources. \\ \hline
-    \hline
-    Performance Efficiency Index (PEI) & Wall clock time divided by database time. Indicates database query efficiency. \\ \hline
-    \hline
-    Database Administrator (DBA) & Ensures availability, reliability, performance, security, and scalability of database systems. \\ \hline
-    \hline
-    Software Developer & Performs research, design, implementation, and testing of software products. \\ \hline    
-  \end{tabular}
-\end{center}
+
+
+\resizebox{\textwidth}{!}{  
+\begin{tabular}{| l | l |} % centered columns (4 columns)
+\hline
+\bf{Term} & \bf{Definition}\\ [0.5ex] 
+\hline
+Stakeholder & Anyone who does not fall under the role of database administrator or developer but is otherwise directly or indirectly involved \\ [0.5ex] 
+\hline
+Database & Software which stores information in an organized, easy to access manner \\ [0.5ex]
+\hline
+Wall clock time & Real world elapsed time \\ [0.5ex]
+\hline
+Database time & The amount of real world time the database spends consuming CPU resources \\ [0.5ex]
+\hline
+Performance Efficiency Index (PEI) & Wall clock time divided by database time. Indicates database query efficiency \\ [0.5ex]
+\hline
+Database Administrator (DBA) & Ensures availability, reliability, performance, security, and scalability of database systems \\ [0.5ex]
+\hline
+Software Developer & Performs research, design, implementation, and testing of software products \\ [0.5ex]
+\hline
+Temp & Fill in definition here \\ [0.5ex]
+\hline
+Temp & Fill in definition here \\ [0.5ex]
+\hline
+Temp & Fill in definition here \\ [0.5ex]
+\hline
+Temp & Fill in definition here \\ [0.5ex]
+\hline
+Temp & Fill in definition here \\ [0.5ex]
+\hline
+\end{tabular}
+}
 
 \subsection{References}
 IEEE.   IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements 
