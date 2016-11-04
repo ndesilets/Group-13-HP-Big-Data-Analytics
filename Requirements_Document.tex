@@ -53,6 +53,8 @@ Another useful metric that this toolkit will monitor is real world elapsed time 
 \hline
 Command Line Interface (CLI) & A application which provides a means of interacting with a computer program by entering lines of text \\ [0.5ex]
 \hline
+Central Processing Unit (CPU) & The physical processor(s) in the machine that executes instructions. \\ [0.5ex]
+\hline
 Database & Software which stores information in an organized, easy to access manner \\ [0.5ex]
 \hline
 Database Administrator (DBA) & Ensures availability, reliability, performance, security, and scalability of database systems \\ [0.5ex]
@@ -187,11 +189,11 @@ This component will use the dynamic performance views which are native to the Or
 Additionally, this component will make system calls out to the host operation system to isolate process time information that will be used as a performance metric. 
 
 \subsubsection{Generate Performance Report}
-This component will compile all of the system performance metrics which have been evaluated into a raw data report. Some of this raw data will then be used to generate a visual report of the most important features that are gathered.
+This component will compile all of the system performance metrics which have been evaluated into a raw data report. This report can then be utilized by the users to create a visual report.
 %% End subsubsection
 
 \subsection{User Characteristics}
-The users of our tool kit will be Senior level software developers that are writing queries on a server.
+The users of our toolkit will be Senior level software developers that are writing queries on a server.
 These users will have experience writing queries and interacting with a database.
 These users will should be proficient in one or more of SQL, Oracle 12c specifics, Python, shell scripting, Unix system calls, or parallel execution.
 Users will have some level of formal technical education but this could vary from some college experience to doctorates.  
@@ -258,111 +260,129 @@ The toolkit environment is comprised of four entities: Users which can be DBAs a
 \end{enumerate}
 
 \subsection{Performance Requirements}
-The system we are developing is a tool kit of scripts that will be easily attributable. 
+The system we are developing is a toolkit of scripts that will be easily attributable. 
 This means the software can easily be installed and run on any number of machines simultaneously. 
 
 \subsection{Logical Database Requirements}
 Our software package will not be writing any data to a database.
 
 \subsection{Design Constraints}
-The only significant design constraint that we face is that our tool kit will be developed in Oracle SQL. 
+The only significant design constraint that we face is that our toolkit will be developed in Oracle SQL. 
 That does means that  developing and using this software will have to be done on a machine that supports Oracle SQL.
 
 \subsection{Standards Compliance}
-Because our system is just a tool kit made up of scripts, there are not specific standards that we must comply with. 
+Because our system is just a toolkit made up of scripts, there are not specific standards that we must comply with. 
 
 \section{Software System Attributes}
 
 \subsection{Reliability}
-The reliability of this tool kit will be measured in it's ability to take valid SQL statements and generate a performance statistic report. 
+The reliability of this toolkit will be measured in it's ability to take valid SQL statements and generate a performance statistic report. 
 
 \subsection{Security}
-The tool kit will be available on a git hub repository that will be read-access only to the public. 
-This will protect the integrity of the source code behind the tool kit. 
-Individual users will be using the tool kit at their own risk, because they will already have full database access this tool kit does not pose any increased security risk. 
+The toolkit will be available on a git hub repository that will be read-access only to the public. 
+This will protect the integrity of the source code behind the toolkit. 
+Individual users will be using the toolkit at their own risk, because they will already have full database access.
+This toolkit does not pose any increased security risk. 
 
 \subsection{Maintainability}
-The tool kit will be organized so that each significant performance test will be in its own script file. 
+The toolkit will be organized so that each significant performance test will be in its own script file. 
 These files will be well commented so that users can make changes as per their needs. 
 The names of these scripts should be self explanatory and unique enough to distinguish their function from the name. 
 
 \subsection{Portability}
-The toolkit that is being created will be portable to any system that supports Oracle SQL 12c. However this tool kit will not be portable to any other type of database.  
+The toolkit that is being created will be portable to any system that supports Oracle SQL 12c.
+However this toolkit will not be portable to any other type of database.  
 
 \subsection{Specific Requirements}
+
+%% Begin subsubsection
+\subsubsection{External Interface Requirements}
 \begin{enumerate}
-	\item External Interface Requirements
-	\begin{enumerate}
-    	\item User Interfaces: The user will interact with our software tool kit through the command line.
-Users will run these scripts on a SQL server to get a performance report.
-        \item Hardware Interfaces: This software tool kit does not interact with hardware.
-        \item Software Interfaces
-        \begin{itemize}
-	\item Oracle Linux 7
-	\begin{itemize}
+	\item User Interfaces: The user will interact with our software toolkit through the command line.
+    	  Users will run these scripts on a SQL server to get a performance report.
+     \item Hardware Interfaces: This software toolkit does not interact with hardware.
+     \item Software Interfaces:
+     \begin{itemize}
+	 \item Oracle Linux 7
+	 \begin{itemize}
 		\item Mnemonic: OL7
 		\item Version: 7.2
         \item Source: Oracle
-	\end{itemize}
-	\item Oracle Database 12c Enterprise Edition
-	\begin{itemize}
+	 \end{itemize}
+	 \item Oracle Database 12c Enterprise Edition
+	 \begin{itemize}
 		\item Mnemonic: 12c
         \item Version: 12.1.0.2.0
         \item Source: Oracle
-	\end{itemize}
-    \item Oracle Enterprise Manager Database Express 12c
-	\begin{itemize}
+	 \end{itemize}
+     \item Oracle Enterprise Manager Database Express 12c
+	 \begin{itemize}
 		\item Mnemonic: EM
         \item Version: 12.1.0.2.0
         \item Source: Oracle
-	\end{itemize}
-   	\item Oracle SQL Developer
-	\begin{itemize}
+	 \end{itemize}
+     \item Oracle SQL Developer
+	 \begin{itemize}
 		\item Mnemonic: N/A
         \item Version: 4.1.5.21
         \item Source: Oracle
-	\end{itemize}
-    \item Command Line Interface
-	\begin{itemize}
+     \end{itemize}
+     \item Command Line Interface
+	 \begin{itemize}
 		\item Mnemonic: CLI
         \item Version: 3.8.13
         \item Source: Linux
-	\end{itemize}
-	\end{itemize}
-        \item Communications Interfaces: This tool kit will not  interact with any communication or network protocols.
-    \end{enumerate}
-    \item Functional Requirements
-    \begin{enumerate}
-    	\item Database Administrator User Class
-        	\begin{enumerate}
-				\item The system shall accept an SQL query as input.
-    			\item The system shall fetch performance database tables to get statistics on the input query.
-    			\item The system shall organize the data and make recommend adjustments to increase performance.
-    			\item The system shall output this data in into a data sheet.
-\end{enumerate}
-    \end{enumerate}
-    \item Performance Requirements: The tool kit will be distributed across many machines, meaning it will be run on any number of machines simultaneously. 
-    \item Design Constraints: This tool kit will be limited to Oracle SQL 12C.
-    \item Software System Attributes
-    \begin{enumerate}
-    	\item Reliability: The reliability of this tool kit will be measured in it's ability to take valid SQL statements and generate a performance statistic report. 
-        \item Security: The tool kit will be available on a git hub repository that will be read-access only to the public. 
-This will protect the integrity of the source code behind the tool kit. 
-Individual users will be using the tool kit at their own risk, because they will already have full database access this tool kit does not pose any increased security risk. 
-        \item Maintainability: The tool kit will be organized so that each significant performance test will be in its own script file. 
-These files will be well commented so that users can make changes as per their needs. 
-The names of these scripts should be self explanatory and unique enough to distinguish their function from the name.
-        \item Portability: The toolkit that is being created will be portable to any system that supports Oracle SQL 12c. However this tool kit will not be portable to any other type of database.
-    \end{enumerate}
-    \item Other Requirements: None.
+	 \end{itemize}
+	 \end{itemize}
+     \item Communications Interfaces: This toolkit will not  interact with any communication or network protocols.
 \end{enumerate}
 
+\subsubsection{Functional Requirements}
 
-\section{Supporting Information}
-\subsection{Appendixes}
-%\pagebreak
+\paragraph{Database Administrator User Class}
+\begin{enumerate}
+  \item The system shall accept an SQL query as input.
+  \item The system shall fetch performance database tables to get statistics on the input query.
+  \item The system shall organize the data and make recommend adjustments to increase performance.
+  \item The system shall output this data in into a data sheet.
+\end{enumerate}
 
-\vspace{4 in}
+\subsubsection{Performance Requirements}
+The toolkit will be distributed across many machines, meaning it will be run on any number of machines simultaneously.
+
+\subsubsection{Design Constraints}
+This toolkit will be limited to Oracle SQL 12C
+
+\subsubsection{Software System Attributes}
+\begin{itemize}
+    	\item Reliability 
+        \begin{itemize}
+        	\item The reliability of this toolkit will be measured in it's ability to take valid SQL statements and generate a performance statistic report.
+        \end{itemize}
+        \item Security
+        \begin{itemize}
+        	\item The toolkit will be available on a git hub repository that will be read-access only to the public. 
+			  This will protect the integrity of the source code behind the toolkit. 
+		      Individual users will be using the toolkit at their own risk, because they will already have full database access this toolkit does not pose any increased security risk. 
+        \end{itemize}
+        \item Maintainability
+        \begin{itemize}
+        	\item The toolkit will be organized so that each significant performance test will be in its own script file. 
+				  These files will be well commented so that users can make changes as per their needs. 
+				  The names of these scripts should be self explanatory and unique enough to distinguish their function from the name.
+		\end{itemize}
+        \item Portability
+        \begin{itemize}
+        	\item The toolkit that is being created will be portable to any system that supports Oracle SQL 12c.
+            	  However this toolkit will not be portable to any other type of database.
+        \end{itemize}
+    \end{itemize}
+    
+\subsubsection{Other Requirements} 
+There are no additional requirements for this project other than what been outlined above.
+
+
+\vspace{4.5 in}
 
 \noindent\begin{tabular}{ll}
 \makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
@@ -378,7 +398,6 @@ Nathaniel Whitlock & Date\\[8ex]%
 \end{tabular}
 
 \pagebreak
-
 \includegraphics[width=\linewidth]{Gantt_Chart.pdf}
 
 \end{document}
