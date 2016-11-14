@@ -1,7 +1,14 @@
-\contentsline {section}{\numberline {1}Toolkits}{2}
-\contentsline {subsection}{\numberline {1.1}Purpose of a Toolkit}{2}
-\contentsline {subsection}{\numberline {1.2}Existing Toolkits}{2}
-\contentsline {subsubsection}{\numberline {1.2.1}Oracle Enterprise Manager}{2}
-\contentsline {subsubsection}{\numberline {1.2.2}SQLd360}{2}
-\contentsline {subsubsection}{\numberline {1.2.3}Snapper}{3}
-\contentsline {subsection}{\numberline {1.3}Creating a Toolkit}{3}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Toolkits}{2}
+\contentsline {subsection}{\numberline {2.1}Purpose of a Toolkit}{2}
+\contentsline {subsection}{\numberline {2.2}Existing Toolkits}{2}
+\contentsline {subsubsection}{\numberline {2.2.1}Oracle Enterprise Manager}{2}
+\contentsline {subsubsection}{\numberline {2.2.2}SQLd360}{3}
+\contentsline {subsubsection}{\numberline {2.2.3}Snapper}{3}
+\contentsline {subsection}{\numberline {2.3}Creating a Toolkit}{3}
+\contentsline {section}{\numberline {3}Parallelism and Partitioning}{4}
+\contentsline {subsection}{\numberline {3.1}Purpose}{4}
+\contentsline {subsection}{\numberline {3.2}Database Technologies}{4}
+\contentsline {subsubsection}{\numberline {3.2.1}Oracle}{4}
+\contentsline {subsubsection}{\numberline {3.2.2}PostgreSQL}{5}
+\contentsline {subsubsection}{\numberline {3.2.3}Redshift}{5}
