@@ -6,6 +6,8 @@
 
 \usepackage{titling}
 
+\usepackage{hyperref}
+
 \usepackage[margin=0.75in]{geometry}
 
 \usepackage{graphicx}
@@ -39,6 +41,110 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
 Phasellus rhoncus tincidunt quam sit amet cursus. Pellentesque dictum ac ex ut rhoncus. Sed eu enim vitae urna elementum condimentum id sit amet augue. Aenean sodales volutpat odio sit amet suscipit. Vivamus dictum dolor a sapien scelerisque, eu euismod est suscipit. Donec suscipit non massa id semper. Sed vitae nulla non lorem faucibus vestibulum. Mauris vestibulum diam arcu, in ullamcorper metus blandit vel. Cras consectetur, magna ut tempor luctus, nulla arcu accumsan felis, quis egestas diam turpis vitae lorem. Ut sodales lacinia malesuada. Morbi molestie, risus eget tincidunt mattis, augue enim condimentum mi, a porta quam justo quis sapien. Aliquam ac pellentesque arcu.
 
 Nunc scelerisque velit at odio elementum iaculis sed luctus risus. Integer fringilla lacinia convallis. Curabitur convallis est ac dui semper fringilla ut ut lorem. Fusce orci ante, varius quis fringilla et, placerat sed dui. Integer porttitor pharetra justo eget vulputate. Vestibulum dui justo, placerat in interdum ac, tempus ac felis. Pellentesque gravida porttitor lectus vitae dictum. Fusce pulvinar rhoncus odio eget porta.
+
+\section{Integrated Development Environment}
+
+\subsection{Purpose}
+
+\subsection{Existing Technologies}
+
+\subsubsection{SQL Plus}
+
+\subsubsection{Oracle SQL Developer}
+
+\subsubsection{Toad}
+
+\subsection{Conclusion}
+% End Section One
+
+\section{Parallelism and Partitioning}
+
+\subsection{Purpose}
+When datasets become large or the aggregate functions used to extrapolate statistics from a table are too complex the database can take a long time to return anything useful.
+Techniques such as parallelism and partitioning can be implemented in order to increase computational efficiency and reduce the observed time it takes to return a query. 
+
+Parallelism refers to the concept of dividing a large task, such as the processing of a complex query, and breaking it up into specified chunks in order to distribute the work among additional nodes or threads.
+During the optimization process, the steps of a query are ranked by estimated cost in order to generate an efficient execution plan.
+Logically grouped steps from the execution plan can then be processed on different nodes in order to reduce the time it takes to complete.
+The degree of parallelism refers to the number of processors which are utilized during program execution.
+As the number of processors splitting the workload increases, the time needed for computation decreases.
+
+Partitioning refers to the logical separation of ranges in a table, index, or indexed table.
+The general idea is to make subdivisions that would assist in the processing of a query.
+If you had sales data for several years and wanted to calculate the average sales per month, the table of data could be logically partitioned by month and processed on separate nodes.
+By dividing the dataset among many nodes, each table partition can be processed in concert leading to a quicker return of target data.
+
+\subsection{Database Technologies}
+
+\subsubsection{Oracle}
+The Oracle Corporation has been around for over 39 years and is largely known for database software which got its name from a CIA-funded project that one of the founders had previously worked on.
+The current version of the Oracle database software is 12.1.0.2 and was released in July 2014.
+
+
+According to Oracle documentation, Parallel queries and subqueries are handled by evaluating two components: the degree of parallelism (DOP) and the decision to parallelize.
+The degree of parallelism is determined most often by the table being modified by an INSERT, UPDATE, DELETE, or MERGE command.
+In order to use parallelization you must include a statement level hint to indicate the desire to parallel process, the objects referred to need a parallel declaration associated with them, and Auto DOP must be enabled.
+
+\textbf{Partition Methods}
+\begin{itemize} 
+	\item  Range Partitioning
+    \begin{itemize} 
+		\item Maps data based on ranges of values of the partitioning key, this is the most common type of partitioning and is often implemented with dates or times.
+    \end{itemize}
+    \item Hash Partitioning
+    \begin{itemize} 
+		\item Maps data based on based on the Oracle hashing algorithm which is applied to the partitioning key.
+        All partitions have even distribution of data making them similar in size.
+    \end{itemize}
+    \item List Partitioning
+    \begin{itemize} 
+		\item Maps data by applying a list of specified partitioning key values that should go in each partition.
+    \end{itemize}
+    \item Composite Partitioning
+    \begin{itemize} 
+		\item After applying one of the above partitioning schemes, another partition scheme is applied to each partition.
+        The result is subpartitions which represent a logical subset of the data.
+    \end{itemize}
+\end{itemize}
+\subsubsection{PostgreSQL}
+PostgreSQL is an open source object-relational database system that was developed by a team of volunteers.
+Although this database software is free it is feature rich and standards compliant.
+It is also highly customizable allowing stored procedures written in more than a dozen programming languages to be executed.
+Some potential drawbacks of the software include: installation and configuration difficulties; psql command line different than traditional commands; sheer number of features can take years to learn.
+
+PostgreSQL has a feature called parallel query which evaluates an optimizer serial query plan in order to check if the query contains steps which can processed independently of each other.
+Though this is not true for small simpler queries, more complex queries have steps which can be split off, processed separately, and recombined.
+Queries that benefit from this feature the most occur when a query reaches out to a large amount of data for calculations and only returns a few rows.
+Within the PostgreSQL system each separate node or process used during parallelization are referred to as ‘workers’.
+The number of workers the planner has available is determined by an internal variable called max\_worker\_processes, this variable is initialized at server start with the default value of eight but it can be manually set.
+It is possible to utilize less than the maximum number of workers and still have an optimized parallel query plan.
+
+Basic table partitioning is supported by PostgreSQL.
+The partitioning is implemented by creating a master table, as well as multiple child tables that inherit from the master table.
+Table constraints are then set in order to define what data is placed in each partition.
+The data from the master table is then copied to each appropriate partition and given a partitioning key, the result is smaller tables which are subdivided by a declared expression.
+
+\subsubsection{Redshift}
+Redshift is a cloud based data warehousing product from Amazon Web Services (AWS)
+. Since it is cloud based, there are no upfront fees from hiring experienced people to set up servers or configure the system.
+According to the  AWS site, Redshift is a petabyte scale data warehouse which is fault tolerant with built in encryption.
+They also claim that there is no need for tuning to maintain performance and speed since the system is self managed. \textbf{Redshift based on PostgreSQL 8.0.2}
+
+Unlike traditional row-oriented databases, Redshift uses columnar or “column-oriented” storage.
+Columnar storage works by reading only the values from a row which are needed to complete the transaction.
+This means if a query is executed that only needs to evaluate the value of one out of four columns, then only the value from that column can be loaded thus drastically reducing the disk I/O.
+With row-oriented storage, each of the rows containing the values of interest would have to be read into memory.
+
+Redshift is a classified as a shared nothing or Massively Parallel Processing system.
+Shared nothing refers to the fact that no single node has a complete view of the database, and therefore cannot communicate with each other by sharing data during processing.
+There are multiple options for distribution styles which work to redistribute rows to compute nodes when a join or aggregation is needed.
+Though there are settings for some system configuration, the distribution of work over the compute nodes is automatically handled in order to create a simple experience for the user. There is limited...
+
+Redshift does not support the partitioning concept, rather it relies on the distribution style option selected by the user as well as distribution/sort keys. \textbf{Elaborate...}
+
+\subsection{Conclusion}
+Add content here...
+% End Section Two
 
 \section{Toolkits}
 \subsection{Purpose of a Toolkit}
@@ -94,95 +200,58 @@ While we could just use of the already existing toolkits to perform query perfor
 The expected outcome of developing our own toolkit is that not only will we have a custom made toolkit tailored to our needs but we should come out much more knowledgeable about Oracle 12c. 
 This in turn should allow us to become more proficient in customizing the parameters of the database to increase query performance.
 
+\subsection{Conclusion}
+Add content here...
+% End Section Three
 
-\section{Parallelism and Partitioning}
+\begin{thebibliography}{9}
+\bibitem{Optimizer Concepts} 
+Oracle Company.
+\textit{Query Optimizer Concepts}.
+[Online].
+Available: \href{https://docs.oracle.com/database/121/TGSQL/tgsql_optcncpt.htm#TGSQL192}{https://docs.oracle.com/...}
+ 
+\bibitem{How Parallel Execution Works} 
+Oracle Company.
+\textit{How Parallel Execution Works}.
+[Online].
+Available: \href{https://docs.oracle.com/cd/E11882_01/server.112/e25523/parallel002.htm}{https://docs.oracle.com/...}
 
-\subsection{Purpose}
-When datasets become large or the aggregate functions used to extrapolate statistics from a table are too complex the database can take a long time to return anything useful.
-Techniques such as parallelism and partitioning can be implemented in order to increase computational efficiency and reduce the observed time it takes to return a query. 
+\bibitem{Partitioning Concepts} 
+Oracle Company.
+\textit{Partitioning Concepts}.
+[Online].
+Available: \href{https://docs.oracle.com/cd/B28359_01/server.111/b32024/partition.htm}{https://docs.oracle.com/...}
 
-Parallelism refers to the concept of dividing a large task, such as the processing of a complex query, and breaking it up into specified chunks in order to distribute the work among additional nodes or threads.
-During the optimization process, the steps of a query are ranked by estimated cost in order to generate an efficient execution plan.
-Logically grouped steps from the execution plan can then be processed on different nodes in order to reduce the time it takes to complete.
-The degree of parallelism refers to the number of processors which are utilized during program execution.
-As the number of processors splitting the workload increases, the time needed for computation decreases.
+\bibitem{Documentation: 9.1} 
+Postgresql Volunteers.
+\textit{Documentation: 9.1: Partitioning}.
+[Online].
+Available: \href{https://www.postgresql.org/docs/9.1/static/ddl-partitioning.html}{https://www.postgresql.org/docs/...}
 
-Partitioning refers to the logical separation of ranges in a table, index, or indexed table.
-The general idea is to make subdivisions that would assist in the processing of a query.
-If you had sales data for several years and wanted to calculate the average sales per month, the table of data could be logically partitioned by month and processed on separate nodes.
-By dividing the dataset among many nodes, each table partition can be processed in concert leading to a quicker return of target data.
+\bibitem{Documentation: 9.6: Parallel Query} 
+Postgresql Volunteers.
+\textit{Parallel Query}.
+[Online].
+Available: \href{https://www.postgresql.org/docs/current/static/parallel-query.html}{https://www.postgresql.org/docs/...}
 
-\subsection{Database Technologies}
+\bibitem{Choosing A Data Distribution Style} 
+Amazon.
+\textit{Choosing A Data Distribution Style}.
+[Online].
+Available: \href{http://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html}{http://docs.aws.amazon.com/redshift/...}
 
-\subsubsection{Oracle}
-The Oracle Corporation has been around for over 39 years and is largely known for database software which got its name from a CIA-funded project that one of the founders had previously worked on.
-The current version of the Oracle database software is 12.1.0.2 and was released in July 2014.
+\bibitem{Tuning Query Performance} 
+Amazon.
+\textit{Tuning Query Performance}.
+[Online].
+Available: \href{http://docs.aws.amazon.com/redshift/latest/dg/c-optimizing-query-performance.html}{http://docs.aws.amazon.com/redshift/...}
 
-
-According to Oracle documentation, Parallel queries and subqueries are handled by evaluating two components: the degree of parallelism (DOP) and the decision to parallelize.
-The degree of parallelism is determined most often by the table being modified by an INSERT, UPDATE, DELETE, or MERGE command.
-In order to use parallelization you must include a statement level hint to indicate the desire to parallel process, the objects referred to need a parallel declaration associated with them, and Auto DOP must be enabled.
-
-Partition Methods
-
-\begin{itemize} 
-	\item  Range Partitioning
-    \begin{itemize} 
-		\item Maps data based on ranges of values of the partitioning key, this is the most common type of partitioning and is often implemented with dates or times.
-    \end{itemize}
-    \item Hash Partitioning
-    \begin{itemize} 
-		\item Maps data based on based on the Oracle hashing algorithm which is applied to the partitioning key.
-        All partitions have even distribution of data making them similar in size.
-    \end{itemize}
-    \item List Partitioning
-    \begin{itemize} 
-		\item Maps data by applying a list of specified partitioning key values that should go in each partition.
-    \end{itemize}
-    \item Composite Partitioning
-    \begin{itemize} 
-		\item After applying one of the above partitioning schemes, another partition scheme is applied to each partition.
-        The result is subpartitions which represent a logical subset of the data.
-    \end{itemize}
-\end{itemize}
-\subsubsection{PostgreSQL}
-PostgreSQL is an open source object-relational database system that was developed by a team of volunteers.
-Although this database software is free it is feature rich and standards compliant.
-It is also highly customizable allowing stored procedures written in more than a dozen programming languages to be executed.
-Some potential drawbacks of the software include: installation and configuration difficulties; psql command line different than traditional commands; sheer number of features can take years to learn.
-
-PostgreSQL has a feature called parallel query which evaluates an optimizer serial query plan in order to check if the query contains steps which can processed independently of each other.
-Though this is not true for small simpler queries, more complex queries have steps which can be split off, processed separately, and recombined.
-Queries that benefit from this feature the most occur when a query reaches out to a large amount of data for calculations and only returns a few rows.
-Within the PostgreSQL system each separate node or process used during parallelization are referred to as ‘workers’.
-The number of workers the planner has available is determined by an internal variable called max\_worker\_processes, this variable is initialized at server start with the default value of eight but it can be manually set.
-It is possible to utilize less than the maximum number of workers and still have an optimized parallel query plan.
-
-Basic table partitioning is supported by PostgreSQL.
-The partitioning is implemented by creating a master table, as well as multiple child tables that inherit from the master table.
-Table constraints are then set in order to define what data is placed in each partition.
-The data from the master table is then copied to each appropriate partition and given a partitioning key, the result is smaller tables which are subdivided by a declared expression.
-
-\subsubsection{Redshift}
-Redshift is a cloud based data warehousing product from Amazon Web Services (AWS)
-. Since it is cloud based, there are no upfront fees from hiring experienced people to set up servers or configure the system.
-According to the  AWS site, Redshift is a petabyte scale data warehouse which is fault tolerant with built in encryption.
-They also claim that there is no need for tuning to maintain performance and speed since the system is self managed. \textbf{Redshift based on PostgreSQL 8.0.2}
-
-
-Unlike traditional row-oriented databases, Redshift uses columnar or “column-oriented” storage.
-Columnar storage works by reading only the values from a row which are needed to complete the transaction.
-This means if a query is executed that only needs to evaluate the value of one out of four columns, then only the value from that column can be loaded thus drastically reducing the disk I/O.
-With row-oriented storage, each of the rows containing the values of interest would have to be read into memory.
-
-
-Redshift is a classified as a shared nothing or Massively Parallel Processing system.
-Shared nothing refers to the fact that no single node has a complete view of the database, and therefore cannot communicate with each other by sharing data during processing.
-There are multiple options for distribution styles which work to redistribute rows to compute nodes when a join or aggregation is needed.
-Though there are settings for some system configuration, the distribution of work over the compute nodes is automatically handled in order to create a simple experience for the user. There is limited...
-
-
-Redshift does not support the partitioning concept, rather it relies on the distribution style option selected by the user as well as distribution/sort keys. \textbf{Elaborate...}
-
+\bibitem{Unsupported Postgresql Features} 
+Amazon.
+\textit{Unsupported Postgresql Features}.
+[Online].
+Available: \href{http://docs.aws.amazon.com/redshift/latest/dg/c_unsupported-postgresql-features.html}{http://docs.aws.amazon.com/redshift/...}
+\end{thebibliography}
 
 \end{document}
