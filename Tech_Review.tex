@@ -71,14 +71,14 @@ SQL plus has a command line interface, and a windows graphical user interface, a
 SQL plus can generate reports as batch processes and to output the results directly to a text file, screen, or html fie for browsing.
 SQL plus enables users to execute SQL, PL/SQL, and operating system commands to perform the following operations.
 \begin{itemize}
-	\item Format, perform calculations on, store, and print from query results.
-	\item Examine table and object functions.
-	\item Develop and run batch scripts.
-	\item Perform database administration.
+	\item Format, perform calculations on, store, and print from query results. \cite{SQL Plus Users Guide and Reference}
+	\item Examine table and object functions. \cite{SQL Plus Users Guide and Reference}
+	\item Develop and run batch scripts. \cite{SQL Plus Users Guide and Reference}
+	\item Perform database administration. \cite{SQL Plus Users Guide and Reference}
 \end{itemize}
 
 \subsubsection{Oracle SQL Developer}
-SQL developer is a free standalone graphical tool that can simplify database development. 
+SQL developer is a free standalone graphical tool that can simplify database development. \cite{SQL Developer Documentation and Release 4.1}
 To use SQL developer for free it must not be used for profit, however it can be downloaded for free from the internet.
 SQL developer is an IDE published by oracle and contains a vast array of features.
 Some features included are worksheets for running queries, a DBA console, reports interface, and much more.
@@ -89,7 +89,7 @@ SQL developer is a complete IDE that provides all the features need to completel
 TOAD is a paid for IDE that offers features and services for databases including those that do not rely on SQL.
 The main distinction between TOAD and the other IDEs discussed in this document is that TOAD must be paid for and could be run on systems other than SQL.
 Being that TOAD is not free, it does provide the most features and activly tries to help the developer more than SQL developer or Plus.
-TOAD does this by providing automated unit testing, performance testing, automatic code consistency improvements, and code optimization.
+TOAD does this by providing automated unit testing, performance testing, automatic code consistency improvements, and code optimization. \cite{Toad For Oracle}
 TOAD also has its own version control system that makes collaboration across developers very easy.
 
 
@@ -97,11 +97,11 @@ TOAD also has its own version control system that makes collaboration across dev
 After examining the IDEs available we have concluded that we will be mostly using SQL developer.
 However SQL plus is built into the Oracle installation and can easily be used with SQL developer so mostly likely we will use both.
 This project will be focused on writing queries and exmaining the runtime of the database to see how it performed.
-For these experiements the visualization features provided in SQL plus and SQL developer will be extremely important.
+For these experiements the visualization features provided in SQL plus and SQL developer will be extremely important. \cite{SQL Developer Documentation and Release 4.1}
 The last IDE toad, provides more features than the first two combined but we simply dont need the robustness of TOAD.
 TOAD was included to examine the potential advantages of using a paid for IDE instead of using a free one. 
 Being a paid for service, TOAD can provide a larger number of features that are also more powerful.
-There are many features that TOAD can provide that neither of the other two options can, such as version control, automatic testing, and data update managment.
+There are many features that TOAD can provide that neither of the other two options can, such as version control, automatic testing, and data update managment. \cite{Toad For Oracle}
 TOAD is a very powerful IDE, and if we had to actually manage a real database it might be useful, but for these experiements it is more than we need.
 For the experiments that we are running we do not need to be running unit tests or updating data, and version control can be accomplished other ways.
 In short SQL developer will be the main IDE that we use to run and queries and examine the database, it makes sense to also use SQL plus because it is built in. 
@@ -305,6 +305,23 @@ Given that our project is heavily research based, creating our own toolkit will 
 % End Section Three
 
 \begin{thebibliography}{9}
+\bibitem{Toad For Oracle}
+TOAD.
+\textit{Toad For Oracle}.
+[Online]
+Available: \href{https://www.quest.com/documents/toad-for-oracle-datasheet-67887.pdf}
+
+\bibitem{SQL Plus Users Guide and Reference}
+Oracle.
+\textit{SQL Plus Users Guide and Reference}.
+[Online]
+Available: \href{https://docs.oracle.com/cd/B19306_01/server.102/b14357/qstart.htm#i1056581}
+
+\bibitem{SQL Developer Documentation and Release 4.1}
+Oracle
+\textit{SQL Developer Documentation and Release 4.1}.
+[Online]
+Available: \href{https://docs.oracle.com/cd/E55747_01/index.htm}
 \bibitem{Optimizer Concepts} 
 Oracle Company.
 \textit{Query Optimizer Concepts}.
@@ -396,24 +413,6 @@ Tanel Poder.
 \textit{tech.E2SN}.
 [Online].
 Available: \href{http://tech.e2sn.com/oracle-scripts-and-tools/session-snapper}{http://tech.e2sn.com/oracle-scripts-and-tools/...}
-
-\bibitem{Toad For Oracle}
-TOAD.
-\textit{Toad For Oracle}.
-[Online]
-Available: \href{https://www.quest.com/documents/toad-for-oracle-datasheet-67887.pdf}
-
-\bibitem{SQL Plus Users Guide and Reference}
-Oracle.
-\textit{SQL Plus Users Guide and Reference}.
-[Online]
-Available: \href{https://docs.oracle.com/cd/B19306_01/server.102/b14357/qstart.htm#i1056581}
-
-\bibitem{SQL Developer Documentationand Release 4.1}
-Oracle
-\textit{SQL Developer Documentationand Release 4.1}.
-[Online]
-Available: \href{https://docs.oracle.com/cd/E55747_01/index.htm}
 
 \end{thebibliography}
 
