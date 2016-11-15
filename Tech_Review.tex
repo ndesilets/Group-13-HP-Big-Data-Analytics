@@ -48,13 +48,13 @@ Our project to develop a SQL performance toolkit has been distilled into three d
 \section{SQL Development Environment}
 
 \subsection{Purpose of a SQL Development Environment}
-SQL and most programming languages can be developed and excuted directly from a command line interface.
-However since the early 1990s interactive developer enviroments or IDEs have been used to organize information and provide useful functionality to developers.
+SQL and most programming languages can be developed and executed directly from a command line interface.
+However since the early 1990s interactive developer environments or IDEs have been used to organize information and provide useful functionality to developers.
 IDEs provide many useful features such data visualization or manipulation, code completion, usage finding, and much more. 
-It is still possible to develope SQL on the command line but to do so would be a waste because it is ignoring the many tools at ones disposale. 
+It is still possible to develop SQL on the command line but to do so would be a waste because it is ignoring the many tools at ones disposal. 
 The purpose of the IDE is to help the developer visualize data, interact with data if necessary, and to help with code completion.
 Data visualization and interaction allow developers to easily understand what the application is doing in memory or data space which makes debugging a much less painful process.
-Code completion means the IDE is aware of tabel structures and data keys so the IDE can make reccomendations as the developer types.
+Code completion means the IDE is aware of table structures and data keys so the IDE can make recommendations as the developer types.
 
 \subsection{Existing Technologies}
 There are many different IDEs for SQL, these different IDEs all have their own way tools and ways of organizing data. 
@@ -65,30 +65,42 @@ Three technologies that will be considered for the IDE in this project are SQL p
 
 \subsubsection{SQL Plus}
 SQL plus is an interactive and batch query tool that is installed with every Oracle database installation. 
-It has a command line interface, and a windows graphical user interface, and a SQL plus web based user interface. 
-SQL plus enables users to execute SQL, PL/SQL, and operating system commands to perfrom the following operations.
-Format, perform calculations on, store, and print from query results.
-Examine table and object functions.
-Develop and run batch scripts.
-Perform database administration.
-SQL plus can generate reports as batch processes and to output the results directly to a text file, screen, or html fie for browsing. 
+Because SQL plus is built in with Oracle this means we could just use SQL plus and not have to install any other packages.
+This makes SQL plus the easiest to use but as will see it also comes with the least functionality. 
+SQL plus has a command line interface, and a windows graphical user interface, and a SQL plus web based user interface. 
+SQL plus can generate reports as batch processes and to output the results directly to a text file, screen, or html fie for browsing.
+SQL plus enables users to execute SQL, PL/SQL, and operating system commands to perform the following operations.
+\begin{itemize}
+	\item Format, perform calculations on, store, and print from query results.
+	\item Examine table and object functions.
+	\item Develop and run batch scripts.
+	\item Perform database administration.
+\end{itemize}
 
 \subsubsection{Oracle SQL Developer}
-SQL developer is a free stand alone graphical tool that can simplify database development. 
-To get SQL developer one must download and install the application from the internet.
+SQL developer is a free standalone graphical tool that can simplify database development. 
+To use SQL developer for free it must not be used for profit, however it can be downloaded for free from the internet.
 SQL developer is an IDE published by oracle and contains a vast array of features.
 Some examples are worksheets for running queries, a DBA console, reports interface, and much more.
+Also because SQL plus is built into oracle, if you are using oracle then you could use SQL plus in SQL developer. 
 SQL developer offers all the features needed to complete end to end development of SQL applications.
+What SQL doesn’t have is any active 
  
 \subsubsection{Toad}
 TOAD is a paid for IDE that offers features and services for databases including those that do not rely on SQL.
 The main distinction between TOAD and the other IDEs discussed in this document is that TOAD must be paid for and could be run on systems other than SQL.
-Also because TOAD is paid for, the service tries to be much more proactive in helping the developer.
+Also because TOAD is paid for, the service tries to be much more proactive in helping developers.
 TOAD does this by providing automated unit testing, performance testing, automatic code consistency improvements, and code optimization.
 TOAD also has its own version control system that makes collaboration across developers very easy.
 
+
 \subsection{Conclusion}
-% End Section One
+After examining the IDEs available we have concluded that we will be mostly using SQL developer.
+However SQL plus is built into the Oracle installation and can easily be used with SQL developer so mostly likely we will use both.
+TOAD was included to examine a paid for IDE to try and evaluate the potential advantages of using a paid for IDE instead of a free one.
+Being a paid for service, TOAD can provide a larger number of features that are also more powerful.
+There are many features that TOAD can provide that neither of the other two options can, such as version control, automatic testing, and change management.
+Ultimately TOAD provides functionality that simply isn’t important to us, while it may be useful to others it isn’t worth the cost to us.
 
 \section{Parallelism and Partitioning}
 
