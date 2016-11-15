@@ -24,7 +24,7 @@
     
     \vspace{1in}
     \begin{abstract}
-		\noindent This document is a review of three essential roles within our project SQL development environment, Parallel and 		  Partitioning, and Performance Reporting.
+		\noindent This document is a review of three essential roles within our project SQL development environment, Parallel and Partitioning, and Performance Reporting.
         From each of those integral pieces, three or more technology options were evaluated and compared.
         The desired SQL development environment was deemed to be Oracle's SQL Developer because ...
         Additionally, Oracle database software was chosen as the best framework for parallelism and partitioning.
@@ -180,35 +180,30 @@ There are multiple options for distribution styles which work to redistribute ro
 \subsection{Conclusion}
 After careful analysis of each option, there are a couple of properties between the three technologies that seem appealing. First, the column-oriented storage mentioned in the Redshift documentation seemed promising given the analytic procedures of our client. However, in 2013 Oracle announced that they we going to support column-oriented storage \cite{Column-Oriented Makeover}. Since this feature was not isolated to Redshift alone, Redshift lost some of it's appeal over the Oracle database software the clients already have up and running. Second, was the ability to customize logical table partition designs. Both Oracle and PostgreSQL offered these features through different implementations. However, Redshift relies on the concept of data distribution styles of node slices. Though it is basically the same concept, Redshift has been developed for "ease-of-use" user experience and therefore does not offer as detailed customization as the other two database technologies. Out of the three considered database technologies, the winner is Oracle. The reasons behind this decision are based on  Oracles customization and reliability. Though it is a paid service, our client already has a license and hardware setup in order to utilize the service, so the level of granularity in terms of system configuration is more appealing for the Oracle technology than any of the alternatives reviewed. 
 
-
-
-
-
-
-
 % End Section Two
 
 \section{Toolkits}
 \subsection{Purpose of a Toolkit}
 The main purpose of a database toolkit is to assist a Database Administrator (DBA) with analyzing the performance of queries made to a database. 
 The different types of toolkits that can be used with Oracle Database 12c vary widely from PL/SQL queries that can be run directly in the database to complex, fully featured web applications. 
-Likewise, the use cases for these toolkits can range from quick and easy query statement diagnostics all the way to automating the analysis and optimization of parameters within the database to a particular SQL query or multiple queries. 
+Likewise, the use cases for these toolkits can range from quick and easy query performance diagnostics all the way to automating the analysis and optimization of parameters within the database to a particular SQL query or multiple queries. 
 
 When analyzing queries, being able to effectively quantify and visualize multiple aspects of a query statement is important to a DBA. 
 Some of the information gathered might include the time it took for a query to run, how much memory was allocated to a process handling a query, and the amount of disk input and output operations. 
-This information can then be combined and analyzed in order to identify problematic areas within the database with a particular query or multiple queries. 
+This information can then be combined and analyzed in order to identify problematic areas in the configuration of the database or with particular queries themselves. 
 
 For example, if you have a particular slow running query, you might use a toolkit to analyze what is happening when the query is being run. 
-After analyzing the output of the toolkit you then find out that the way the database is allocating memory is suboptimal for the query thus resulting in a lot of swap space usage.
+After analyzing the output of the toolkit you then find out that the database is suboptimally allocating memory for the process that is responsible for the query, thus resulting in a lot of unnecessary swap space usage.
 With this knowledge you can then adjust parameters within the database to allocate more memory to the processes that handle queries.
+Alternatively, you may discover that the database parameters are fine and that the structure of the query itself is suboptimal in the context of the database configuration.
 
 \subsection{Existing Toolkits}
 \subsubsection{Oracle Enterprise Manager}
 Oracle Enterprise Manager (EM) is already included in the Enterprise edition of Oracle Database 12c.
-It is intended to be a one stop, all in one application that can be used for analyzing and optimizing query performance. 
-Unlike other toolkits which are comprised of PL/SQL queries that can be executed in the database, EM is a full fledged web application that is packed with many features beyond analyzing query performance. 
+It is intended to be a one stop, all in one application that can be used for analyzing and optimizing query performance as well as a multitude of other database functions such as general administrative tasks. 
+Unlike other toolkits which are comprised of PL/SQL queries that can be executed in the database, EM is a full fledged web application that is integrated with the database itself and is packed with many features beyond analyzing query performance. 
 
-Some features that are included in EM are: the ability to manage and maintain several databases from one web application; automating repetitive tasks involved with maintaining databases; testing changes before rolling out to production; diagnosing performance problems and automated database tuning. 
+Some features that are included in EM are: the ability to manage and maintain several databases from one web application; automating repetitive tasks involved with maintaining databases; testing changes before rolling out to production; diagnosing performance problems and automated database tuning \cite{Manageability with Oracle Database 12c}. 
 Additional examples of what EM can do are it can determine if indexes will be helpful for performance of a particular table and analyzing sql query statement structure for potential performance issues.
 
 One particularly useful feature of EM for analyzing query performance is a subcomponent called Active Session History (ASH). 
@@ -217,33 +212,50 @@ Each sample for each session contains detailed info about what resources are bei
 This is especially useful for identifying bottlenecks and other performance issues of running SQL queries.
 
 \subsubsection{SQLd360}
-SQLd360 is a tool that is written by Mauro Pagano, an ex-Oracle Database Engineer of about ten years, which analyzes SQL queries.
+SQLd360 is a tool that is written by Mauro Pagano, an ex-Oracle Database Engineer of about ten years, which analyzes performance metrics of SQL queries.
 Unlike EM, it will only analyze a single specified query and will not perform any database optimization for you.  
-Instead, it is only intended for performance analysis of a query. 
-SQLd360 is very similar to EM’s ASH tool as it operates under the same underlying principle of periodically sampling the session that the query is running in to gather performance metrics. 
-This information can be specified to be output in either html, text, csv, or graphical charts. One important difference is the SQLd360 is provided as a completely free tool while EM’s ASH requires additional licensing from Oracle. 
+Instead, it is only intended for performance analysis of a query which usually falls under the case of troubleshooting. 
+SQLd360 is very similar to EM’s ASH tool since it operates under the same underlying principle of periodically sampling the session that the query is running in to gather performance metrics \cite{Mauro Pagano's Blog}. 
+This information can be specified to be output in either html, text, csv, or graphical charts. One important difference is that SQLd360 is provided as a completely free tool while EM’s ASH requires additional licensing from Oracle. 
 This makes it particularly useful for users who do not have the required licensing but still need to obtain key metrics from session data. 
 After the tool is finished running, it will dump all of the collected information into a zip file for later analysis.
 
 \subsubsection{Snapper}
 Snapper is another toolkit written by Tanel Poder, an Oracle Certified Master DBA, which also analyzes SQL queries. 
 Similar to SQLd360, it is also provided completely free of use and does not require additional licensing from Oracle. 
-It also operates similarly to SQLd360 in that it uses the database’s session information to extract metrics information from running queries. 
-It will also not provide any recommendations about how to optimize queries or database parameters. 
+It also operates similarly to SQLd360 and ASH in EM in that it uses the database's sessions table to extract performance metrics from the session that represents the currently running query. 
+Like SQLd360, it will also not provide any recommendations about how to optimize queries or database parameters.
+It's primary use case is basic troubleshooting of a query that seems to be running slowly in a production or development environment \cite{tech.E2SN}. 
+Aside from providing metrics information, everything else is left up to the DBA to figure out.
 In addition to sampling data from query sessions, it also gathers data from the V\$ and X\$ tables within the database which both house extra information regarding query performance. 
 Snapper combines this information together in order to provide a data rich visual representation of how exactly a query is running in the database. 
 
 \subsection{Creating a Toolkit}
-Of the three toolkits mentioned above, it might sound like Oracle’s EM is the obvious way to go since it is very feature rich and is even capable of automatically optimizing SQL queries and database parameters for you. 
-However, in our case we are still going to develop a toolkit of our own that will provide similar functionality. 
-While avoiding reinventing the wheel is typically important when it comes to designing and creating software to prevent wasting time, in our case it makes sense for us to design a toolkit of our own that provides similar functionality to the three toolkits described above. 
-The reason for this is, is that it will force us to become familiar with the inner workings of the database. 
-While we could just use of the already existing toolkits to perform query performance analysis for us, we would probably not be as effective in modifying important database parameters when it comes to memory management, database table partition design, and parallelism. 
-The expected outcome of developing our own toolkit is that not only will we have a custom made toolkit tailored to our needs but we should come out much more knowledgeable about Oracle 12c. 
-This in turn should allow us to become more proficient in customizing the parameters of the database to increase query performance.
+An alternative option to selecting an already existing toolkit would be to design our own toolkit from the ground up. 
+However, this comes at the cost of reinventing the wheel which understandably brings up the question of why there is a need to create yet another database toolkit.
+One of the primary benefits of designing our own toolkit is that we would have complete control over the provided features and functionality.
+We could then design a toolkit that is tailored exactly to our needs rather than going with a generalized solution.
+Some features could include not only analysis of query performance, but also automatic tuning and changing of key database parameters that are directly relevant to our problem.
+By running a particular query over and over again with each running query having a slightly different database configuration, we would be able to identify what database configurations work and what doesn't work specifically for our use cases.
+In our case, since this is a research project, it would make sense for us to research the details of the database and reinforce that understanding by designing our own toolkit.
 
 \subsection{Conclusion}
-Add content here...
+Out of the three toolkits mentioned above, it might sound like Oracle’s EM is the obvious way to go since it is very feature rich and is even capable of automatically optimizing SQL queries and database parameters for you. 
+However, we are still going to develop a toolkit of our own that will provide similar functionality. 
+While avoiding reinventing the wheel is typically important when it comes to designing and creating software to prevent wasting time, in our case it makes sense for us to design a toolkit of our own that provides similar functionality to the three toolkits described above. 
+The primary motivation for this is the additional knowledge and insight that is to be gained from working with and researching the internals of the database.
+The expected outcome of developing our own toolkit is that not only will we have a custom made toolkit tailored to our needs but we should come out of it with more knowledge about Oracle 12c. 
+While we could just use of the existing toolkits to perform query performance analysis for us, it is likely that we would not be as effective in modifying important database parameters when it comes to memory management, database table partition design, and parallelism. 
+Ultimately, creating our own toolkit will force us to dive into the database which will allow us to become more proficient in understanding the internals of the database and also customizing the parameters of the database to increase query performance.
+
+\section{Summary}
+% sql dev environment 
+
+% database 
+
+% toolkits
+Given that our project is heavily research based, creating our own toolkit will benefit us the most in terms of knowledge gained and functionality of the toolkit. Researching and understanding the internals of Oracle Database 12c while in turn creating our own toolkit tailored towards our exact needs derived from this research will play a key role in our success with this project.
+
 % End Section Three
 
 \begin{thebibliography}{9}
@@ -318,6 +330,27 @@ Alex Woodie.
 \textit{Oracle Gives 12c Database a Column-Oriented Makeover}.
 [Online].
 Available: \href{https://www.datanami.com/2013/09/23/oracle_gives_12c_database_a_column-oriented_makeover/}{https://www.datanami.com/...}
+
+% Sources for toolkits
+
+\bibitem{Manageability with Oracle Database 12c}
+Deba Chatterjee.
+\textit{Manageability with Oracle Database 12c}.
+[Online].
+Available: \href{http://www.oracle.com/technetwork/database/manageability/database-manageability-wp-12c-1964677.pdf}{http://www.oracle.com/technetwork/...}
+
+\bibitem{Mauro Pagano's Blog}
+Mauro Pagano.
+\textit{Mauro Pagano's Blog}.
+[Online].
+Available: \href{https://mauro-pagano.com/2015/02/16/sqld360-sql-diagnostics-collection-made-faster/}{https://mauro-pagano.com/2015/02/16/...}
+
+\bibitem{tech.E2SN}
+Tanel Poder.
+\textit{tech.E2SN}.
+[Online].
+Available: \href{http://tech.e2sn.com/oracle-scripts-and-tools/session-snapper}{http://tech.e2sn.com/oracle-scripts-and-tools/...}
+
 \end{thebibliography}
 
 \end{document}
