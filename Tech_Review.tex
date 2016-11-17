@@ -1,0 +1,433 @@
+\documentclass[draftclsnofoot, onecolumn, compsoc, 10pt]{IEEEtran}
+
+\title{\Huge Technology Review\\\large HP: Big Data Analytics\\Group 13}
+
+\author{Oregon State University\\CS 461\\2016-2017\\\\Prepared By:\\Nic Desilets, James Stallkamp,\\and Nathaniel Whitlock}
+
+\usepackage{titling}
+
+\usepackage{hyperref}
+
+\usepackage[margin=0.75in]{geometry}
+
+\usepackage{graphicx}
+
+\linespread{1.0} % 1.0 = single, 1.3 = 1.5, 1.6 = double
+
+\parindent=0.0in
+
+\parskip=0.2in
+
+\begin{document}
+\begin{titlingpage}
+    \maketitle 
+    
+    \vspace{1in}
+    \begin{abstract}
+		\noindent This document is a review of three essential roles within our project SQL development environment, Parallel and Partitioning, and Performance Reporting.
+        From each of those integral pieces, three or more technology options were evaluated and compared.
+        The desired SQL development environment was deemed to be Oracle's SQL Developer because it is a free software that provides all the features we might need and more.
+        Additionally, Oracle database software was chosen as the best framework for parallelism and partitioning.
+        Finally, the decision was made to create a reporting tool from scratch in order to allow more customization for data output.
+        The resulting decisions will act as the initial path forward until there is a need to consider one of the other options.
+    \end{abstract}
+\end{titlingpage}
+
+%\tableofcontents
+{\small\tableofcontents} % Reduce the size of TOC to make it 1 page
+\addtocontents{toc}{\protect\thispagestyle{empty}} % Removes page number from TOC
+
+% Add content here
+\section{Introduction}
+Our project to develop a SQL performance toolkit has been distilled into three different essential pieces: SQL development environment; parallelization and partitioning; and performance reporting.
+The following sections review technologies for each of these pieces.
+The goal of this document is to compare available technologies that may be of use to our team during the developmental stages of the project.
+
+The research efforts during this technology review is as follows: James Stallkamp focused on SQL development environments; Nathaniel Whitlock focused on parallelization and partitioning; and Nic Desilets focused on performance reporting Tools.
+Each section below outlines a comparative analysis of technologies which may be suitable for using within the essential pieces of our project.
+
+
+% The below sections are just an outline
+\section{SQL Development Environment}
+
+\subsection{Purpose of a SQL Development Environment}
+SQL and most programming languages can be developed and executed directly from a command line interface.
+However since the early 1990s interactive developer environments or IDEs have been used to organize information and provide useful functionality to developers.
+IDEs provide many useful features such data visualization or manipulation, code completion, usage finding, and much more. 
+It is still possible to develop SQL on the command line but to do so would be a waste because it is ignoring the many tools at ones disposal. 
+The purpose of the IDE is to help the developer visualize data, interact with data if necessary, and to help with code completion.
+Data visualization and interaction allow developers to easily understand what the application is doing in memory or data space which makes debugging a much less painful process.
+Code completion means the IDE is aware of table structures and data keys so the IDE can make recommendations as the developer types.
+
+\subsection{Existing Technologies}
+There are many different IDEs for SQL, these different IDEs all have their own way tools and ways of organizing data. 
+Comparing the differences between these IDEs comes down to cost, features provided, and personal taste.
+Many IDEs are very similar and the biggest differences are usually a function of if the IDE is free or paid for. 
+Because many IDEs are very similar personal taste is often a factor in deciding an IDE, each IDE organizes data a little differently and most people have a style they prefer.
+Three technologies that will be considered for the IDE in this project are SQL plus, Oracle SQL Developer, and Toad.
+
+\subsubsection{SQL Plus}
+SQL plus is an interactive and batch query tool that is installed with every Oracle database installation. 
+Because SQL plus is built in with Oracle this means we could just use SQL plus and not have to install any other packages.
+This makes SQL plus the easiest to use but as will see it also comes with the least functionality. 
+SQL plus has a command line interface, and a windows graphical user interface, and a SQL plus web based user interface. 
+SQL plus can generate reports as batch processes and to output the results directly to a text file, screen, or html fie for browsing.
+SQL plus enables users to execute SQL, PL/SQL, and operating system commands to perform the following operations.
+\begin{itemize}
+	\item Format, perform calculations on, store, and print from query results \cite{SQL Plus Users Guide and Reference}.
+	\item Examine table and object functions \cite{SQL Plus Users Guide and Reference}.
+	\item Develop and run batch scripts \cite{SQL Plus Users Guide and Reference}.
+	\item Perform database administration\cite{SQL Plus Users Guide and Reference}.
+\end{itemize}
+
+\subsubsection{Oracle SQL Developer}
+SQL developer is a free standalone graphical tool that can simplify database development \cite{SQL Developer Documentation and Release 4.1}.
+To use SQL developer for free it must not be used for profit, however it can be downloaded for free from the internet.
+SQL developer is an IDE published by oracle and contains a vast array of features.
+Some features included are worksheets for running queries, a DBA console, reports interface, and much more.
+Also because SQL plus is built into oracle, if you are using oracle then you could use SQL plus in SQL developer. 
+SQL developer is a complete IDE that provides all the features need to completely develop a SQL application.
+ 
+\subsubsection{Toad}
+TOAD is a paid for IDE that offers features and services for databases including those that do not rely on SQL.
+The main distinction between TOAD and the other IDEs discussed in this document is that TOAD must be paid for and could be run on systems other than SQL.
+Being that TOAD is not free, it does provide the most features and activly tries to help the developer more than SQL developer or Plus.
+TOAD does this by providing automated unit testing, performance testing, automatic code consistency improvements, and code optimization \cite{Toad For Oracle}.
+TOAD also has its own version control system that makes collaboration across developers very easy.
+
+
+\subsection{Conclusion}
+After examining the IDEs available we have concluded that we will be mostly using SQL developer.
+However SQL plus is built into the Oracle installation and can easily be used with SQL developer so mostly likely we will use both.
+This project will be focused on writing queries and exmaining the runtime of the database to see how it performed.
+For these experiements the visualization features provided in SQL plus and SQL developer will be extremely important \cite{SQL Developer Documentation and Release 4.1}.
+The last IDE toad, provides more features than the first two combined but we simply dont need the robustness of TOAD.
+TOAD was included to examine the potential advantages of using a paid for IDE instead of using a free one. 
+Being a paid for service, TOAD can provide a larger number of features that are also more powerful.
+There are many features that TOAD can provide that neither of the other two options can, such as version control, automatic testing, and data update managment \cite{Toad For Oracle}.
+TOAD is a very powerful IDE, and if we had to actually manage a real database it might be useful, but for these experiements it is more than we need.
+For the experiments that we are running we do not need to be running unit tests or updating data, and version control can be accomplished other ways.
+In short SQL developer will be the main IDE that we use to run and queries and examine the database, it makes sense to also use SQL plus because it is built in. 
+
+\section{Parallelism and Partitioning}
+
+\subsection{Purpose of Parallelism and Partitioning}
+When data sets become large or the aggregate functions used to extrapolate statistics from a table are too complex the database can take a long time to return anything useful.
+Long periods of latency between query execution and the return of desired data can make the system practically unusable. 
+Techniques such as parallelism and partitioning can be implemented in order to increase computational efficiency and reduce the observed time it takes to return a query. 
+
+Parallelism refers to the concept of dividing a large task, such as the processing of a complex query, by breaking it up into specified chunks in order to distribute the work among additional nodes or processes.
+Before a query is executed the plan for execution can be viewed, this plan lists each of the steps functions and associated cost.
+During the optimization process, the cost of each step is minimized by tuning the processing options which results in an efficient execution plan \cite{Optimizer Concepts}.
+Logically grouped steps from the execution plan can then be processed on different nodes in order to reduce the time it takes to complete processing.
+The degree of parallelism is a term which refers to the number of processors that are utilized during program execution  \cite{Query Optimization In Relational Systems}.
+As the number of processors splitting the workload increases, the time needed for computation decreases.
+
+Partitioning refers to the logical separation of ranges in a table, index, or indexed table.
+The general idea is to make independent subdivisions that would assist in the processing of a query.
+If you had sales data for several years and wanted to calculate the average sales per month, the table of data could be logically partitioned by month and processed on separate nodes.
+By dividing the data set among many nodes, each table partition can be processed in concert leading to a quicker return of target data.
+
+Together, parallel processing and partitioning tactics act in a divide an conquer like fashion. This is accomplished by breaking a large problem into workable sub units, computing, followed by a reassembly of data. These techniques are some of the most effective method at tuning SQL queries on large data sets. 
+
+Below is a discussion of how parallel queries and partitioning are implemented within the three database technologies of our interest.
+
+\subsection{Database Technologies}
+
+\subsubsection{Oracle}
+The Oracle Corporation has been around for over 39 years and is largely known for database software which got its name from a CIA-funded project that one of the founders had previously worked on.
+Oracle 12c Enterprise edition has been designed to be used by companies and data intensive users.
+This means that it is very reliable and there is support available for the service, these benefits come with a license fee that can be quite costly.
+Oracle database relies on a share everything architecture, meaning that there is no requirement for pre-defined partitions. However, Oracle partitioning offers the same processing potentials as a share nothing architecture \cite{How Parallel Execution Works}.
+The current version of the Oracle database software is 12.1.0.2 and was released in July 2014.
+
+
+According to Oracle documentation, every SQL statement undergoes optimization where parallel execution may be selected. If parallel execution  is initiated, then the user session takes the role of query coordinator.
+The coordinator calculates how many parallel processes are needed, then the required read steps are performed in serial and the steps which can be executed in parallel are processed as such.
+Parallel queries and subqueries are handled by evaluating two components: the degree of parallelism (DOP) and the decision to parallelize.
+The degree of parallelism is determined most often by the table being modified by an INSERT, UPDATE, DELETE, or MERGE command.
+In order to use parallelization you must include a statement level hint to indicate the desire to parallel process, the objects referred to need a parallel declaration associated with them, and Auto DOP must be enabled \cite{How Parallel Execution Works}.
+
+The Oracle database software has wonderful documentation which outlines their predefined table partition methods. A list of the methods with a brief overview of its function are outlined below:
+
+\textbf{Partition Methods}
+\begin{itemize} 
+	\item  Range Partitioning
+    \begin{itemize} 
+		\item Maps data based on ranges of values of the partitioning key, this is the most common type of partitioning and is often implemented with dates or times \cite{Partitioning Concepts}.
+    \end{itemize}
+    \item Hash Partitioning
+    \begin{itemize} 
+		\item Maps data based on based on the Oracle hashing algorithm which is applied to the partitioning key.
+        All partitions have even distribution of data making them similar in size \cite{Partitioning Concepts}.
+    \end{itemize}
+    \item List Partitioning
+    \begin{itemize} 
+		\item Maps data by applying a list of specified partitioning key values that should go in each partition \cite{Partitioning Concepts}.
+    \end{itemize}
+    \item Composite Partitioning
+    \begin{itemize} 
+		\item After applying one of the above partitioning schemes, another partition scheme is applied to each partition.
+        The result is subpartitions which represent a logical subset of the data \cite{Partitioning Concepts}.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{PostgreSQL}
+PostgreSQL is an open source object-relational database system that was developed by a team of volunteers in 1996.
+Although this database software is free it is feature rich and standards compliant.
+It is also highly customizable allowing stored procedures written in more than a dozen programming languages to be executed.
+Some potential drawbacks of the software include: installation and configuration difficulties; psql command line different than traditional commands; sheer number of features can take years to learn \cite{General Information - PostegreSQL}.
+
+PostgreSQL has a feature called "parallel query" which evaluates an optimizer serial query plan in order to check if the query contains steps which can processed independently of each other.
+Though this is not true for small simpler queries, more complex queries have steps which can be split off, processed separately, and recombined \cite{Documentation: 9.6: Parallel Query}.
+Queries that benefit from this feature the most occur when a query reaches out to a large amount of data for calculations and only returns a few rows.
+Within the PostgreSQL system each separate node or process used during parallelization are referred to as "workers" .
+The number of workers the planner has available is determined by an internal variable called max\_worker\_processes, this variable is initialized at server start with the default value of eight but it can be manually set \cite{Documentation: 9.6: Parallel Query}.
+It is possible to utilize less than the maximum number of workers and still have an optimized parallel query plan.
+
+Basic table partitioning is supported by PostgreSQL.
+The partitioning is implemented by creating a master table, as well as multiple child tables that inherit from the master table and act as logical partitions.
+Table constraints are then set in order to define what data is placed in each partition.
+The data from the master table is then copied to each appropriate partition and given a partitioning key, the result is smaller tables which are subdivided by a declared expression \cite{Documentation: 9.1: Partitioning}.
+Though there was not predefined table partition methods in the PostgreSQL documentation, most of the methods outlined in the Oracle section (Range, List, Composite) could be achieved through the table constraints applied to each child partition.  
+
+% Need to finish this section before bed!!!
+\subsubsection{Redshift}
+Redshift is a cloud based data warehousing product from Amazon Web Services (AWS) which is based on the 2005 release of PostgreSQL 8.0.2. 
+Since Redshift is cloud based there are no upfront fees from hiring experienced individuals to set up servers or configure the system.
+According to the  AWS site, Redshift is a petabyte scale data warehouse which is fault tolerant with built in encryption.
+They also claim that there is no need for tuning to maintain performance and speed since the system is self managed, this service is offered at $\$1,000/$TB per year \cite{General Information - Redshift}.
+
+Unlike traditional row-oriented databases, Redshift uses columnar or “column-oriented” storage.
+Columnar storage works by reading only the values from a row which are needed to complete the transaction.
+This means if a query is executed that only needs to evaluate the value of one out of four columns, then only the value from that column needs to be loaded into memory, thus drastically reducing the disk I/O \cite{Tuning Query Performance}.
+With row-oriented storage, each of the rows containing the values of interest would have to be read into memory.
+
+Redshift is a classified as a shared nothing or Massively Parallel Processing system.
+Shared nothing refers to the fact that no single node has a complete view of the database, and therefore cannot communicate with each other by sharing data during processing.
+A cluster is a set of nodes, each node having an independent operating system and memory. The disk storage of each node is broken down into units referred to as slices, the number of slices per node is dependent on the number of nodes within the cluster.
+Though there are settings for some system configuration, the distribution of work over the compute nodes is automatically handled in order to create a simple experience for the user \cite{Choosing A Data Distribution Style}.
+Redshift does not support the partitioning concept, rather it relies on the distribution style option selected by the user as well as distribution and sort keys \cite{Unsupported Postgresql Features}.
+There are multiple options for distribution styles which work to redistribute rows to compute nodes when a join or aggregation is needed.
+
+\textbf{Distribution Styles}
+\begin{itemize} 
+	\item  Even Distribution
+    \begin{itemize} 
+		\item Leader node distributes rows across slices in equal proportions in a circular fashion. This is the default distribution style 		but is only suitable  if the table does not participate in joins \cite{Choosing A Data Distribution Style}.
+    \end{itemize}
+    \item Key Distribution
+    \begin{itemize} 
+		\item The rows are distributed among slices based on the value of one column. This process is analogous to range partitioning in 			terms of this system \cite{Choosing A Data Distribution Style}.
+    \end{itemize}
+    \item ALL Distribution
+    \begin{itemize} 
+		\item A copy of the entire table is stored in each slice in order to ensure that every row is collocated for each join. This causes 		slow function return on the data set \cite{Choosing A Data Distribution Style}.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Conclusion}
+After careful analysis of each option, there are a couple of properties between the three technologies that seem appealing.
+First, the column-oriented storage mentioned in the Redshift documentation seemed promising given the analytic procedures of our client.
+However, in 2013 Oracle announced that they we going to support column-oriented storage \cite{Column-Oriented Makeover}.
+Since this feature was not isolated to Redshift alone, Redshift lost some of it's appeal over the Oracle database software the clients already have up and running.
+Second, was the ability to customize logical table partition designs.
+Both Oracle and PostgreSQL offered these features through different implementations.
+However, Redshift relies on the concept of data distribution styles of node slices.
+Though it is basically the same concept, Redshift has been developed for "ease-of-use" user experience and therefore does not offer as detailed customization as the other two database technologies. Out of the three considered database technologies, the winner is Oracle.
+The reasons behind this decision are based on  Oracles customization and reliability.
+Though it is a paid service, our client already has a license and hardware setup in order to utilize the service, so the level of granularity in terms of system configuration is more appealing for the Oracle technology than any of the alternatives reviewed. 
+
+% End Section Two
+
+\section{Toolkits}
+\subsection{Purpose of a Toolkit}
+The main purpose of a database toolkit is to assist a Database Administrator (DBA) with analyzing the performance of queries made to a database. 
+The different types of toolkits that can be used with Oracle Database 12c vary widely from PL/SQL queries that can be run directly in the database to complex, fully featured web applications. 
+Likewise, the use cases for these toolkits can range from quick and easy query performance diagnostics all the way to automating the analysis and optimization of parameters within the database to a particular SQL query or multiple queries. 
+
+When analyzing queries, being able to effectively quantify and visualize multiple aspects of a query statement is important to a DBA. 
+Some of the information gathered might include the time it took for a query to run, how much memory was allocated to a process handling a query, and the amount of disk input and output operations. 
+This information can then be combined and analyzed in order to identify problematic areas in the configuration of the database or with particular queries themselves. 
+
+For example, if you have a particular slow running query, you might use a toolkit to analyze what is happening when the query is being run. 
+After analyzing the output of the toolkit you then find out that the database is suboptimally allocating memory for the process that is responsible for the query, thus resulting in a lot of unnecessary swap space usage.
+With this knowledge you can then adjust parameters within the database to allocate more memory to the processes that handle queries.
+Alternatively, you may discover that the database parameters are fine and that the structure of the query itself is suboptimal in the context of the database configuration.
+
+\subsection{Existing Toolkits}
+\subsubsection{Oracle Enterprise Manager}
+Oracle Enterprise Manager (EM) is already included in the Enterprise edition of Oracle Database 12c.
+It is intended to be a one stop, all in one application that can be used for analyzing and optimizing query performance as well as a multitude of other database functions such as general administrative tasks. 
+Unlike other toolkits which are comprised of PL/SQL queries that can be executed in the database, EM is a full fledged web application that is integrated with the database itself and is packed with many features beyond analyzing query performance. 
+
+Some features that are included in EM are: the ability to manage and maintain several databases from one web application; automating repetitive tasks involved with maintaining databases; testing changes before rolling out to production; diagnosing performance problems and automated database tuning \cite{Manageability with Oracle Database 12c}. 
+Additional examples of what EM can do are it can determine if indexes will be helpful for performance of a particular table and analyzing sql query statement structure for potential performance issues.
+
+One particularly useful feature of EM for analyzing query performance is a subcomponent called Active Session History (ASH). 
+The ASH tool runs in the background and samples each active session within the database once per second. 
+Each sample for each session contains detailed info about what resources are being used by the session and how the session is using it. 
+This is especially useful for identifying bottlenecks and other performance issues of running SQL queries.
+
+\subsubsection{SQLd360}
+SQLd360 is a tool that is written by Mauro Pagano, an ex-Oracle Database Engineer of about ten years, which analyzes performance metrics of SQL queries.
+Unlike EM, it will only analyze a single specified query and will not perform any database optimization for you.  
+Instead, it is only intended for performance analysis of a query which usually falls under the case of troubleshooting. 
+SQLd360 is very similar to EM’s ASH tool since it operates under the same underlying principle of periodically sampling the session that the query is running in to gather performance metrics \cite{Mauro Pagano's Blog}. 
+This information can be specified to be output in either html, text, csv, or graphical charts. One important difference is that SQLd360 is provided as a completely free tool while EM’s ASH requires additional licensing from Oracle. 
+This makes it particularly useful for users who do not have the required licensing but still need to obtain key metrics from session data. 
+After the tool is finished running, it will dump all of the collected information into a zip file for later analysis.
+
+\subsubsection{Snapper}
+Snapper is another toolkit written by Tanel Poder, an Oracle Certified Master DBA, which also analyzes SQL queries. 
+Similar to SQLd360, it is also provided completely free of use and does not require additional licensing from Oracle. 
+It also operates similarly to SQLd360 and ASH in EM in that it uses the database's sessions table to extract performance metrics from the session that represents the currently running query. 
+Like SQLd360, it will also not provide any recommendations about how to optimize queries or database parameters.
+It's primary use case is basic troubleshooting of a query that seems to be running slowly in a production or development environment \cite{tech.E2SN}. 
+Aside from providing metrics information, everything else is left up to the DBA to figure out.
+In addition to sampling data from query sessions, it also gathers data from the V\$ and X\$ tables within the database which both house extra information regarding query performance. 
+Snapper combines this information together in order to provide a data rich visual representation of how exactly a query is running in the database. 
+
+\subsection{Creating a Toolkit}
+An alternative option to selecting an already existing toolkit would be to design our own toolkit from the ground up. 
+However, this comes at the cost of reinventing the wheel which understandably brings up the question of why there is a need to create yet another database toolkit.
+One of the primary benefits of designing our own toolkit is that we would have complete control over the provided features and functionality.
+We could then design a toolkit that is tailored exactly to our needs rather than going with a generalized solution.
+Some features could include not only analysis of query performance, but also automatic tuning and changing of key database parameters that are directly relevant to our problem.
+By running a particular query over and over again with each running query having a slightly different database configuration, we would be able to identify what database configurations work and what doesn't work specifically for our use cases.
+In our case, since this is a research project, it would make sense for us to research the details of the database and reinforce that understanding by designing our own toolkit.
+
+\subsection{Conclusion}
+Out of the three toolkits mentioned above, it might sound like Oracle’s EM is the obvious way to go since it is very feature rich and is even capable of automatically optimizing SQL queries and database parameters for you. 
+However, we are still going to develop a toolkit of our own that will provide similar functionality. 
+While avoiding reinventing the wheel is typically important when it comes to designing and creating software to prevent wasting time, in our case it makes sense for us to design a toolkit of our own that provides similar functionality to the three toolkits described above. 
+The primary motivation for this is the additional knowledge and insight that is to be gained from working with and researching the internals of the database.
+The expected outcome of developing our own toolkit is that not only will we have a custom made toolkit tailored to our needs but we should come out of it with more knowledge about Oracle 12c. 
+While we could just use of the existing toolkits to perform query performance analysis for us, it is likely that we would not be as effective in modifying important database parameters when it comes to memory management, database table partition design, and parallelism. 
+Ultimately, creating our own toolkit will force us to dive into the database which will allow us to become more proficient in understanding the internals of the database and also customizing the parameters of the database to increase query performance.
+
+\section{Summary}
+% database 
+Oracle Database 12c seems to be the best fit for our application and so we will be using that for our project.
+The alternatives did not offer enough customization and were not appealing enough to warrant switching databases.
+Additionally, Oracle Database 12c is a tried and true enterprise grade database.
+% toolkits
+Given that our project is heavily research based, creating our own toolkit will benefit us the most in terms of knowledge gained and functionality of the toolkit. 
+Researching and understanding the internals of Oracle Database 12c while in turn creating our own toolkit tailored towards our exact needs derived from this research will play a key role in our success with this project.
+
+% End Section Three
+
+\begin{thebibliography}{9}
+\bibitem{SQL Plus Users Guide and Reference}
+Oracle.
+\textit{SQL Plus Users Guide and Reference}.
+[Online].
+Available: \href{https://docs.oracle.com/cd/B19306_01/server.102/b14357/qstart.htm#i1056581}{https://docs.oracle.com/cd/...}
+
+\bibitem{SQL Developer Documentation and Release 4.1}
+Oracle.
+{SQL Developer Documentation and Release 4.1}
+[Online].
+Available:\href{https://docs.oracle.com/cd/E55747_01/index.htm}{https://docs.oracle.com/cd/...}
+
+\bibitem{Toad For Oracle}
+TOAD.
+\textit{Toad For Oracle}.
+[Online].
+Available: \href{https://www.quest.com/documents/toad-for-oracle-datasheet-67887.pdf}{https://www.quest.com/documents/...}
+
+\bibitem{Optimizer Concepts} 
+Oracle Company.
+\textit{Query Optimizer Concepts}.
+[Online].
+Available: \href{https://docs.oracle.com/database/121/TGSQL/tgsql_optcncpt.htm#TGSQL192}{https://docs.oracle.com/...}
+ 
+\bibitem{Query Optimization In Relational Systems} 
+Surajit Chaudhuri.
+\textit{An Overview Of Query Optimization In Relational Systems}.
+[Online].
+Available: \href{http://web.stanford.edu/class/cs345d-01/rl/chaudhuri98.pdf}{http://web.stanford.edu/...}
+
+\bibitem{How Parallel Execution Works} 
+Oracle Company.
+\textit{How Parallel Execution Works}.
+[Online].
+Available: \href{https://docs.oracle.com/cd/E11882_01/server.112/e25523/parallel002.htm}{https://docs.oracle.com/...}
+
+\bibitem{Partitioning Concepts} 
+Oracle Company.
+\textit{Partitioning Concepts}.
+[Online].
+Available: \href{https://docs.oracle.com/cd/B28359_01/server.111/b32024/partition.htm}{https://docs.oracle.com/...}
+
+\bibitem{General Information - PostegreSQL} 
+Postgresql Volunteers.
+\textit{General Information}.
+[Online].
+Available: \href{https://www.postgresql.org/about/}{https://www.postgresql.org/about/}
+
+\bibitem{Documentation: 9.6: Parallel Query} 
+Postgresql Volunteers.
+\textit{Parallel Query}.
+[Online].
+Available: \href{https://www.postgresql.org/docs/current/static/parallel-query.html}{https://www.postgresql.org/docs/...}
+
+\bibitem{Documentation: 9.1: Partitioning} 
+Postgresql Volunteers.
+\textit{Documentation: 9.1: Partitioning}.
+[Online].
+Available: \href{https://www.postgresql.org/docs/9.1/static/ddl-partitioning.html}{https://www.postgresql.org/docs/...}
+
+\bibitem{General Information - Redshift} 
+Amazon.
+\textit{Tuning Query Performance}.
+[Online].
+Available: \href{https://aws.amazon.com/redshift/}{https://aws.amazon.com/redshift/}
+
+\bibitem{Tuning Query Performance} 
+Amazon.
+\textit{Tuning Query Performance}.
+[Online].
+Available: \href{http://docs.aws.amazon.com/redshift/latest/dg/c-optimizing-query-performance.html}{http://docs.aws.amazon.com/redshift/...}
+
+\bibitem{Choosing A Data Distribution Style} 
+Amazon.
+\textit{Choosing A Data Distribution Style}.
+[Online].
+Available: \href{http://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html}{http://docs.aws.amazon.com/redshift/...}
+
+\bibitem{Unsupported Postgresql Features} 
+Amazon.
+\textit{Unsupported Postgresql Features}.
+[Online].
+Available: \href{http://docs.aws.amazon.com/redshift/latest/dg/c_unsupported-postgresql-features.html}{http://docs.aws.amazon.com/redshift/...}
+
+\bibitem{Column-Oriented Makeover} 
+Alex Woodie.
+\textit{Oracle Gives 12c Database a Column-Oriented Makeover}.
+[Online].
+Available: \href{https://www.datanami.com/2013/09/23/oracle_gives_12c_database_a_column-oriented_makeover/}{https://www.datanami.com/...}
+
+% Sources for toolkits
+
+\bibitem{Manageability with Oracle Database 12c}
+Deba Chatterjee.
+\textit{Manageability with Oracle Database 12c}.
+[Online].
+Available: \href{http://www.oracle.com/technetwork/database/manageability/database-manageability-wp-12c-1964677.pdf}{http://www.oracle.com/technetwork/...}
+
+\bibitem{Mauro Pagano's Blog}
+Mauro Pagano.
+\textit{Mauro Pagano's Blog}.
+[Online].
+Available: \href{https://mauro-pagano.com/2015/02/16/sqld360-sql-diagnostics-collection-made-faster/}{https://mauro-pagano.com/2015/02/16/...}
+
+\bibitem{tech.E2SN}
+Tanel Poder.
+\textit{tech.E2SN}.
+[Online].
+Available: \href{http://tech.e2sn.com/oracle-scripts-and-tools/session-snapper}{http://tech.e2sn.com/oracle-scripts-and-tools/...}
+
+\end{thebibliography}
+
+\end{document}
