@@ -24,7 +24,7 @@
     
     \vspace{1in}
     \begin{abstract}
-		\noindent This document is focuses on a detailed brake down of "how" the individual components of our project will be implemented.
+		\noindent This document is focuses on a detailed break down of "how" the individual components of our project will be implemented.
         Each of the three essential pieces: SQL development environment; parallelization and partitioning; and reporting tools are covered with fine granularity.\\\\
         \textbf{Elaborate more here in the future...}
         
@@ -46,7 +46,7 @@ Finally, Nathaniel Whitlock spent time on the interaction and resources viewpoin
 %% JAMES SECTION (1-4)
 \section{Context Viewpoint}
 \subsection{Design Concern}
-This toolkit will be used in the context of database queries hat are not utilizing the host machine's resources.
+This toolkit will be used in the context of database queries that are not utilizing the host machine's resources.
 The optimizer analyzes the structure of a query and allocates resources for and executes the query.
 Some queries are structured such that the optimizer allocates resources in a way that much of the host machine's resources are not being utilized.
 The toolkit being designed would be a tool to help understand the performance of these queries that result in the under utilization of resources.
@@ -99,10 +99,9 @@ The scripts in the tool kit require access to the internal performance tables on
 %% NIC'S SECTION (5-8)
 \section{Information Viewpoint}
 \subsection{Design Concerns}
-The primary source of data for the toolkit will come from the internally managed performance metrics tables in Oracle Database 12c.
+The primary persistent data structure and source of data for the toolkit will be the internally managed performance metrics tables contained in Oracle Database 12c.
 Users will be able to request information about a particular query ran against the database through the use of this toolkit and these performance tables.
 The data returned from the toolkit regarding a particular query can include information such as time elapsed, processor usage, memory consumption, degrees of parallelism, and other related metrics.
-The primary persistent data structure for the toolkit is going to be the database itself.
 
 \subsection{Design Elements}
 The data items that are retrieved by the toolkit are stored in a permanent data store (Oracle 12c).
@@ -125,14 +124,16 @@ The data stored in these tables is intended to be used to offer insights into qu
 
 \section{Interface Viewpoint}
 \subsection{Design Concerns}
-The primary interface for this toolkit is going to be SQL Developer. The toolkit itself consists of SQL queries that are to be executed inside the SQL Developer environment.
+The primary interface for this toolkit is going to be SQL Developer. 
+The toolkit itself consists of SQL queries that are to be executed inside the SQL Developer environment.
 Users will select which toolkit query they want to run based on what type of information they need. Upon selecting a query, the user will then load it into SQL Developer which sends the query to the database.
 Results returned by the database will then be presented to the user in a human readable format.
 
 \subsection{Design Elements}
 The primary elements of SQL Developer include the SQL Worksheet window.
-This where queries are loaded and then sent off to the database for execution.
-Once the database has completed processing a particular query, the results from the database are then returned and presented to the user in a new results window contained with the SQL Worksheet window.
+This where queries will be loaded and then sent off to the database for execution.
+Once the database has completed processing a particular query, the results from the database are then returned and presented to the user. 
+These results are contained in a new window within the SQL Worksheet window.
 Users will be able to scroll through the results if there is a large amount of information.
 
 \subsection{Examples}
@@ -147,7 +148,7 @@ Users will be able to scroll through the results if there is a large amount of i
 \section{Structure Viewpoint}
 \subsection{Design Concerns}
 The two primary structures involved with the toolkit are SQL Developer and Oracle Database 12c.
-Oracle Database 12c is a data store and SQL Developer is an environment that is used to interface and interact with Oracle Database.
+Oracle Database 12c is a permanent data store and SQL Developer is an environment that is used to interface and interact with Oracle Database.
 SQL Developer must first initiate a connection to Oracle Database 12c in order to execute any queries.
 If the connection is successful, the user can then start loading and executing queries via SQL Developer's database connection.
 
@@ -222,7 +223,9 @@ Additionally, we will have a custom metric calculated from time elapsed from the
 %% END NATE
 
 \section{Conclusion}
-Temp...
+The toolkit that are creating consists of multiple interacting entities including the end users, Oracle Database 12c, and SQL Developer. 
+During the technology review phase we carefully reviewed our options for these entities and chose technologies that were best suited for this project. 
+This document embodies a solution to bring all of these technologies and entities together in order to assist database administrators with evaluating query performance. 
 
 
 \vspace{4.5 in}
