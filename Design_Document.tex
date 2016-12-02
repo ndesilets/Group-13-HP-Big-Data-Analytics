@@ -25,11 +25,7 @@
     \vspace{1in}
     \begin{abstract}
 		\noindent This document is focuses on a detailed brake down of "how" the individual components of our project will be implemented.
-<<<<<<< HEAD
-        Each of the three essential pieces: SQL development environment; parallelization and partitioni ng; and reporting tools are covered with fine granularity.\\\\
-=======
         Each of the three essential pieces: SQL development environment; parallelization and partitioning; and reporting tools are covered with fine granularity.\\\\
->>>>>>> 11d597829cf966de5521404e39dc1d71cad0bb74
         \textbf{Elaborate more here in the future...}
         
     \end{abstract}
@@ -38,7 +34,6 @@
 %\tableofcontents
 {\small\tableofcontents} % Reduce the size of TOC to make it 1 page
 \addtocontents{toc}{\protect\thispagestyle{empty}} % Removes page number from TOC
-<<<<<<< HEAD
 \pagebreak
 
 \section{Introduction}
@@ -246,82 +241,3 @@ Nathaniel Whitlock & Date\\[8ex]%
 
 
 \end{document}
-=======
-
-% Add content here
-\section{Introduction}
-This should include the full *HOW* of your system.
-This includes your API, your timeline, necessary testing information, etc.
-This is important for you as a guide. Remember, a week of debugging can save you 20 minutes of planning! Plan the work, work the plan.
-For research projects, this will look a little different. This will be more on the order of "experiment design", where you detail the junction points/milestones. You will also detail what will dictate your path from then on. You should provide an expected path through these points, any algorithms you will be using or designing, etc.
-
-% James' Section
-\section{SQL Development Environment}
-\textbf{Miles Stones for getting IDE set up.}
-\begin{itemize} 
-	\item Install local Oracle Instance
-    \begin{itemize}
-    	\item Download and install Virtual Box.
-        \item Download and mount Oracle 12c x64 iso.
-        \item Run Oracle 12c preinstaller.
-        \item Set up Oracle 12 server on Virtual Box.
-    \end{itemize}
-    \item Install SQL developer
-    \begin{itemize}
-    	\item Download and install SQL developer.
-        \item Connect to local server.
-        \item See next step for connecting to HP test server. 
-    \end{itemize}
-    \item Connect to HP blade server(on campus)
-    \begin{itemize}
-    	\item Must be on HP campus to connect to test server.
-        \item Once connected to HP server ready to run experiments. 
-    \end{itemize}
-\end{itemize}
-% Nate's Section
-\section{Parallelization and Partitioning}
-
-\textbf{List of Potential Ideas}
-\begin{itemize} 
-	\item  Method of modifying setting for both techniques
-    \begin{itemize} 
-		\item Degree of Parallelism (DOP) 
-        \item Number of independent processes available to PX coordinator
-        \item Cardinality and optimizer statistics
-    \end{itemize}
-    \item Method of visually evaluating the performance difference
-    \begin{itemize} 
-		\item Important to poster/expo
-        \item Discuss how the raw data will be made flexible for multiple visualization techniques
-        \item Discuss what visualizations will be used (or most reasonable for our purpose)
-        \item Possibly talk about how we will know when we have met the ideal treshold for system performance or data return
-    \end{itemize}
-    \item Partition Designs
-    \begin{itemize} 
-		\item Evaluate the ideal case for the use of each partition design in order to develop an intuition for selecting the ideal choice
-        \item Break down some of the reporting analytic queries in order to see how the data is being stored (ie. do they need the entire row, or just some values?)
-        \item Develop use case for each partition design in terms of the reporting queries that HP runs
-    \end{itemize}
-    \item Using toolkit to adjust settings, enable parallel queries with a "hint"
-    \begin{itemize}
-    	\item Talk about what a hint is
-        \item Figure out how it is possible to configure px settings through SQL statements
-    \end{itemize}
-\end{itemize}
-
-% Nic's Section
-\section{Reporting Tools}
-\textbf{List of Potential Ideas}
-\begin{itemize} 
-	\item Collection of Raw Data
-    \begin{itemize}
-    	\item List the main v\$ views that we will query for session statistics (ie. v\$active\_session\_history)
-        \item Identify how we can correctly calculate statistics of interest (DB time, I/O, etc...)
-        \item How we would focus development of homebrew toolkit to expand on what is available within the other options
-    \end{itemize}
-    \item Milestones
-\end{itemize}
-
-\section{Conclusion}
-\end{document}
->>>>>>> 11d597829cf966de5521404e39dc1d71cad0bb74
