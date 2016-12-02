@@ -26,18 +26,25 @@
     \begin{abstract}
 		\noindent This document is a review of three essential roles within our project SQL development environment, Parallel and Partitioning, and Performance Reporting.
         From each of those integral pieces, three or more technology options were evaluated and compared.
-        The desired SQL development environment was deemed to be Oracle's SQL Developer because it was best fit for the group.
+        The desired SQL development environment was deemed to be Oracle's SQL Developer because it is a free software that provides all the features we might need and more.
         Additionally, Oracle database software was chosen as the best framework for parallelism and partitioning.
         Finally, the decision was made to create a reporting tool from scratch in order to allow more customization for data output.
         The resulting decisions will act as the initial path forward until there is a need to consider one of the other options.
     \end{abstract}
 \end{titlingpage}
 
-\tableofcontents
+%\tableofcontents
+{\small\tableofcontents} % Reduce the size of TOC to make it 1 page
+\addtocontents{toc}{\protect\thispagestyle{empty}} % Removes page number from TOC
 
 % Add content here
 \section{Introduction}
-Our project to develop a SQL performance toolkit has been distilled into three different pieces: SQL development environment; Parallel and Partitioning; and Performance Reporting. The following sections review technologies for each of these pieces. The goal of this document is to compare available technologies that may be of use to our team during the developmental stages of the project.
+Our project to develop a SQL performance toolkit has been distilled into three different essential pieces: SQL development environment; parallelization and partitioning; and performance reporting.
+The following sections review technologies for each of these pieces.
+The goal of this document is to compare available technologies that may be of use to our team during the developmental stages of the project.
+
+The research efforts during this technology review is as follows: James Stallkamp focused on SQL development environments; Nathaniel Whitlock focused on parallelization and partitioning; and Nic Desilets focused on performance reporting Tools.
+Each section below outlines a comparative analysis of technologies which may be suitable for using within the essential pieces of our project.
 
 
 % The below sections are just an outline
@@ -220,7 +227,16 @@ There are multiple options for distribution styles which work to redistribute ro
 \end{itemize}
 
 \subsection{Conclusion}
-After careful analysis of each option, there are a couple of properties between the three technologies that seem appealing. First, the column-oriented storage mentioned in the Redshift documentation seemed promising given the analytic procedures of our client. However, in 2013 Oracle announced that they we going to support column-oriented storage \cite{Column-Oriented Makeover}. Since this feature was not isolated to Redshift alone, Redshift lost some of it's appeal over the Oracle database software the clients already have up and running. Second, was the ability to customize logical table partition designs. Both Oracle and PostgreSQL offered these features through different implementations. However, Redshift relies on the concept of data distribution styles of node slices. Though it is basically the same concept, Redshift has been developed for "ease-of-use" user experience and therefore does not offer as detailed customization as the other two database technologies. Out of the three considered database technologies, the winner is Oracle. The reasons behind this decision are based on  Oracles customization and reliability. Though it is a paid service, our client already has a license and hardware setup in order to utilize the service, so the level of granularity in terms of system configuration is more appealing for the Oracle technology than any of the alternatives reviewed. 
+After careful analysis of each option, there are a couple of properties between the three technologies that seem appealing.
+First, the column-oriented storage mentioned in the Redshift documentation seemed promising given the analytic procedures of our client.
+However, in 2013 Oracle announced that they we going to support column-oriented storage \cite{Column-Oriented Makeover}.
+Since this feature was not isolated to Redshift alone, Redshift lost some of it's appeal over the Oracle database software the clients already have up and running.
+Second, was the ability to customize logical table partition designs.
+Both Oracle and PostgreSQL offered these features through different implementations.
+However, Redshift relies on the concept of data distribution styles of node slices.
+Though it is basically the same concept, Redshift has been developed for "ease-of-use" user experience and therefore does not offer as detailed customization as the other two database technologies. Out of the three considered database technologies, the winner is Oracle.
+The reasons behind this decision are based on  Oracles customization and reliability.
+Though it is a paid service, our client already has a license and hardware setup in order to utilize the service, so the level of granularity in terms of system configuration is more appealing for the Oracle technology than any of the alternatives reviewed. 
 
 % End Section Two
 
@@ -295,7 +311,6 @@ Ultimately, creating our own toolkit will force us to dive into the database whi
 Oracle Database 12c seems to be the best fit for our application and so we will be using that for our project.
 The alternatives did not offer enough customization and were not appealing enough to warrant switching databases.
 Additionally, Oracle Database 12c is a tried and true enterprise grade database.
-
 % toolkits
 Given that our project is heavily research based, creating our own toolkit will benefit us the most in terms of knowledge gained and functionality of the toolkit. 
 Researching and understanding the internals of Oracle Database 12c while in turn creating our own toolkit tailored towards our exact needs derived from this research will play a key role in our success with this project.
@@ -303,12 +318,6 @@ Researching and understanding the internals of Oracle Database 12c while in turn
 % End Section Three
 
 \begin{thebibliography}{9}
-\bibitem{Toad For Oracle}
-TOAD.
-\textit{Toad For Oracle}.
-[Online].
-Available: \href{https://www.quest.com/documents/toad-for-oracle-datasheet-67887.pdf}{https://www.quest.com/documents...}
-
 \bibitem{SQL Plus Users Guide and Reference}
 Oracle.
 \textit{SQL Plus Users Guide and Reference}.
@@ -319,14 +328,13 @@ Available: \href{https://docs.oracle.com/cd/B19306_01/server.102/b14357/qstart.h
 Oracle.
 {SQL Developer Documentation and Release 4.1}
 [Online].
-Available:\url{https://docs.oracle.com/cd/E55747_01/index.htm}
+Available:\href{https://docs.oracle.com/cd/E55747_01/index.htm}{https://docs.oracle.com/cd/...}
 
-
-\bibitem{SQL Developer Documentation and Release 4.1}
-Oracle
-\textit{SQL Developer Documentation and Release 4.1}.
-[Online]
-Available: \href{https://docs.oracle.com/cd/E55747_01/index.htm}{https://docs.oracle.com/cd/...}
+\bibitem{Toad For Oracle}
+TOAD.
+\textit{Toad For Oracle}.
+[Online].
+Available: \href{https://www.quest.com/documents/toad-for-oracle-datasheet-67887.pdf}{https://www.quest.com/documents/...}
 
 \bibitem{Optimizer Concepts} 
 Oracle Company.
