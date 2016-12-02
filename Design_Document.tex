@@ -46,7 +46,7 @@ Finally, Nathaniel Whitlock spent time on the interaction and resources viewpoin
 %% JAMES SECTION (1-4)
 \section{Context Viewpoint}
 \subsection{Design Concern}
-This toolkit will be used in the context of database queries hat are not utilizing the host machine’s resources.
+This toolkit will be used in the context of database queries hat are not utilizing the host machine's resources.
 The optimizer analyzes the structure of a query and allocates resources for and executes the query.
 Some queries are structured such that the optimizer allocates resources in a way that much of the host machine's resources are not being utilized.
 The toolkit being designed would be a tool to help understand the performance of these queries that result in the under utilization of resources.
@@ -61,7 +61,7 @@ This toolkit will largely be standalone, it will interact with one other entity 
 The only other entity that this toolkit will interact with is the database that it is working with.
 The SQL scripts will interact with the database by querying internal performance tables for data.
 The user of this toolkit is a database user that is trying to improve or understand the performance of a query.
-Users will interact execute a script or batch of scripts and recieve an output.
+Users will interact execute a script or batch of scripts and receive an output.
 This output will be dependent on the user's input and scripts selected,  it will be various performance metrics and information a given query. This data can be viewed by the user in a file or through a web browser. 
 
 \section{Compsition Viewpoint}
@@ -76,20 +76,20 @@ Each script acts as a function in that each script will retrieve or output a spe
 \subsection{Design Elements}
 The individual scripts will be the elements of the system and will act like functions.
 Each script will provide a different function by producing or retrieving a different performance statistic.
-Most of the scripts or elements will be stand alane, a database user could run one or any number of the various scripts in sql developer and receive the combined output.
+Most of the scripts or elements will be stand alone, a database user could run one or any number of the various scripts in SQL developer and receive the combined output.
 The primary attribute of a script is its purpose, each script will have a different purpose, either to retrieve or output a specific performance metric.
 
 \subsection{Function Attribute}
-All of the scripts will be accessing various internal performance metric tables on the database. Each script would retrieve and analyze one of various performance metrics like memory usage, cpu usage, I/O, and many other performance metrics.
+All of the scripts will be accessing various internal performance metric tables on the database. Each script would retrieve and analyze one of various performance metrics like memory usage, CPU usage, I/O, and many other performance metrics.
 The scripts will be different in that each script will retrieve or output a different kind of statistic.
-Each script  within the toolkit will be providing a different a different data point on attributes like memory usage, cpu usage, etc.
+Each script  within the toolkit will be providing a different a different data point on attributes like memory usage, CPU usage, etc.
 
 \section{Dependency Viewpoint}
 \subsection{Design Concerns}
 This toolkit has two significant dependencies, it is however a very versatile tool because almost anyone with access to the database can use it.
 Any user of the database can use this tool to retrieve information on how their query ran.
-The toolkit is based on Oracle's linux SQL technology and as a result the toolkit will only work on a Oracle SQL technology based database.
-The toolkit requires Oracle sql because the toolkit uses SQL statements to access data stored on internal performance tables.
+The toolkit is based on Oracle's Linux SQL technology and as a result the toolkit will only work on a Oracle SQL technology based database.
+The toolkit requires Oracle SQL because the toolkit uses SQL statements to access data stored on internal performance tables.
 The SQL statements also refer to entries in internal tables that may be specific to Oracle version 12c, meaning it is strongly recommended to be using this toolkit on a database that has Oracle version 12c or newer. 
 \subsection{Design Elements}
 The scripts in the tool kit require access to the internal performance tables on the database. The user must have access to those database tables for the toolkit to access them. 
@@ -109,7 +109,6 @@ The data items that are retrieved by the toolkit are stored in a permanent data 
 Access of this data is provided through the use of SQL Developer in which the toolkit scripts are intended to be run with.
 SQL Developer initiates a connection to the database to retrieve the relevant performance information needed by the toolkit scripts. 
 
-
 More specifically, the information that is retrieved by the toolkit comes from different tables within the database.
 The records stored in these database tables are generated after the user runs a query.
 After completion of a query, the toolkit can then be used to query the database again for metrics information about the previous query ran by the user.
@@ -119,7 +118,6 @@ This information is then processed and returned to the user in a human readable 
 The metrics information that the database contains spans a broad range of different types of information used for profiling the performance of queries.
 The specific types of this information ranges from numbers, strings, to date representations.
 For example, timing information is represented as numbers, metrics descriptions are represented as strings, and start and end times would be date representations.
-
 
 All of this information is categorized and put into specific tables that relate to a certain domain of information relating to a query.
 Examples of this can include storing memory usage information into a table that describes how much memory was consumed over time when processing a particular query.
@@ -132,6 +130,7 @@ The data stored in these tables is intended to be used to offer insights into qu
 The primary interface for this toolkit is going to be SQL Developer. The toolkit itself consists of SQL queries that are to be executed inside the SQL Developer environment.
 Users will select which toolkit query they want to run based on what type of information they need. Upon selecting a query, the user will then load it into SQL Developer which sends the query to the database.
 Results returned by the database will then be presented to the user in a human readable format.
+
 \subsection{Design Elements}
 The primary elements of SQL Developer include the SQL Worksheet window.
 This where queries are loaded and then sent off to the database for execution.
@@ -145,11 +144,12 @@ Users will be able to scroll through the results if there is a large amount of i
 The two primary structures involved with the toolkit are SQL Developer and Oracle Database 12c.
 Oracle Database 12c is a data store and SQL Developer is an environment that is used to interface and interact with Oracle Database.
 SQL Developer must first initiate a connection to Oracle Database 12c in order to execute any queries.
-If the connection is successful, the user can then start loading and executing queries via SQL Developer’s database connection.
+If the connection is successful, the user can then start loading and executing queries via SQL Developer's database connection.
+
 \subsection{Design Elements}
 SQL Developer connects to Oracle Database 12c in order to retrieve information contained in its data store.
-The purpose of SQL Developer is to serve as a workspace for the user to input queries, have the queries executed, and view the output returned by the queries.
-The database on the other hand is a datastore that houses information relating to HP PageWide Press printers and also internal metrics relating to query performance.
+The purpose of SQL Developer is to serve as a work space for the user to input queries, have the queries executed, and view the output returned by the queries.
+The database on the other hand is a data store that houses information relating to HP PageWide Press printers and also internal metrics relating to query performance.
 The connection from SQL Developer to Oracle Database 12c serves as the means of bi-directional communication between the two structures.
 \subsection{Example Languages}
 
@@ -160,7 +160,7 @@ The connection from SQL Developer to Oracle Database 12c serves as the means of 
 
 \subsection{Design Concerns}
 The main design concern in terms of the interaction between system entities is an open line of communication with the Oracle database.
-If this connections is severed, then there is no way for the user’s personal computer to execute a query on the database.
+If this connections is severed, then there is no way for the user's personal computer to execute a query on the database.
 Therefore, the toolkit will not perform and the transaction will be impossible. 
 In terms of allocation of responsibilities in collaborations with the toolkits use at HP, the user's machine will only be responsible for composing the query and sending it through to the database running on the server.
 The calculations and each procedural step of the toolkit analysis will be processed remotely and the results and statistical report should return to the user.
