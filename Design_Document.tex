@@ -27,9 +27,9 @@
     \vspace{1in}
     \begin{abstract}
 		\noindent This document is focuses on a detailed break down of "how" the individual components of our project will be implemented.
-        Each of the three essential pieces: SQL development environment; parallelization and partitioning; and reporting tools are covered with fine granularity.\\\\
-        \textbf{Elaborate more here in the future...}
-        
+        Each of the three essential pieces: SQL development environment; parallelization and partitioning; and reporting tools are covered with fine granularity.
+        We chose to focus on the design viewpoints in terms of the IEEE Std 1016-2009 document for Software Design Descriptions.
+        This document outlines the path forward in terms of the viewpoints which were deemed suitable to our project.      
     \end{abstract}
 \end{titlingpage}
 
@@ -168,7 +168,7 @@ Users will be able to scroll through the results if there is a large amount of i
 
 \subsection{Examples}
 \begin{center}
-	\includegraphics[width=4in]{sql_worksheet_example.png}
+	\includegraphics[width=5in]{sql_worksheet_example.png}
 
 	Fig 1. An example SQL query in the SQL Worksheet window. Query results are shown in the Query Results window.
 \end{center}
@@ -212,7 +212,7 @@ This information can then be used to quantitatively compare queries run with dif
 
 % Figure here
 \begin{center}
-	\includegraphics[width=4in]{Sequence_Diagram.pdf}
+	\includegraphics[width=6in]{Sequence_Diagram.pdf}
 
 	Fig 2. Sequence of actions once query of interest and toolkit are executed by the user.
 \end{center}
@@ -246,7 +246,7 @@ Additionally, we will have a custom metric calculated from time elapsed from the
 
 % Figure here
 \begin{center}
-	\includegraphics[width=4in]{Class_Diagram.pdf}
+	\includegraphics[width=5in]{Class_Diagram.pdf}
 
 	Fig 3. Simple visualization of the resource entities and the database.
 \end{center}
@@ -258,8 +258,8 @@ During the technology review phase we carefully reviewed our options for these e
 This document embodies a solution to bring all of these technologies and entities together in order to assist database administrators with evaluating query performance. 
 
 
+\vspace{4in}
 
-\vspace{4.5 in}
 \noindent\begin{tabular}{ll}
 \makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
 Kirby Sand & Date\\[8ex]% adds space between the two sets of signatures
