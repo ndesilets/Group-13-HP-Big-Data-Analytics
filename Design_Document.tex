@@ -6,6 +6,8 @@
 
 \usepackage{titling}
 
+\usepackage{dblfloatfix}
+
 %\usepackage{hyperref}
 
 \usepackage[margin=0.75in]{geometry}
@@ -204,7 +206,7 @@ During the transaction from the user to the server there are multiple wait insta
 Methods used in the communication process are beyond the scope of our toolkit and will be handled by higher order systems.
 
 \subsection{Examples}
-The process of interaction between the entities involved in a transaction with our toolkit can be summarized as request from a user and a response from the target Oracle database which is composed of their desired results and a performance statistic report.
+The process of interaction between the entities involved in a transaction with our toolkit can be summarized as request from a user and a response from the target Oracle database, where the response is composed of their desired results and a performance statistic report.
 The report will have information about hardware optimization and run-time analysis.
 This information can then be used to quantitatively compare queries run with different system parameter settings, by comparing the run-time of multiple experiments a optimal design can be identified. 
 
@@ -223,7 +225,7 @@ There should be concern placed on the overhead processing time of the toolkit qu
 The only inherent performance concerns for our toolkit would be the syntax used to build the toolkit query, which could be evaluated with the SQL explain plan. This toolkit should be portable to all systems capable of hosting Oracle database software so it should be lightweight in terms of size. 
 
 \subsection{Design Elements}
-The design entities we are interested in are modeled after the system properties we are interested in measuring.
+The design entities we have considered are modeled after the system properties we are interested in measuring.
 Time elapsed is the main entity but we also have CPU cores, disk I/O, and parallel coordinator.
 The time elapsed entity will allow us to track the processing time for the query being evaluated, this will be useful when comparing the run-time of identical queries given different configuration.
 The CPU cores entity will provide information about how many individual cores were used out of the total available cores and how much work each was assigned.
@@ -241,8 +243,8 @@ By isolating each one of the above stated entities we will be able to generate a
 An example of this would be testing the effectiveness of a table partition design in respect to a query that performed calculations on specific values and took quite some time.
 By monitoring these entities, we will be able to see how many cores were made available to the coordinator, how much swap space was used, and how many parallel processes were estimated to be efficient.
 Additionally, we will have a custom metric calculated from time elapsed from the point of query execution.
-% Figure here
 
+% Figure here
 \begin{center}
 	\includegraphics[width=4in]{Class_Diagram.pdf}
 
@@ -251,13 +253,13 @@ Additionally, we will have a custom metric calculated from time elapsed from the
 %% END NATE
 
 \section{Conclusion}
-The toolkit that are creating consists of multiple interacting entities including the end users, Oracle Database 12c, and SQL Developer. 
+The toolkit that we are creating consists of multiple interacting entities including the end users, Oracle Database 12c, and SQL Developer. 
 During the technology review phase we carefully reviewed our options for these entities and chose technologies that were best suited for this project. 
 This document embodies a solution to bring all of these technologies and entities together in order to assist database administrators with evaluating query performance. 
 
 
-\vspace{4.5 in}
 
+\vspace{4.5 in}
 \noindent\begin{tabular}{ll}
 \makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
 Kirby Sand & Date\\[8ex]% adds space between the two sets of signatures
