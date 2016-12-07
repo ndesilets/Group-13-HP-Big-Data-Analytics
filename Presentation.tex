@@ -1,0 +1,402 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+
+\usetheme{Antibes}
+\usecolortheme[named=Maroon]{structure}
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\huge HP Capstone \\
+        Big Data Analytics \\
+        \small Prepared by: \\
+        Nic Desilets, \\
+        James Stallkamp, \\
+        Nathaniel Whitlock
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\textbf{Introduction} \\
+    The following slides will be an overview of the individual experiences of each of the members of our senior design group.
+    They be organized by individual in the order of; Nic Desilets, James Stallkamp, and Nathaniel Whitlock.
+\end{frame}
+
+%% Nic's Section
+\begin{frame}
+	\begin{center}
+		\huge Nic's Experience
+    \end{center}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Weeks 0-2}
+    \begin{itemize}
+  		\item Introduction to the class and what it entails.
+        \item Introduced to some of this year's capstone projects and their sponsors.
+        \item Read over the complete list of available projects.
+        \item Was primarily interested in web related projects.
+        
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+    \item \textbf{Week 3}
+    \begin{itemize}
+  	    \item Got on board with HP Big Data Analytics.
+        \item Initial meeting went over project details and expectations.
+        \item Discussed a little bit about Oracle Database 12c.
+        \item Core problem: 72-core, 3TB server not being fully utilized.
+        \item Established a regular weekly meeting time.
+        \item Began problem statement document.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+    \item \textbf{Week 4}
+    \begin{itemize}
+  	    \item Established weekly meeting time with TA.
+  	    \item Tried to get Oracle Database 12c installed prior to the next HP meeting.
+  	    \item Although the install was successful, the database itself was not correctly configured.
+  	    \item Spent a fair amount of time installing and setting up Oracle 12c with help from our clients.
+  	    \item Began discussing the dynamic performance views in the database.
+  	    \item Goal for next meeting was to begin designing the toolkit.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+    \item \textbf{Week 5}
+    \begin{itemize}
+  	    \item Spent some time this week revising our problem statement document.
+  	    \item Removed some technical jargon from it.
+  	    \item Had a better idea of what our target audience would be.
+  	    \item Started working on the requirements document.
+  	    \item Reinstalled Oracle 12c and got it configured properly.
+  	    \item Got set up with HP's test server and database.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 6}
+    \begin{itemize}
+    	\item Struggled a bit with the requirements document.
+    	\item The requirements for the document did not quite fit our project.
+    	\item Was pretty busy during this week due to midterms.
+    	\item Setup a Slack channel for our group to help improve communications.
+   		\item Email is fine but not quite suited for instant messaging.
+   		\item Started reading Explain the Explain Plan document.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 7}
+   	\begin{itemize}
+    	\item Read over the Explain the Explain Plan document.
+    	\item Got a little more insight into the internals of the database.
+    	\item We were given a script to generate a set of data that is similar to the real data set.
+    	\item Talked a little bit more about the dynamic performance views.
+    	\item Discussed different IDEs, toolkits, and partitioning types.
+    	\item Goal before next meeting was to continue familiarizing ourselves with Oracle 12c (V\$, X\$).
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 8}
+    \begin{itemize}
+    	\item A lot of time was spent on the tech. review early on in the week.
+    	\item Ensure that assignment requirements were appropriately met, finalizing.
+    	\item This week's meeting with our client was one of the most productive.
+    	\item Wasn't tied down with worrying about another paper.
+    	\item Was able to start formulating queries to query different V\$ tables.
+    	\item Constructed sequence of queries to obtain database times for each parallel executor.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 9}
+    \begin{itemize}
+    	\item Struggled with getting a start on the design document.
+    	\item While other papers were difficult, this one seemed the most difficult.
+    	\item Seemed way overkill for our toolkit that we're designing.
+    	\item We continued to make more progress on obtaining metrics information during our weekly meeting.
+    	\item Main goal at this point was to continue working on the design document.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 10}
+    \begin{itemize}
+    	\item This week was primarily working on and completing the design document.
+    	\item Definitely one of the more difficult papers, but we got it done.
+    	\item Got introduced to tracing during our weekly meeting.
+    	\item Verbose logging of what exactly the database is doing.
+    	\item Helps determine how the optimizer is coming up with its execution plans.
+    	\item Can be used in conjunction with dynamic performance views.
+    	\item Main goal was to compile our blog reports into our progress report document and presentation.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%% James' Section
+\begin{frame}
+	\begin{center}
+		\huge James' Experience
+    \end{center}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Weeks 0-3}
+	\item During the first three weeks we were introduced to   the structure of our capstone project.
+    \item We heard project proposals from clients and voted on the ones we preferred to work with. 
+    \item I was assigned to work with HP's big data project.
+    \item In week three we had the initial meeting with our client, which went well.
+    \item We spent the meeting getting a basic understanding of the project. Which is that HP has a very powerful server that seems to be under utilizing its resources.
+    \item Personally I have concerns because I have very little experience with databases but this presents a good opportunity to learn.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 4}
+    \begin{itemize}    	
+        \item This week the rest of my group began to setup the software packages on their personal laptops
+        \item I don't own a laptop so I took notes and repeated the process on my desktop.
+         \item I discussed with our mentors how important it would be to have a laptop, and I will try to find one to use or borrow.
+        
+        \item Began revision on Problem Statement based on feedback
+        \item Discussed method of retrieving metrics from dynamic performance views
+        \item Missed TA meeting. I completely forgot about and missed the TA meeting. Moving forward I will be better about  attending meetings. 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 5}
+    \begin{itemize}
+    	\item I confirmed I have a laptop to borrow, and I will be driving to Portland this weekend to pick it up from my parents.
+        \item I have successfully set up SQL developer on my personal desktop and will do so on the laptop next week.
+    \end{itemize}
+   	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 6}
+    \begin{itemize}
+    	\item Spent most of the time working on the requirements document.
+        \item As a group we had issues coordinating for this document and largely worked on it in individual segments.
+        \item I have the weakest skills with Latch and Nathaniel and Nic are doing most of the formatting. This is something I will need to work on.
+        \item For next weeks meeting we all will be reading Explain the Explain plan which will explain how Oracle databases execute and optimize queries. 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 7}
+   	\begin{itemize}
+    	\item For the meeting this week we all read Explain the Explain plan, then discussed it.
+        \item The document does into detail on how a sql query is executed as well as optimized.
+        \item We learned about the various internal tables on Oracle SQL databases, and which contain useful performance data. 
+        \item I am still having issues with my personal machine the VM that I set up keeps crashing or corrupting the image when I try to resume a session.
+        \item Still having issues with my virtual box image not loading when I try to resume, will plan on talking to Andy next meeting to fix this. 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 8}
+    \begin{itemize}
+    	
+        \item Spent time this week working on my section of the tech review. 
+        \item My section to research is which IDE which we will be using. 
+        \item Our mentors have introduced us to SQL developer which is what we will probably use but I will research SQL plus as well as TOAD as alternatives
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 9}
+    \begin{itemize}
+    	\item Spent most of our time this week working on the Design document.
+        \item This document proved to be very difficult to write because our project is researched based.
+        \item Missed Weekly HP meeting because I was sick.
+        \item After having continued trouble with my virtual machine I have decided that when I am at HP I will use the test server they have provided and at home I will use the server on my Desktop.
+        \item For some reason I can not seem to maintain the integrity of the image in the virtual machine on my laptop work
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 10}
+    \begin{itemize}
+    	\item The weekly meeting was focused on understanding how tracing works. 
+        \item We started the time line for our progress report but did not accomplish much.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\huge Nathaniel's Experience
+    \end{center}
+\end{frame}
+
+%% Nate's Section
+\begin{frame}
+\begin{itemize}
+\item \textbf{Weeks 0-3}
+	\begin{itemize}
+    	\item Prior to Group Assignment
+    	\begin{itemize}
+          \item Learning about structure of our course
+          \item Read about available projects
+          \item Spoke with client about getting involved in their project
+          \item Voted on projects of interest and assigned to group
+          \end{itemize}
+         \item Post Group Assignment
+     	 \begin{itemize}
+          	\item Initial meeting with client
+            \item Learned about the scope of our problem
+            \item Learned about some Oracle specific database concepts
+            \item Scheduled remained of meeting times for the term
+            \item Began working on Problem Statement document
+          \end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 4}
+    \begin{itemize}
+    	\item Getting software installed on person computers
+        \begin{enumerate}
+        	\item Issues with package dependencies
+            \item Network limitations due to HP firewall
+            \item Configuration issues with Oracle environment and listener
+        \end{enumerate}
+        \item Began revision on Problem Statement based on feedback
+        \item Discussed method of retrieving metrics from dynamic performance views
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 5}
+    \begin{itemize}
+    	\item Swapped from personal computer use to work laptop
+        \item Finished installing required software on work laptop
+        \item Dealt with network issues from within virtual machine
+        \item Began working on the Requirements Document
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 6}
+    \begin{itemize}
+    	\item Majority of time spent on finishing the Requirements Document
+        \item Hard to find time to work in concert on the Requirement Document
+        \item Began executing queries against dynamic performance views on personal computer
+        \item Ran into major issues forcing formatting on \LaTeX \ class file
+        \begin{itemize}
+        	\item T.A. helped point me in the right direction
+            \item \textbf{Lesson learned:} Don't try to force formatting changes on a class file
+        \end{itemize}
+     	\item Began reading Oracle white paper
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 7}
+   	\begin{itemize}
+		\item Discussed the Explain Plan white paper
+        \item \textbf{Issues encountered:}
+        \begin{itemize}
+        	\item Forgot password to personal 12c environment
+        \end{itemize}
+        \item Provided PL/SQL script to generate data
+        \item Emphasis on learning more about dynamic performance views
+        \item Began the partition of work for the Technology Review, my areas of focus included:
+        \begin{itemize}
+        	\item Partitioning
+            \item Parallelism
+        \end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 8}
+    \begin{itemize}
+    	\item The majority of efforts were spent on finalizing Technology Review
+        \item Unsure about initial feedback from document
+        \item Began initial efforts on outlining the Design Document
+        \item No real progress on toolkit development
+        \item Meeting with clients becoming increasing focused on development
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 9}
+    \begin{itemize}
+    	\item Further pushing into pre-toolkit development process
+        \item Majority of efforts placed on finishing portion of design document
+        \item News from client about Oracle convention
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+	\item \textbf{Week 10}
+    \begin{itemize}
+    	\item Began focusing on the topic of tracing
+        \item Experimented with Oracle native tools for trace file analysis
+        \item Began focusing on creating a time line of progress over the term
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{Conclusion} \\
+   	\begin{itemize}
+    	\item Majority of the term was spent on writing documentation
+        \item We have hope that this will guide us in development
+        \item Issues with software installation
+        \item Benefit of our experienced mentors
+        \item Plan moving forward
+        
+    \end{itemize}
+\end{frame}
+
+\end{document}
