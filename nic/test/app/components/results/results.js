@@ -11,6 +11,7 @@
                 // Init vars
                 scope.results = '';
                 scope.loading = true;
+                scope.error = false;
 
                 queryService.runQuery().then(function(results){
                     scope.results = results;
@@ -18,8 +19,7 @@
                 }, function(e){
                     console.error(e);
                     scope.loading = false;
-                }, function(_){
-                    scope.loading = false;
+                    scope.error = true;
                 });
 
                 /* --- User actions --- */

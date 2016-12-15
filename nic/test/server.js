@@ -34,8 +34,9 @@ app.post('/api/query', (req, res) => {
         res.sendStatus(400);
     }else{
         let query = body.query;
-        
-        oradb.execQuery(query).then((result) => {
+        let options = body.options;
+
+        oradb.execQuery(query, options).then((result) => {
             res.send(result);
         }).catch((e) => {
             console.error(e);

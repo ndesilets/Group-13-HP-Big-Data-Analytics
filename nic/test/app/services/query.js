@@ -23,7 +23,6 @@
                     console.log(body);
 
                     $http.post('/api/query', body).then(function(res){
-                        console.log(res);
                         resolve(res.data);
                     }, function(e){
                         reject(e);

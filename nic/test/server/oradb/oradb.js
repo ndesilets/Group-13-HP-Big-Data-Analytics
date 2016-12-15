@@ -2,6 +2,10 @@
 
 const oracle = require('oracledb');
 const config = require('./oradbconfig.js');
+const async = require('async');
+const crypto = require('crypto');
+
+const PEI = require('./scripts/pei');
 
 let db;
 
@@ -23,7 +27,7 @@ oracle.getConnection(
     }
 );
 
-function releaseConnection(connection){
+function releaseConnection(){
     db.close((err) => {
         if(err){
             console.error(err.message);
@@ -34,23 +38,66 @@ function releaseConnection(connection){
 // SELECT SUM(MEASUREMENT) FROM CAPSTONE_PARALLEL_TEST_V1;
 
 module.exports = {
-    execQuery: (query) => {
+    execQuery: (query, options) => {
         console.log(query);
+
+        let fn = [];
 
         // Strip trailing ; because raisins
         if(query[query.length - 1] == ";"){
             query = query.slice(0, -1);
         }
 
-        return new Promise((resolve, reject) => {
+        // Add unique identifier to query 
+        const hash = crypto.createHash('md5');
+        hash.update(query);
+        let id = hash.digest('hex');
+        query += ` /*+ MONITOR ${id} */`; 
+
+        // Eval query options
+        for(let key in options){
+            let val = options[key];
+
+            switch(key){
+                case 'pei':
+                    if(val){
+                        fn.push((next) => {
+                            let query = PEI.init(id);
+                            db.execute(query, (err, result) => {
+                                if(err){
+                                    console.error(err);
+                                    next(err, null);
+                                }else{
+                                    next(null, {'id': 'pei', data: result});
+                                }
+                            });
+                        })
+                    }
+                    break;
+                default:
+                    console.log('Invalid option');
+            }
+        }
+
+        fn.unshift((next) => {
             db.execute(query, (err, result) => {
+                if(err){
+                    console.error(err);
+                    next(err, null);
+                }else{
+                    next(null, {'id': 'q', data: result});
+                }
+            });
+        })
+
+        return new Promise((resolve, reject) => {
+            async.series(fn, (err, results) => {
                 if(err){
                     reject(err);
                 }else{
-                    console.log(result);
-                    resolve(result);
+                    resolve(results);
                 }
-            });
+            })
         });
     }
 };
