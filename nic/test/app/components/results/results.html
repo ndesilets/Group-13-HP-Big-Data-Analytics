@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form>
+                <fieldset>
+                    <legend>Results</legend>
+                    <p ng-show="loading == true">Loading results...</p>
+                    <p>{{results}}</p>
+                <fieldset>
+            </form>
+        </div>
+    </div>
+
+    <pre>{{results | json}}</pre>
+</div>
