@@ -1,7 +1,5 @@
-module.exports = {
-    init: (id) => {
-        let sql =  
-`
+module.exports = (id) => {
+    return `
 -- Kirby Sand
 WITH FINDING_SID AS
 
@@ -49,7 +47,5 @@ FROM TESTING_PIVOT A
 ORDER BY
     QCSID,
     ELAPSED_TIME_SEC DESC
-`;
-        return sql;
-    }
+    `;
 };

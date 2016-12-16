@@ -10,6 +10,7 @@ const PEI = require('./scripts/pei');
 let db;
 
 // --- Init 
+
 oracle.getConnection(
     {
         user: config.username,
@@ -43,7 +44,7 @@ module.exports = {
 
         let fn = [];
 
-        // Strip trailing ; because raisins
+        // TEMP Strip trailing ; because oracledb raisins
         if(query[query.length - 1] == ";"){
             query = query.slice(0, -1);
         }
@@ -54,15 +55,28 @@ module.exports = {
         let id = hash.digest('hex');
         query += ` /*+ MONITOR ${id} */`; 
 
+        // Add user query function to async function stack
+        fn.push((next) => {
+            db.execute(query, (err, result) => {
+                if(err){
+                    console.error(err);
+                    next(err, null);
+                }else{
+                    next(null, {'id': 'q', data: result});
+                }
+            });
+        })
+
         // Eval query options
         for(let key in options){
-            let val = options[key];
+            let enabled = options[key];
 
+            // Add option functions to async function stack
             switch(key){
                 case 'pei':
-                    if(val){
+                    if(enabled){
                         fn.push((next) => {
-                            let query = PEI.init(id);
+                            let query = PEI(id);
                             db.execute(query, (err, result) => {
                                 if(err){
                                     console.error(err);
@@ -78,17 +92,6 @@ module.exports = {
                     console.log('Invalid option');
             }
         }
-
-        fn.unshift((next) => {
-            db.execute(query, (err, result) => {
-                if(err){
-                    console.error(err);
-                    next(err, null);
-                }else{
-                    next(null, {'id': 'q', data: result});
-                }
-            });
-        })
 
         return new Promise((resolve, reject) => {
             async.series(fn, (err, results) => {

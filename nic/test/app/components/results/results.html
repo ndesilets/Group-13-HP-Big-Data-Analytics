@@ -6,8 +6,27 @@
                     <legend>Results</legend>
                     <p ng-show="loading == true">Loading results...</p>
                     <p ng-show="error == true">Bad query.</p>
-                    <p>{{results}}</p>
-                <fieldset>
+                    <div ng-show="loading == false && error == false">
+                        <table class="table table-striped table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th ng-repeat="colname in header">
+                                        {{::colname}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in rows">
+                                    <td>{{::$index}}</td>
+                                    <td ng-repeat="val in row">
+                                        {{::val}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <fieldset>
             </form>
         </div>
     </div>

@@ -2,8 +2,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const io = require('socket.io');
-const fs = require('fs');
 const morgan = require('morgan');
 
 const oradb = require('./server/oradb/oradb.js');
