@@ -2,6 +2,16 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <form>
+                <fieldset ng-show="loading == false && error == false">
+                    <legend>Amazing Chart</legend>
+                    <div>
+                        <canvas id="myChart" width="400" height="200"></canvas>
+                        Wow.
+                    </div>
+                </fieldset>
+
+                <br>
+
                 <fieldset ng-show="options.pei">
                     <legend>PEI Results</legend>
                     <div ng-show="loading == false && error == false">
@@ -25,6 +35,9 @@
                         </table>
                     </div>
                 </fieldset>
+
+                <br>
+                
                 <fieldset>
                     <legend>Query Results</legend>
                     <p ng-show="loading == true">Loading results...</p>
