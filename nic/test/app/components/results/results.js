@@ -12,65 +12,65 @@
                 scope.results = '';
                 scope.loading = true;
                 scope.error = false;
+                scope.tables = {};
+                scope.options = {};
 
                 queryService.runQuery().then(function(results){
-                    scope.results = results;
                     console.log(results);
-                    var parsed = parseTable(results);
-                    scope.header = parsed.headers;
-                    scope.rows = parsed.rows;
+                    scope.results = results;
 
+                    scope.tables = parseTables(results);
                     scope.loading = false;
                 }, function(e){
                     console.error(e);
-                    scope.loading = false;
                     scope.error = true;
+                    scope.loading = false;
                 });
 
                 /* --- Util --- */
 
-                // Format results to be more table friendly
-                function parseTable(results){
-                    var out = {
-                        headers: [],
-                        rows: []
-                    };
+                // Format table results as an object rather than an array
+                // [{id: 'q', data: {...}}] -> {q: {headers: [], rows: []}}
+                function parseTables(results){
+                    var parsed = {};
 
+                    // For each table received
                     for(var i in results){
                         var table = results[i];
                         var tableName = table.id;
                         var tableData = table.data;
 
-                        if(tableName == 'q'){
-                            // Setup header
-                            var headers = []; 
-                            var metadata = tableData.metaData;
-                            for(var key in metadata){
-                                var colname = metadata[key].name;
-                                headers.push(colname);
-                            }
+                        // Setup table header
+                        var headers = []; 
+                        var metadata = tableData.metaData;
+                        for(var key in metadata){
+                            var colname = metadata[key].name;
+                            headers.push(colname);
+                        }
 
-                            // Setup rows 
-                            var rows = [];
-                            for(var i in tableData.rows){
-                                var row = tableData.rows[i];
-                                var newRow = [];
+                        // Setup table rows 
+                        var rows = [];
+                        for(var i in tableData.rows){
+                            var row = tableData.rows[i];
+                            rows.push(row);
+                        }
 
-                                for(var j in row){
-                                    newRow.push(row[j]);
-                                }
+                        parsed[tableName] = {
+                            headers: headers,
+                            rows: rows
+                        };
 
-                                rows.push(newRow);
-                            }
-
-                            out.headers = headers;
-                            out.rows = rows;
-
-                            console.log(out);
+                        switch(tableName){
+                            case 'pei':
+                                scope.options.pei = true;
+                                break;
+                            default:
+                                break;
                         }
                     }
 
-                    return out;
+                    console.log(parsed);
+                    return parsed;
                 }
             }
         };

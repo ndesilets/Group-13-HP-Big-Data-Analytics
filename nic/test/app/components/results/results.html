@@ -2,23 +2,21 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <form>
-                <fieldset>
-                    <legend>Results</legend>
-                    <p ng-show="loading == true">Loading results...</p>
-                    <p ng-show="error == true">Bad query.</p>
+                <fieldset ng-show="options.pei">
+                    <legend>PEI Results</legend>
                     <div ng-show="loading == false && error == false">
                         <table class="table table-striped table-hover ">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th ng-repeat="colname in header">
+                                    <th ng-repeat="colname in tables.pei.headers">
                                         {{::colname}}
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in rows">
-                                    <td>{{::$index}}</td>
+                                <tr ng-repeat="row in tables.pei.rows">
+                                    <td>{{::$index + 1}}</td>
                                     <td ng-repeat="val in row">
                                         {{::val}}
                                     </td>
@@ -26,7 +24,32 @@
                             </tbody>
                         </table>
                     </div>
-                    <fieldset>
+                </fieldset>
+                <fieldset>
+                    <legend>Query Results</legend>
+                    <p ng-show="loading == true">Loading results...</p>
+                    <p ng-show="error == true">Bad query.</p>
+                    <div ng-show="loading == false && error == false">
+                        <table class="table table-striped table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th ng-repeat="colname in tables.q.headers">
+                                        {{::colname}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in tables.q.rows">
+                                    <td>{{::$index + 1}}</td>
+                                    <td ng-repeat="val in row">
+                                        {{::val}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
             </form>
         </div>
     </div>
