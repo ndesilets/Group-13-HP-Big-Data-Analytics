@@ -36,11 +36,26 @@ function releaseConnection(){
     });
 }
 
+// Used to modularize code below
+function executeQuery(query, fn){
+    fn.push((next) => {
+        db.execute(query, (err, result) => {
+            if(err){
+                console.error(err);
+                next(err, null);
+            }else{
+                next(null, {'id': 'q', data: result});
+            }
+        });
+    })
+}
+
 // SELECT SUM(MEASUREMENT) FROM CAPSTONE_PARALLEL_TEST_V1;
 
 module.exports = {
     execQuery: (query, options, trace) => {
         console.log(query);
+
 
         let fn = [];
 
@@ -55,42 +70,31 @@ module.exports = {
         let id = hash.digest('hex');
         query += ` /*+ MONITOR ${id} */`; 
 
-        // Check for trace args and wrap query
+        // Check for trace args, interate through 
+        // trace head clauses, then execute query
+        // and tail trace clause
         if(trace){
             
             for(let i = 0; i<trace.length; i++){
                 console.log("== trace[" + i + "]: " + trace[i]);
-                //console.log("== typeof trace[i]: " + typeof String(i));
             }
         
-            // Add trace and query to async function stack
-            for(let i = 0; i<trace.length; i++){
-            fn.push((next) => {
-                    console.log('== trying trace[' + i + ']: ' + trace[i]);
-                    db.execute(trace[i], (err, result) => {
-                        if(err){
-                            console.error(err);
-                            next(err, null);
-                        }else{
-                            next(null, {'id': 'q', data: result});
-                        }
-                    });
-                
-                })
+            // Execute trace header clauses
+            for(let i = 0; i<=4; i++){
+                console.log(trace[i]);
+                executeQuery(trace[i],fn);
             }
 
+            // Execute updated query
+            console.log(query);
+            executeQuery(query,fn);
+
+            // Execute trace tail clause
+            console.log(trace[5]);
+            executeQuery(trace[5],fn);
         }else{ 
              // Add user query function to async function stack
-            fn.push((next) => {
-                db.execute(query, (err, result) => {
-                    if(err){
-                        console.error(err);
-                        next(err, null);
-                    }else{
-                        next(null, {'id': 'q', data: result});
-                    }
-                });
-            })
+            executeQuery(query,fn);
         }
 
   
