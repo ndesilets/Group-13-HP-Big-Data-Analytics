@@ -39,7 +39,7 @@ function releaseConnection(){
 // SELECT SUM(MEASUREMENT) FROM CAPSTONE_PARALLEL_TEST_V1;
 
 module.exports = {
-    execQuery: (query, options) => {
+    execQuery: (query, options, trace) => {
         console.log(query);
 
         let fn = [];
@@ -55,18 +55,45 @@ module.exports = {
         let id = hash.digest('hex');
         query += ` /*+ MONITOR ${id} */`; 
 
-        // Add user query function to async function stack
-        fn.push((next) => {
-            db.execute(query, (err, result) => {
-                if(err){
-                    console.error(err);
-                    next(err, null);
-                }else{
-                    next(null, {'id': 'q', data: result});
-                }
-            });
-        })
+        // Check for trace args and wrap query
+        if(trace){
+            
+            for(let i = 0; i<trace.length; i++){
+                console.log("== trace[" + i + "]: " + trace[i]);
+                //console.log("== typeof trace[i]: " + typeof String(i));
+            }
+        
+            // Add trace and query to async function stack
+            for(let i = 0; i<trace.length; i++){
+            fn.push((next) => {
+                    console.log('== trying trace[' + i + ']: ' + trace[i]);
+                    db.execute(trace[i], (err, result) => {
+                        if(err){
+                            console.error(err);
+                            next(err, null);
+                        }else{
+                            next(null, {'id': 'q', data: result});
+                        }
+                    });
+                
+                })
+            }
 
+        }else{ 
+             // Add user query function to async function stack
+            fn.push((next) => {
+                db.execute(query, (err, result) => {
+                    if(err){
+                        console.error(err);
+                        next(err, null);
+                    }else{
+                        next(null, {'id': 'q', data: result});
+                    }
+                });
+            })
+        }
+
+  
         // Eval query options
         for(let key in options){
             let enabled = options[key];
