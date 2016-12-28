@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/api/query', (req, res) => {
     let body = req.body;
 
+    res.connection.setTimeout(0);
+
     // console.log('\n== body\n',body);
     // console.log('\n== body.trace',body.trace);
 
@@ -49,12 +51,12 @@ app.post('/api/query', (req, res) => {
             trace.push("alter session set timed_statistics = true");
             trace.push("alter session set statistics_level=all");
             trace.push("alter session set max_dump_file_size = unlimited");
-            trace.push('alter session set events "' + body.trace + ' trace name context forever, level 12"');
+            trace.push("alter session set events '" + body.trace + " trace name context forever, level 12'");
 
             // Issue with ;
             trace.push(query);
 
-            trace.push('alter session set events "' + body.trace + ' trace name context off"');
+            trace.push("alter session set events '" + body.trace + " trace name context off'");
 
             oradb.execQuery(query, options, trace).then((result) => {
                  res.send(result);

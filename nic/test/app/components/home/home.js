@@ -9,7 +9,7 @@
                 /* --- On page load --- */
 
                 // Init vars 
-                scope.query = 'SELECT * FROM CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 ORDER BY PRESS_LOCAL_TIME DESC;';
+                scope.query = 'SELECT * FROM CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1;';
                 scope.trace = '';
                 scope.options = {};
 
