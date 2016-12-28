@@ -1,3 +1,4 @@
+#!/bin/sh
 # This script is designed to create a partition of ram to be
 # used as the temp tablespace
 
