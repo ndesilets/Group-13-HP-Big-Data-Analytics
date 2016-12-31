@@ -9,15 +9,16 @@
                 /* --- On page load --- */
 
                 // Init vars 
-                scope.query = 'SELECT * FROM CAPSTONE_PARALLEL_TEST_V1 ORDER BY PRESS_LOCAL_TIME DESC;';
+                scope.query = 'SELECT * FROM CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 ORDER BY PRESS_LOCAL_TIME DESC;';
                 scope.trace = '';
                 scope.options = {};
 
                 /* --- User actions --- */
 
                 scope.submit = function(){
+             
                     queryService.setQuery(scope.query, scope.trace, scope.options);
-                    $state.go('Results');
+                    $state.go('Results');    
                 }
             }
         };

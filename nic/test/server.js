@@ -26,20 +26,43 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/api/query', (req, res) => {
     let body = req.body;
 
-    console.log(body);
+    // Prevent response timeout for
+    // long running queries
+    res.connection.setTimeout(0);
 
     if(!body){
         res.sendStatus(400);
     }else{
+
         let query = body.query;
         let options = body.options;
+        
+        if(body.trace !== ''){
+            let trace = [];
 
-        oradb.execQuery(query, options).then((result) => {
-            res.send(result);
-        }).catch((e) => {
-            console.error(e);
-            res.sendStatus(500);
-        })
+            // Consider changing logic to expose the hash id from oradb.js as test identifier
+            trace.push('alter session set tracefile_identifier="APP-' + body.trace + '"');
+            trace.push("alter session set timed_statistics = true");
+            trace.push("alter session set statistics_level=all");
+            trace.push("alter session set max_dump_file_size = unlimited");
+            trace.push("alter session set events '" + body.trace + " trace name context forever, level 12'");
+            trace.push("alter session set events '" + body.trace + " trace name context off'");
+
+            oradb.execQuery(query, options, trace).then((result) => {
+                 res.send(result);
+             }).catch((e) => {
+                 console.error(e);
+                 res.sendStatus(500);
+             })
+        }else{   
+
+             oradb.execQuery(query, options).then((result) => {
+                res.send(result);
+            }).catch((e) => {
+                console.error(e);
+                res.sendStatus(500);
+            })
+        }
     }
 });
 
