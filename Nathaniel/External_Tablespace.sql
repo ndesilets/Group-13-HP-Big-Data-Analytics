@@ -4,7 +4,7 @@
 
 --Create directory from SQL
 DROP DIRECTORY trace_dir;
-CREATE DIRECTORY trace_dir AS '/app/oracle/diag/rdbms/capstone/capstone/trace';
+CREATE DIRECTORY trace_dir AS '/u01/app/oracle/diag/rdbms/capstone/capstone/trace';
 
 --Grant read and write privileges on new directory
 --Cannot grant to yourself
@@ -12,7 +12,7 @@ GRANT READ, WRITE ON DIRECTORY trace_dir TO whitlocn;
 
 --Create executable directory for preprocessor scripts
 DROP DIRECTORY bin_dir;
-CREATE DIRECTORY bin_dir AS '/app/oracle/bin_dir';
+CREATE DIRECTORY bin_dir AS '/u01/app/oracle/bin_dir';
 
 --Grant executable privileges
 GRANT EXECUTE ON DIRECTORY bin_dir TO whitlocn;
@@ -35,21 +35,21 @@ ORGANIZATION EXTERNAL
   (
     RECORDS DELIMITED BY NEWLINE
     NOLOGFILE
-    PREPROCESSOR bin_dir: 'tkprof.sh'
+    PREPROCESSOR bin_dir: 'runTrcSum.sh'
     FIELDS TERMINATED BY WHITESPACE
     (
       line RECNUM,
       text POSITION(1:4000)
     )
   )
-  LOCATION('capstone_ora_54126_TEST-10046.trc')
+  LOCATION('%')
 )
 REJECT LIMIT UNLIMITED;
 
 ------------------------------------------------------------------------------
 --Test external table
 ------------------------------------------------------------------------------
-ALTER SESSION SET tracefile_identifier='TEST-10046'; 
+ALTER SESSION SET tracefile_identifier='TEST-10046';
 
 ALTER SESSION SET EVENTS '10046 trace name context forever, level 12';
 
@@ -63,7 +63,7 @@ FROM   v$diag_info
 WHERE  name = 'Default Trace File';
 
 --Set external tablespace to tracefile
-ALTER TABLE tkprof_xt LOCATION('capstone_ora_54126_TEST-10046.trc');
+ALTER TABLE tkprof_xt LOCATION('capstone_ora_15458_TEST-10046.trc');
 
 --Read tkprof output for single tracefile
 SELECT *
