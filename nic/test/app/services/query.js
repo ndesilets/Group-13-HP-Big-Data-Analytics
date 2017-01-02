@@ -13,7 +13,7 @@
             },
 
             runQuery: function(){
-                return $q(function(resolve, reject){
+                return $q(function(resolve, reject, notify){
                     var body = {
                         query: query,
                         trace: trace,
@@ -26,6 +26,8 @@
                         resolve(res.data);
                     }, function(e){
                         reject(e);
+                    }, function(){
+                        notify();
                     });
                 });
             }

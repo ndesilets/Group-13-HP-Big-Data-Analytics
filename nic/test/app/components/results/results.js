@@ -9,11 +9,8 @@
                 /* --- On page load --- */
 
                 // Init vars
-                scope.results = '';
                 scope.loading = true;
                 scope.error = false;
-                scope.tables = {};
-                scope.options = {};
 
                 // Dummy graph
                 var ctx = document.getElementById("myChart");
@@ -54,16 +51,15 @@
                     }
                 });
 
-                queryService.runQuery().then(function (results) {
+                queryService.runQuery().then(function(results){
                     console.log(results);
                     scope.results = results;
-
-                    scope.tables = parseTables(results);
-                    scope.loading = false;
-                }, function (e) {
+                }, function(e){
                     console.error(e);
                     scope.error = true;
+                }).finally(function(){
                     scope.loading = false;
+                    console.log(scope.loading);
                 });
 
                 /* --- Util --- */
