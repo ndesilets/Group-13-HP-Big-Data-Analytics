@@ -53,7 +53,7 @@ app.post('/api/query', (req, res) => {
                 // Query external table
                 trace.push("select * from ten053_xt");
             }else{
-                trace.push("select * from tkprof_xt");
+                trace.push("select text from tkprof_xt");
             }
 
             oradb.execQuery(query, options, trace).then((result) => {

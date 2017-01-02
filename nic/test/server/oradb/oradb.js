@@ -108,7 +108,7 @@ module.exports = {
             if(isSubstr(trace[0], "10053")){
                 console.log("== test passed");
                 db.execute(
-                 "@Alter_ExtTab(:tableName);",
+                 "begin Alter_ExtTab(:tableName); END;",
                  {  // Bind variables
                     tableName: "10053"
                  },
