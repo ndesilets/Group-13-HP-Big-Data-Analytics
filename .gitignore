@@ -4,3 +4,4 @@
 *.dvi
 *.toc
 *.out
+**/*/node_modules
