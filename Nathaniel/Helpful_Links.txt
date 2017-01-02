@@ -1,0 +1,66 @@
+Troubles with 10390 (Tanel)
+http://grokbase.com/t/freelists.org/oracle-l/049fqha37y/how-to-use-event-10390/oldest
+
+Detailed list of trace event codes
+http://www.juliandyke.com/Diagnostics/Events/EventReference.php#10390
+
+Why do my queries take so long
+https://www.quora.com/Why-do-some-SQL-queries-take-hours-or-even-days-to-execute
+
+Limiting PGA -- PGA_AGGREGATE-LIMIT
+http://www.vitalsofttech.com/limiting-pga-with-pga_aggregate_limit/
+
+List of 12c Initialization Params
+https://docs.oracle.com/database/121/nav/initora.htm
+
+How to check DOP (Johnathan Lewis)
+https://jonathanlewis.wordpress.com/2007/03/14/how-parallel/
+
+How to find trace files with query
+https://blogs.oracle.com/sysdba/entry/how_to_identify_trace_file_in
+
+External Table -- Trace output
+http://oracle-developer.net/display.php?id=516
+
+Alt External Table
+http://www.dba-oracle.com/t_etl_pipelined_table_functions_external_table.htm
+
+Stack post about tablespaces
+http://stackoverflow.com/questions/2364024/how-to-determine-maxsize-of-existing-tablespace
+
+Data Dictionary Keywords
+https://docs.oracle.com/cd/B28359_01/server.111/b28310/tables014.htm#ADMIN01508
+
+Permissions Error
+http://stackoverflow.com/questions/39121978/external-table-error-ora-29913-error-in-executing-odciexttableopen-callout
+
+Optimizing RAM for SGA/PGA
+http://www.dba-oracle.com/art_dbazine_ram.htm
+
+Tablespace Tips for DBA
+https://dfitzjarrell.wordpress.com/2008/02/21/temporary-tablespace-insanity/
+
+Dynamically Changing Files Names XT
+https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:37593123416931
+
+XT Walkthrough
+https://oracle-base.com/articles/9i/external-tables-9i
+
+Variables in scripts
+http://www.orafaq.com/node/515
+
+Understanding Tkprof Output
+http://hungrydba.com/reading_tkprof_trace_files.html
+
+Default Locations for Dump, Log, and SQL
+https://docs.oracle.com/database/121/SUTIL/GUID-EEB32B50-8A00-40B0-8787-CC2C8BA05DC5.htm#SUTIL819
+
+---------Diagnostics---------
+
+DBMS_SUPPORT
+http://psoug.org/reference/dbms_support.html
+http://www.dba-oracle.com/t_dbms_support.htm
+
+Tracing -- Good Practices
+https://oracle-base.com/articles/misc/sql-trace-10046-trcsess-and-tkprof
+

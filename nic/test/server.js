@@ -48,6 +48,14 @@ app.post('/api/query', (req, res) => {
             trace.push("alter session set events '" + body.trace + " trace name context forever, level 12'");
             trace.push("alter session set events '" + body.trace + " trace name context off'");
 
+            // Trying to implement routing for 10053 case
+            if(body.trace === '10053'){
+                // Query external table
+                trace.push("select * from ten053_xt");
+            }else{
+                trace.push("select text from tkprof_xt");
+            }
+
             oradb.execQuery(query, options, trace).then((result) => {
                  res.send(result);
              }).catch((e) => {

@@ -2,7 +2,6 @@
 --Create directories and grant permissions
 ------------------------------------------------------------------------------
 --sqlplus sys@dbcap as sysdba
-
 --Create directory from SQL
 DROP DIRECTORY trace_dir;
 CREATE DIRECTORY trace_dir AS '/u01/app/oracle/diag/rdbms/capstone/capstone/trace';
@@ -17,9 +16,6 @@ CREATE DIRECTORY bin_dir AS '/u01/app/oracle/bin_dir';
 
 --Grant executable pcrivileges
 GRANT EXECUTE ON DIRECTORY bin_dir TO whitlocn;
-
---Check for directories
-SELECT * FROM ALL_DIRECTORIES;
 
 ------------------------------------------------------------------------------
 --Generate and read tkprof reports
@@ -81,10 +77,6 @@ FROM tkprof_xt;
 
 
 
-  --Get trace filename
-  SELECT REGEXP_SUBSTR(value, '[^/]+$') AS trace_file
-  FROM   v$diag_info
-  WHERE  name = 'Default Trace File';
 
 
 
