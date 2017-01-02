@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------
 --Create directories and grant permissions
 ------------------------------------------------------------------------------
-
+--sqlplus sys@dbcap as sysdba
 --Create directory from SQL
 DROP DIRECTORY trace_dir;
 CREATE DIRECTORY trace_dir AS '/u01/app/oracle/diag/rdbms/capstone/capstone/trace';
@@ -35,14 +35,14 @@ ORGANIZATION EXTERNAL
   (
     RECORDS DELIMITED BY NEWLINE
     NOLOGFILE
-    PREPROCESSOR bin_dir: 'runTrcSum.sh'
+    PREPROCESSOR bin_dir: 'tkprof.sh'
     FIELDS TERMINATED BY WHITESPACE
     (
       line RECNUM,
       text POSITION(1:4000)
     )
   )
-  LOCATION('%')
+  LOCATION('')
 )
 REJECT LIMIT UNLIMITED;
 
@@ -62,22 +62,18 @@ SELECT REGEXP_SUBSTR(value, '[^/]+$') AS trace_file
 FROM   v$diag_info
 WHERE  name = 'Default Trace File';
 
+--Get Recent Trace Name
+SELECT REGEXP_SUBSTR(value, '[^_]+$') AS trace_file
+FROM   v$diag_info
+WHERE  name = 'Default Trace File';
+
 --Set external tablespace to tracefile
-ALTER TABLE tkprof_xt LOCATION('capstone_ora_15458_TEST-10046.trc');
+ALTER TABLE tkprof_xt LOCATION('capstone_ora_62423_TEST-10053.trc ');
 
 --Read tkprof output for single tracefile
-SELECT *
+SELECT text
 FROM tkprof_xt;
 
---Problem is possibly due to permissions issue for my user.
---I cannot grant permission to myself, I attempted to log
---into the server as sys in order to grant myself permissions.
---Though the query completed, I am not sure it worked.
-
---I have tried to login to sqlplus as sysdba and grant myself
---permissions but I get an error message saying my user does not
---exist. This sounds like a container issue, do you have any
---insight?
 
 
 

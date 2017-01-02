@@ -1,3 +1,4 @@
+
 #!/bin/sh
 
 # This script is designed to take a directory of trace files
@@ -15,6 +16,8 @@ else
   else
     echo "Executing Trace Summary ..."
     trcsess output=$1.sess service=dbcap.cv.hp.com *.trc
-    tkprof $1.sess $1.prof
+    tkprof $1.sess $1.prf
  fi
 fi
+
+less $1.prf
