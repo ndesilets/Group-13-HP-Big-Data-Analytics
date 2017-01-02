@@ -50,6 +50,16 @@ function executeQuery(query, fn){
     })
 }
 
+function isSubstr(str, substr){
+    console.log("== before conditional\n");
+    if(str.indexOf(substr) !== -1){
+        console.log("== returned true\n");
+        return true;
+    }  
+    console.log("== returned false\n");
+    return false;
+}
+
 // SELECT SUM(MEASUREMENT) FROM CAPSTONE_PARALLEL_TEST_V1;
 
 module.exports = {
@@ -78,6 +88,7 @@ module.exports = {
             for(let i = 0; i<trace.length; i++){
                 console.log("== trace[" + i + "]: " + trace[i]);
             }
+
         
             // Execute trace header clauses
             for(let i = 0; i<=4; i++){
@@ -89,13 +100,36 @@ module.exports = {
             console.log(query);
             executeQuery(query,fn);
 
-            // Execute trace tail clause
+            // Execute trace footer
             console.log(trace[5]);
             executeQuery(trace[5],fn);
+            
+            // Update to recent trace file         
+            if(isSubstr(trace[0], "10053")){
+                console.log("== test passed");
+                db.execute(
+                 "@Alter_ExtTab(:tableName);",
+                 {  // Bind variables
+                    tableName: "10053"
+                 },
+                 function(err, result){
+                    if(err){
+                        console.log(err.message);
+                        return;
+                    }
+                    console.log("== result" + result);
+                 });
+                
+            }
+
+            // Query external table
+            console.log(trace[6]);
+            executeQuery(trace[6],fn);
         }else{ 
              // Add user query function to async function stack
             executeQuery(query,fn);
         }
+
 
   
         // Eval query options

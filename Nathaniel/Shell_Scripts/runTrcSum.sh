@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 # This script is designed to take a directory of trace files

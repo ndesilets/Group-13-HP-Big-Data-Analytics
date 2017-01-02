@@ -28,7 +28,9 @@ REJECT LIMIT UNLIMITED;
 
 --Call procedure to look for recent
 --tracefile to set as LOCATION
-@Alter_XT.sql 'ten053_xt'
+--CONSIDER GENERALIZING TABLENAME
+--AS ARGUMENT
+@Alter_XT 'ten053_xt'
 
 --Read tkprof output for single tracefile
 SELECT *
