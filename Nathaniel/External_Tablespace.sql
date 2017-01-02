@@ -14,7 +14,7 @@ GRANT READ, WRITE ON DIRECTORY trace_dir TO whitlocn;
 DROP DIRECTORY bin_dir;
 CREATE DIRECTORY bin_dir AS '/u01/app/oracle/bin_dir';
 
---Grant executable privileges
+--Grant executable pcrivileges
 GRANT EXECUTE ON DIRECTORY bin_dir TO whitlocn;
 
 ------------------------------------------------------------------------------
@@ -63,12 +63,12 @@ FROM   v$diag_info
 WHERE  name = 'Default Trace File';
 
 --Get Recent Trace Name
-SELECT REGEXP_SUBSTR(value, '[^_]+$') AS trace_file
+SELECT REGEXP_SUBSTR(value, 'T([A-Z]+)-\d+') AS trace_file
 FROM   v$diag_info
 WHERE  name = 'Default Trace File';
 
 --Set external tablespace to tracefile
-ALTER TABLE tkprof_xt LOCATION('capstone_ora_62423_TEST-10053.trc ');
+ALTER TABLE tkprof_xt LOCATION('test.sess');
 
 --Read tkprof output for single tracefile
 SELECT text

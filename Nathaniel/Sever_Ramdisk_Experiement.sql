@@ -1,4 +1,5 @@
 --Create new temp tablespace
+DROP TABLESPACE tempramdisk_noGrowth;
 CREATE TEMPORARY TABLESPACE tempramdisk_noGrowth 
 TEMPFILE '/mnt/ramdisk/tempramdisk1_01.dbf' 
 SIZE 10240M;
