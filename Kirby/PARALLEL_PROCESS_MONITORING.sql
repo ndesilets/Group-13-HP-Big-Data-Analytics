@@ -90,15 +90,19 @@ SELECT
     WHEN A.KSPPINM = '_pga_max_size' THEN B.KSPPSTVL/POWER(1024,3)
     WHEN A.KSPPINM = '_smm_max_size' THEN B.KSPPSTVL/POWER(1024,2)
     WHEN A.KSPPINM = '_smm_px_max_size' THEN B.KSPPSTVL/POWER(1024,2)
+    WHEN A.KSPPINM = '_smm_isort_cap' THEN B.KSPPSTVL/POWER(1024,1)
     ELSE B.KSPPSTVL/POWER(1024,3)
   END AS VALUE,
-  'GB' AS UNITS
+  CASE
+    WHEN A.KSPPINM = '_smm_isort_cap' THEN 'MB'
+    ELSE 'GB' 
+  END AS UNITS
 FROM X$KSPPI A
   INNER JOIN X$KSPPCV B
     ON A.INDX = B.INDX
   INNER JOIN X$KSPPSV C
     ON A.INDX = C.INDX
-WHERE A.KSPPINM IN ('_pga_max_size','_smm_max_size','_smm_px_max_size');
+WHERE A.KSPPINM IN ('_pga_max_size','_smm_max_size','_smm_px_max_size', '_smm_isort_cap');
 
 SELECT * FROM X$KSPPI A
   INNER JOIN X$KSPPCV B
