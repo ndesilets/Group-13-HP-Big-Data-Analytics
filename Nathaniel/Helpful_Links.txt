@@ -52,8 +52,29 @@ http://www.orafaq.com/node/515
 Understanding Tkprof Output
 http://hungrydba.com/reading_tkprof_trace_files.html
 
+http://www.jlcomp.demon.co.uk/tkprof_01.html
+
 Default Locations for Dump, Log, and SQL
 https://docs.oracle.com/database/121/SUTIL/GUID-EEB32B50-8A00-40B0-8787-CC2C8BA05DC5.htm#SUTIL819
+
+How to Use Snapper
+http://tech.e2sn.com/oracle-scripts-and-tools/session-snapper
+
+Cool Looking 10043 Report Generator
+http://oracledba.ru/orasrp/
+
+Crazy query plot script
+https://github.com/uwescience/query-workload-analysis
+
+Undocumented secrets for supersizing your PGA
+http://www.dba-oracle.com/art_so_undocumented_pga_parameters.htm
+
+http://dba-blog.blogspot.com/2005/08/pgamaxsize-hidden-parameter.html
+
+Maximizing DB Performance : Performance Tuning w/ DB Time
+http://www.oracle.com/technetwork/oem/db-mgmt/s317294-db-perf-tuning-with-db-time-181631.pdf
+
+Stack -- Indexing 
 
 ---------Diagnostics---------
 
