@@ -35,3 +35,7 @@ WHERE NAME IN (
                )
 ORDER BY
   NAME;
+  
+SELECT
+  *
+FROM CAPSTONE_DEMO.PARAMETERS_V;
