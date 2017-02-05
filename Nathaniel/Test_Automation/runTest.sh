@@ -5,8 +5,8 @@
 # can be used to validate parameter setting effects
 
 # Store connect string
-DBUSER='whitlocn'
-DBUSERPASSWORD='capPass'
+DBUSER=''
+DBUSERPASSWORD=''
 DB='dbcap'
 
 # Store passed arguments
