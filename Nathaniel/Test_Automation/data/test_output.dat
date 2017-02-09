@@ -1,0 +1,11 @@
+SQL> SELECT /*+ PARALLEL(16) */
+  2    *
+  3  FROM CAPSTONE_DEMO.LEAD_LAG_V1;
+FROM CAPSTONE_DEMO.LEAD_LAG_V1
+                   *
+ERROR at line 3:
+ORA-01013: user requested cancel of current operation 
+
+
+
+SQL> spool off

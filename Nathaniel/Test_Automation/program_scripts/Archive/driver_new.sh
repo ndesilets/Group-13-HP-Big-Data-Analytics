@@ -4,8 +4,8 @@
 # loop in the background as well as run a series of sql tests
 
 # Usage statement
-if [ ! $# == 3 ]; then
-    echo 'Usage: ./driver.sh <snapFreq> <expScript> <moduleName> [user]'
+if [ ! $# == 2 ]; then
+    echo 'Usage: ./driver.sh <snapFreq> <expScript> [user]'
     exit 1
 fi
 
@@ -16,8 +16,7 @@ export ORAENV_ASK=NO
 
 # Set up local variables
 snapFreq=${1}
-expScript=$( cat ${2} ) # Trying to pass contents of experiment script
-moduleName=${3}
+expScript=$( cat ${2} )
 logDir='../logs'
 dataDir='../data'
 
@@ -36,8 +35,8 @@ fi
 echo 'Starting Monitoring Loop -- snapFreq: ' ${snapFreq}
 ./runMonitor.sh ${logDir} ${dataDir} ${snapFreq} &
 
-echo 'Starting Experiment Suite -- moduleName: ' ${moduleName}
-./runTest.sh ${logDir} ${dataDir} ${expScript} ${moduleName}
+echo 'Starting Experiment Suite -- expScript: ' ${expScript}
+./runTest.sh ${logDir} ${dataDir} ${expScript}
 
 # Remove environmental variables
 unset ${ORAENV_ASK}
@@ -46,3 +45,4 @@ unset ${ORAENV_ASK}
 # the monitor loop
 
 echo 'Experimentation completed'
+
