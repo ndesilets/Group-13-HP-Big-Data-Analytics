@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form>
+                <fieldset>
+                    <legend>SQL Query</legend>
+                    <div class="form-group">
+                        <label for="query" class="control-label">Input</label>
+                        <div class="">
+                            <textarea ng-model="query" class="form-control" rows="10" id="query"></textarea>
+                            <span class="help-block">Enter SQL Query to profile.</span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Trace Type</legend>
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="trace" name="optionsRadios" value="10046" checked>
+                                10046 - Enable SQL Statement Timing (TODO)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="trace" name="optionsRadios" value="10053">
+                                10053 - CBO Enable Optimizer Trace (TODO)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="trace" name="optionsRadios" value="10390">
+                                10390 - Trace Parallel Query Slave Execution (TODO)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" ng-model="trace" name="optionsRadios" value="etc">
+                                etc...
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Profiling Options</legend>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="options.pei">
+                                PEI
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="options.pgamemory">
+                                PGA Memory (TODO)
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="options.etc">
+                                etc...
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <button type="submit" ng-click="submit()" class="btn btn-primary btn-block">Analyze</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <pre>{{query | json}}</pre>
+    <pre>{{trace | json}}</pre>
+    <pre>{{options | json}}</pre>
+</div>

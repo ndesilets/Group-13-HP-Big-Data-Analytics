@@ -2,3 +2,6 @@
 *.log
 *.gz
 *.dvi
+*.toc
+*.out
+**/*/node_modules
