@@ -1,0 +1,10 @@
+Removing backup folder
+
+Preparing git directory
+
+Copying new work to git diretory
+
+Changed to git directory
+
+Adding new files and pushing to GitHub
+
