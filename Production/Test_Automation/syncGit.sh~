@@ -31,7 +31,6 @@ cp -R /home/oracle/Test_Automation /home/oracle/Group-13-HP-Big-Data-Analytics/P
 
 # Add the recent changes
 echo -e "Adding new files and pushing to GitHub\n"
-git ${dirPath} status
-#git ${dirPath} add .
-#git ${dirPath} commit -m "${commitMessage}"
-#git ${dirPath} push
+git ${dirPath} add . >>
+git ${dirPath} commit -m "${commitMessage}"
+git ${dirPath} push
