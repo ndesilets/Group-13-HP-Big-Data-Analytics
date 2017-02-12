@@ -29,8 +29,14 @@ cp -R /home/oracle/Test_Automation /home/oracle/Group-13-HP-Big-Data-Analytics/P
 #echo -e "Changed to git directory\n"
 #cd /home/oracle/Test_Automation /home/oracle/Group-13-HP-Big-Data-Analytics
 
+echo "----------------------------------------------------------------------------" >> git.log
+echo " Entry -- " `date` >> git.log
+echo -e "----------------------------------------------------------------------------\n" >> git.log
+
 # Add the recent changes
 echo -e "Adding new files and pushing to GitHub\n"
-git ${dirPath} add . 2>&1
-git ${dirPath} commit -m "${commitMessage}" 2>&1
-git ${dirPath} push 2>&1
+git ${dirPath} add --all . >> git.log
+git ${dirPath} commit -m "${commitMessage}" >> git.log
+git ${dirPath} push 2>&1 >> git.log
+
+echo -e "----------------------------------------------------------------------------\n\n" >> git.log
