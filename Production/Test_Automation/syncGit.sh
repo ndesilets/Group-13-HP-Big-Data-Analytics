@@ -37,6 +37,7 @@ echo -e "-----------------------------------------------------------------------
 echo -e "Adding new files and pushing to GitHub\n"
 git ${dirPath} add --all . >> git.log
 git ${dirPath} commit -m "${commitMessage}" >> git.log
+git ${dirPath} config --global push.default matching >> git.log
 git ${dirPath} push 2>&1 >> git.log
 
 echo -e "----------------------------------------------------------------------------\n\n" >> git.log
