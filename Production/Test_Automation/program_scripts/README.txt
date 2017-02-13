@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------------
 In order to run this test facilitator tool you need to complete the following command:
-./driver <snapFreq> <pathToExpScript>
+./recursiveDriver <snapFreq> <exp_one> ... [exp_n]
 
 EXAMPLE:
-./driver 1 ../exp_scripts/QUICK_TEST_V1.sql
+./recursiveDriver 1 PGA_EXPERIMENTS DB_BIG_TABLE_CACHE_PERCENT_TARGET IMCS_EXPERIMENT
 -------------------------------------------------------------------------------------

@@ -1,3 +1,5 @@
+alter session set container = dbcap;
+
 EXECUTE CAPSTONE_DEMO.RESOURCE_MONITOR.PARAMETERS_HISTORY_INSERT;
 
 BEGIN
