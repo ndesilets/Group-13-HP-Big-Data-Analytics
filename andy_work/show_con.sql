@@ -1,1 +1,0 @@
-show con_name

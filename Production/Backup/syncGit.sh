@@ -11,6 +11,11 @@ fi
 commitMessage=$1
 dirPath="--git-dir=/home/oracle/Group-13-HP-Big-Data-Analytics/.git --work-tree=/home/oracle/Group-13-HP-Big-Data-Analytics/"
 
+# Positive feedback to console
+echo '**********************************************************'
+echo 'Preparing to sync working directory to git directory'
+echo '**********************************************************'
+
 # Remove existing archive
 if [ -d "/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Backup" ]; then
     echo -e "Removing backup folder\n"
