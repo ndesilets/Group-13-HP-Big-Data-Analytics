@@ -28,8 +28,5 @@ BEGIN
 
         DBMS_LOCK.SLEEP(SECONDS => 30);
     END LOOP;
-END
-/
-
-end;
+END;
 /
