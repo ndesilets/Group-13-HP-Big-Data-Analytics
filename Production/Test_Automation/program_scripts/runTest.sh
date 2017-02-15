@@ -24,9 +24,14 @@ echo -e '--------------------------\n'
 sqlplus /nolog <<EOF >> ${logDir}/runTest.log 
 CONN ${dbUser}/${password}@${db}
 
+spool ${logDir}/runTest.log append
+select '*********  ' ||  sysdate || '  ***********'   from dual; 
 @${expScript}
+spool off
 
+spool ${logDir}/runMonitor.log append
 @../exp_scripts/END_MONITORING.sql
+spool off
 
 EOF
 

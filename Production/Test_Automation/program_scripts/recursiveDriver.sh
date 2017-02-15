@@ -60,18 +60,19 @@ for entry in $experiments; do
     # Grab content for inner loop
     dirContents=`ls -1 ${expDir}/${entry}/*.SQL`
 
+    # Run baseline file
+    ./runParam.sh ${logDir} "${expDir}/BASELINE/BASELINE.SQL"
+
     for i in $dirContents; do
 
 	# Grab file name
 	name=$(basename -s .SQL $i)
 
-	echo 'Name: ' ${name} >> lock.txt 2>&1
- 
 	if [ -f ${expDir}/${entry}/${name}.PRM ]
 	then
 	    echo "${name}.PRM exists" >> lock.txt 2>&1
 	    echo "Modifying DB params for ${name}.PRM" >> lock.txt 2>&1
-	    ./runParam.sh ${logDir} ${dataDir} "${expDir}/${entry}/${name}.PRM" ${dbUser} ${password} ${db}
+	    ./runParam.sh ${logDir} "${expDir}/${entry}/${name}.PRM"
 	else
 	    echo "${expDir}/${entry}/${name}.PRM does not exist" >> lock.txt 2>&1
 	fi
@@ -79,10 +80,10 @@ for entry in $experiments; do
 	# Branch of to run monitor and test
 	./setMonitorFlag.sh ${logDir} ${dataDir} ${dbUser} ${password} ${db}  >> lock.txt 2>&1
 
-	echo 'Starting Monitoring Loop -- snapFreq: ' ${snapFreq} >> lock.txt 2>&1
+	echo "Starting Monitoring Loop -- ${snapFreq} " >> lock.txt 2>&1
 	./runMonitor.sh ${logDir} ${dataDir} ${snapFreq} ${dbUser} ${password} ${db} & >> lock.txt 2>&1
 
-	echo "Starting Experiment Suite -- expScript:  ${expDir}/${entry}/${name}.SQL" >> lock.txt 2>&1
+	echo "Starting Experiment Suite -_  ${expDir}/${entry}/${name}.SQL" >> lock.txt 2>&1
 	./runTest.sh ${logDir} ${dataDir} "${expDir}/${entry}/${name}.SQL" ${dbUser} ${password} ${db} >> lock.txt 2>&1
 
     done;
