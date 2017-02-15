@@ -25,7 +25,7 @@ db=${6}
 sqlplus /nolog  <<EOF  >> ${logDir}/runMonitor.log
 CONN ${dbUser}/${password}@${db}
 
-spool ${dataDir}/runMonitor.dat
+spool ${logDir}/runMonitor.log append
 EXEC CAPSTONE_DEMO.RESOURCE_MONITOR.RESOURCE_USAGE_MONITORING_V2(${snapFreq});
 spool off
 

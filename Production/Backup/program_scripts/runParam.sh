@@ -6,28 +6,17 @@
 
 # Store passed arguments
 logDir=$1
-dataDir=$2
-expScript=$3
-dbUser=$4
-password=$5
-db=$6
-
-#echo -e '\n\n--------------------------'
-#echo 'runParam.sh Input Vars'
-#echo 'logDir: ' $logDir
-#echo 'dataDir: ' $dataDir
-#echo 'dbuser: ' $dbUser
-#echo 'db: ' $db
-#echo -e '--------------------------\n\n'
+expScript=$2
 
 # Establish connection and execute predefined queries
-sqlplus /nolog <<EOF >> ${logDir}/runTest.log 
-CONN ${dbUser}/${password}@${db} as sysdba
+sqlplus / as sysdba <<EOF >> ${logDir}/runTest.log 
 
+spool ${logDir}/runParam.log append
 @${expScript}
+spool off
 
 EOF
 
 
-echo 'Parameters Altered -- ' ${expScript} >> lock.txt 2>&1
+echo "Parameters Altered -- ${expScript}" >> lock.txt 2>&1
 
