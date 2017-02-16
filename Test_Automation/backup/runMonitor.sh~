@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# This script is designed to create connection to Oracle
+# database and run the resource usage monitor in the
+# background
+
+DBUSER='whitlocn'
+DBUSERPASSWORD='capPass'
+DB='dbcap'
+
+sqlplus /nolog  <<EOF  > ${LogDirectory}/query.log
+CONN ${DBUSER}/${DBUSERPASSWORD}@${DB}
+
+spool ${DataDirectory}/runMonitor_output.dat
+EXEC CAPSTONE_DEMO.RESOURCE_MONITOR.RESOURCE_USAGE_MONITORING_V2(1000, 1);
+spool off
+
+EOF
+
+echo 'complete'
