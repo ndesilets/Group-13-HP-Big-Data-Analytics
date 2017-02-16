@@ -23,6 +23,7 @@ echo -e '--------------------------\n'
 # Establish connection and execute predefined queries
 sqlplus /nolog <<EOF >> ${logDir}/runTest.log 
 CONN ${dbUser}/${password}@${db}
+alter session set NLS_DATE_FORMAT='yyyymmdd hh24:mi:ss';
 
 spool ${logDir}/runTest.log append
 select '*********  ' ||  sysdate || '  ***********'   from dual; 
