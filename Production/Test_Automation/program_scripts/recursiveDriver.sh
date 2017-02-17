@@ -57,6 +57,9 @@ for entry in $experiments; do
         echo " cannot find experiment ${expDir}/${entry}" >> lock.txt 2>&1
 	continue
     fi
+
+    echo -e "Starting experiment ${entry}\n"
+
     # Grab content for inner loop
     dirContents=`ls -1 ${expDir}/${entry}/*.SQL`
 
@@ -101,7 +104,7 @@ echo " END EXP " `date`                                            >> lock.txt 2
 echo -e "***********************************************************\n\n\n" >> lock.txt 2>&1
 
 # Email out temp results
-mail -s 'CAPSTONE TESTING' -S smtp=smtp3.hp.com daweiss1@gmail.com kirby.sand@hp.com andy.weiss@hp.com nathaniel.whitlock1@hp.com desiletn@oregonstate.edu stallkaj@oregonstate.edu < lock.txt
+mail -s 'CAPSTONE TESTING' -S smtp=smtp3.hp.com daweiss1@gmail.com kirby.sand@hp.com andy.weiss@hp.com nathaniel.whitlock1@hp.com desiletn@oregonstate.edu < lock.txt
 
 # Append temp file and remove
 cat lock.txt >> /home/oracle/Test_Automation/logs/output.log

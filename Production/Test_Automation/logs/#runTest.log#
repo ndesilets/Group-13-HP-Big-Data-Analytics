@@ -1,0 +1,1728 @@
+  q
+SQL*Plus: Release 12.1.0.2.0 Production on Wed Feb 15 23:35:46 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL> SQL> SQL> 
+Session altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 192G
+*
+ERROR at line 1:
+ORA-02097: parameter cannot be modified because specified value is invalid
+ORA-00384: Insufficient memory to grow cache
+
+
+
+System altered.
+
+
+System altered.
+
+ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.3959E+10 bytes
+Database Buffers	 2.6038E+11 bytes
+Redo Buffers		  529207296 bytes
+Database mounted.
+Database opened.
+
+Pluggable database altered.
+
+
+Session altered.
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Wed Feb 15 23:36:51 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL> SQL> SQL> 
+Session altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+System altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.1811E+10 bytes
+Database Buffers	 5.2076E+10 bytes
+Redo Buffers		  529207296 bytes
+In-Memory Area		 2.1045E+11 bytes
+Database mounted.
+Database opened.
+
+Pluggable database altered.
+
+
+Session altered.
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Wed Feb 15 23:37:25 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> Connected.
+SQL> 
+Session altered.
+
+SQL> SQL> SQL> 
+'*********'||SYSDATE||'***********'
+-----------------------------------------
+*********  20170215 23:37:25  ***********
+
+SQL> 
+Session altered.
+
+
+PL/SQL procedure successfully completed.
+
+DECLARE
+*
+ERROR at line 1:
+ORA-01013: user requested cancel of current operation
+ORA-06512: at "SYS.DBMS_LOCK", line 205
+ORA-06512: at line 18
+
+
+
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+
+'*********'||SYSDATE||'***********'                                             
+-----------------------------------------                                       
+*********  20170215 23:37:25  ***********                                       
+
+SQL> @../exp_scripts/IMCS_EXPERIMENT/1.SQL
+
+Session altered.
+
+
+PL/SQL procedure successfully completed.
+
+DECLARE
+*
+ERROR at line 1:
+ORA-01013: user requested cancel of current operation 
+ORA-06512: at "SYS.DBMS_LOCK", line 205 
+ORA-06512: at line 18 
+
+
+
+SQL> spool off
+SQL> SQL> SQL> 
+1 row updated.
+
+
+Commit complete.
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:09:05 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL> SQL> SQL> 
+Session altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+System altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.3959E+10 bytes
+Database Buffers	 4.9929E+10 bytes
+Redo Buffers		  529207296 bytes
+In-Memory Area		 2.1045E+11 bytes
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:12:51 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL> SQL> SQL> 
+Session altered.
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 NO INMEMORY
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 NO INMEMORY
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 NO INMEMORY
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 NO INMEMORY
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 192G
+*
+ERROR at line 1:
+ORA-02097: parameter cannot be modified because specified value is invalid
+ORA-00384: Insufficient memory to grow cache
+
+
+
+System altered.
+
+
+System altered.
+
+ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.3959E+10 bytes
+Database Buffers	 2.6038E+11 bytes
+Redo Buffers		  529207296 bytes
+Database mounted.
+Database opened.
+
+Pluggable database altered.
+
+
+Session altered.
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:13:51 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL> SQL> SQL> 
+Session altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+System altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.1811E+10 bytes
+Database Buffers	 5.2076E+10 bytes
+Redo Buffers		  529207296 bytes
+In-Memory Area		 2.1045E+11 bytes
+Database mounted.
+Database opened.
+
+Pluggable database altered.
+
+
+Session altered.
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:15:01 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> Connected.
+SQL> 
+Session altered.
+
+SQL> SQL> SQL> 
+'*********'||SYSDATE||'***********'
+-----------------------------------------
+*********  20170216 00:15:01  ***********
+
+SQL> 
+Session altered.
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:31 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL> SQL> SQL> 
+Session altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 192G
+*
+ERROR at line 1:
+ORA-02097: parameter cannot be modified because specified value is invalid
+ORA-00384: Insufficient memory to grow cache
+
+
+
+System altered.
+
+
+System altered.
+
+DECLARE
+*
+ERROR at line 1:
+ORA-03113: end-of-file on communication channel
+Process ID: 41538
+Session ID: 1893 Serial number: 4485
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+
+'*********'||SYSDATE||'***********'                                             
+-----------------------------------------                                       
+*********  20170216 00:15:01  ***********                                       
+
+SQL> @../exp_scripts/IMCS_EXPERIMENT/2.SQL
+
+Session altered.
+
+
+PL/SQL procedure successfully completed.
+
+DECLARE
+*
+ERROR at line 1:
+ORA-03113: end-of-file on communication channel 
+Process ID: 41538 
+Session ID: 1893 Serial number: 4485 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+SQL> spool off
+SQL> SQL> SQL> ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:46 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected.
+SQL> SQL> SQL> ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET PARALLEL_DEGREE_POLICY = AUTO
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = CDB$ROOT
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_BIG_TABLE_CACHE_PERCENT_TARGET = 0
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 32G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_SIZE=196G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_MAX_POPULATE_SERVERS=32 SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER PLUGGABLE DATABASE DBCAP OPEN
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+SQL> SQL> SQL> Disconnected
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:47 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect
+descriptor
+
+
+SQL> SP2-0640: Not connected
+SQL> SQL> SQL> SP2-0640: Not connected
+SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+SP2-0640: Not connected
+SQL> @../exp_scripts/IMCS_EXPERIMENT/3.SQL
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> spool off
+SQL> SQL> SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> SQL> 
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:47 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+
+SQL> SQL> SQL> ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET PARALLEL_DEGREE_POLICY = AUTO
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = CDB$ROOT
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_BIG_TABLE_CACHE_PERCENT_TARGET = 0
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 32G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_SIZE=196G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_MAX_POPULATE_SERVERS=32 SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ORA-01081: cannot start already-running ORACLE - shut it down first
+ALTER PLUGGABLE DATABASE DBCAP OPEN
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+SQL> SQL> SQL> Disconnected
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:52 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect
+descriptor
+
+
+SQL> SP2-0640: Not connected
+SQL> SQL> SQL> SP2-0640: Not connected
+SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+SP2-0640: Not connected
+SQL> @../exp_scripts/IMCS_EXPERIMENT/4.SQL
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> spool off
+SQL> SQL> SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> SQL> 
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:52 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+SQL> SQL> SQL> ERROR:
+ORA-65011: Pluggable database DBCAP does not exist.
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR CAPACITY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR CAPACITY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR CAPACITY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR CAPACITY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+
+System altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+ORA-03113: end-of-file on communication channel
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:54 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected.
+SQL> SQL> SQL> ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR DML PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR DML PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR DML PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR DML PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET PARALLEL_DEGREE_POLICY = AUTO
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = CDB$ROOT
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_BIG_TABLE_CACHE_PERCENT_TARGET = 0
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 32G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_SIZE=196G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_MAX_POPULATE_SERVERS=32 SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER PLUGGABLE DATABASE DBCAP OPEN
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+SQL> SQL> SQL> Disconnected
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:56 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect
+descriptor
+
+
+SQL> SP2-0640: Not connected
+SQL> SQL> SQL> SP2-0640: Not connected
+SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+SP2-0640: Not connected
+SQL> @../exp_scripts/IMCS_EXPERIMENT/2.SQL
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> spool off
+SQL> SQL> SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> SQL> 
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:29:56 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+
+SQL> SQL> SQL> ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY LOW PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET PARALLEL_DEGREE_POLICY = AUTO
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = CDB$ROOT
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_BIG_TABLE_CACHE_PERCENT_TARGET = 0
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 32G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_SIZE=196G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_MAX_POPULATE_SERVERS=32 SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ORA-01081: cannot start already-running ORACLE - shut it down first
+ALTER PLUGGABLE DATABASE DBCAP OPEN
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+SQL> SQL> SQL> Disconnected
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:30:01 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect
+descriptor
+
+
+SQL> SP2-0640: Not connected
+SQL> SQL> SQL> SP2-0640: Not connected
+SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+SP2-0640: Not connected
+SQL> @../exp_scripts/IMCS_EXPERIMENT/3.SQL
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> spool off
+SQL> SQL> SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> SQL> 
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:30:01 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+SQL> SQL> SQL> ERROR:
+ORA-65011: Pluggable database DBCAP does not exist.
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR QUERY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01109: database not open
+
+
+
+System altered.
+
+
+Session altered.
+
+
+System altered.
+
+
+System altered.
+
+ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.3422E+10 bytes
+Database Buffers	 5.0466E+10 bytes
+Redo Buffers		  529207296 bytes
+In-Memory Area		 2.1045E+11 bytes
+
+System altered.
+
+
+System altered.
+
+ORA-03113: end-of-file on communication channel
+Process ID: 42755
+Session ID: 1 Serial number: 28102
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+ERROR:
+ORA-03114: not connected to ORACLE
+
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:30:06 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect
+descriptor
+
+
+SQL> SP2-0640: Not connected
+SQL> SQL> SQL> SP2-0640: Not connected
+SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+SP2-0640: Not connected
+SQL> @../exp_scripts/IMCS_EXPERIMENT/5.SQL
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> spool off
+SQL> SQL> SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> SQL> 
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:30:06 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected.
+SQL> SQL> SQL> ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1 INMEMORY MEMCOMPRESS FOR CAPACITY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.PARENT_TABLE_V1 INMEMORY MEMCOMPRESS FOR CAPACITY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.CHILD_TABLE_V1 INMEMORY MEMCOMPRESS FOR CAPACITY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER TABLE CAPSTONE_DEMO.LEAD_LAG_TEST_V1 INMEMORY MEMCOMPRESS FOR CAPACITY HIGH PRIORITY CRITICAL
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET PARALLEL_DEGREE_POLICY = AUTO
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = CDB$ROOT
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_BIG_TABLE_CACHE_PERCENT_TARGET = 0
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET DB_CACHE_SIZE = 32G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_SIZE=196G SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SYSTEM SET INMEMORY_MAX_POPULATE_SERVERS=32 SCOPE=SPFILE
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER PLUGGABLE DATABASE DBCAP OPEN
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+ALTER SESSION SET CONTAINER = DBCAP
+*
+ERROR at line 1:
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+
+SQL> SQL> SQL> Disconnected
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:30:08 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect
+descriptor
+
+
+SQL> SP2-0640: Not connected
+SQL> SQL> SQL> SP2-0640: Not connected
+SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> select '*********  ' ||  sysdate || '  ***********'   from dual;
+SP2-0640: Not connected
+SQL> @../exp_scripts/IMCS_EXPERIMENT/6.SQL
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0641: "EXECUTE" requires connection to server
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> spool off
+SQL> SQL> SQL> SP2-0640: Not connected
+SP2-0640: Not connected
+SQL> SQL> SQL> ORACLE instance started.
+
+Total System Global Area 2.7488E+11 bytes
+Fixed Size		    7663544 bytes
+Variable Size		 1.3422E+10 bytes
+Database Buffers	 5.0466E+10 bytes
+Redo Buffers		  529207296 bytes
+In-Memory Area		 2.1045E+11 bytes
+Database mounted.
+Database opened.
+
+Pluggable database altered.
+
+
+Session altered.
+
+SQL> SQL> SQL> Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Advanced Analytics
+and Real Application Testing options
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Feb 16 00:30:55 2017
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> Connected.
+SQL> 
+Session altered.
+
+SQL> SQL> SQL> 
+'*********'||SYSDATE||'***********'
+-----------------------------------------
+*********  20170216 00:30:56  ***********
+
+SQL> 
+Session altered.
+
+
+PL/SQL procedure successfully completed.
+
