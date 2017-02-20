@@ -57,9 +57,6 @@ for entry in $experiments; do
         echo " cannot find experiment ${expDir}/${entry}" >> lock.txt 2>&1
 	continue
     fi
-
-    #echo -e "Starting experiment ${entry}\n"
-
     # Grab content for inner loop
     dirContents=`ls -1 ${expDir}/${entry}/*.SQL`
 
@@ -73,20 +70,20 @@ for entry in $experiments; do
 
 	if [ -f ${expDir}/${entry}/${name}.PRM ]
 	then
-	    echo "${name}.PRM exists"                                 >> lock.txt 2>&1
-	    echo "Modifying DB params for ${name}.PRM"                >> lock.txt 2>&1
-	    ./runParam.sh ${logDir} "${expDir}/${entry}/${name}.PRM"  
+	    echo "${name}.PRM exists" >> lock.txt 2>&1
+	    echo "Modifying DB params for ${name}.PRM" >> lock.txt 2>&1
+	    ./runParam.sh ${logDir} "${expDir}/${entry}/${name}.PRM"
 	else
-	    echo "${expDir}/${entry}/${name}.PRM does not exist"      >> lock.txt 2>&1
+	    echo "${expDir}/${entry}/${name}.PRM does not exist" >> lock.txt 2>&1
 	fi
 
 	# Branch of to run monitor and test
-	./setMonitorFlag.sh ${logDir} ${dataDir} ${dbUser} ${password} ${db}           >> lock.txt 2>&1
+	./setMonitorFlag.sh ${logDir} ${dataDir} ${dbUser} ${password} ${db}  >> lock.txt 2>&1
 
-	echo "Starting Monitoring Loop -- ${snapFreq} "                                >> lock.txt 2>&1
+	echo "Starting Monitoring Loop -- ${snapFreq} " >> lock.txt 2>&1
 	./runMonitor.sh ${logDir} ${dataDir} ${snapFreq} ${dbUser} ${password} ${db} & >> lock.txt 2>&1
 
-	echo "Starting Experiment Suite -  ${expDir}/${entry}/${name}.SQL"                            >> lock.txt 2>&1
+	echo "Starting Experiment Suite -_  ${expDir}/${entry}/${name}.SQL" >> lock.txt 2>&1
 	./runTest.sh ${logDir} ${dataDir} "${expDir}/${entry}/${name}.SQL" ${dbUser} ${password} ${db} >> lock.txt 2>&1
 
     done;
@@ -99,13 +96,13 @@ unset ORAENV_ASK
 wait
 
 # Ending stamp
-echo "***********************************************************"          >> lock.txt 2>&1
-echo " END EXP " `date`                                                     >> lock.txt 2>&1
+echo "***********************************************************" >> lock.txt 2>&1
+echo " END EXP " `date`                                            >> lock.txt 2>&1
 echo -e "***********************************************************\n\n\n" >> lock.txt 2>&1
 
 # Email out temp results
-mail -s 'CAPSTONE TESTING' -S smtp=smtp3.hp.com daweiss1@gmail.com kirby.sand@hp.com andy.weiss@hp.com nathaniel.whitlock1@hp.com desiletn@oregonstate.edu < lock.txt
+mail -s 'CAPSTONE TESTING' -S smtp=smtp3.hp.com daweiss1@gmail.com kirby.sand@hp.com andy.weiss@hp.com nathaniel.whitlock1@hp.com desiletn@oregonstate.edu stallkaj@oregonstate.edu < lock.txt
 
 # Append temp file and remove
-cat lock.txt >> ../logs/output.log
+cat lock.txt >> /home/oracle/Test_Automation/logs/output.log
 rm lock.txt

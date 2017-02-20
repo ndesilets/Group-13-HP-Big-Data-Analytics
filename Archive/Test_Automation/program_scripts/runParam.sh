@@ -11,11 +11,7 @@ expScript=$2
 # Establish connection and execute predefined queries
 sqlplus / as sysdba <<EOF >> ${logDir}/runTest.log 
 
-alter session set NLS_DATE_FORMAT='yyyymmdd hh24:mi:ss';
-
 spool ${logDir}/runParam.log append
-select '*********  ' ||  sysdate || '  ***********'   from dual;
-
 @${expScript}
 spool off
 
