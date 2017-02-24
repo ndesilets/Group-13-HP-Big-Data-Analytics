@@ -7,10 +7,10 @@ BEGIN
 END;
 /
 
--- Run query once (which spawns initial IMCS background workers), wait 240 seconds
+-- Run query once (which spawns initial IMCS background workers), wait 10 mins
 SELECT /*+ PARALLEL(16) */ * FROM CAPSTONE_DEMO.SINGLE_TABLE_ANALYTICS_V1; --Warmup
 BEGIN
-  DBMS_LOCK.SLEEP(SECONDS => 240);
+  DBMS_LOCK.SLEEP(SECONDS => 600);
 END;
 /
 
