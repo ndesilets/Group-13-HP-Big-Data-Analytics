@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# This script will act as the driver for db testing
+
+# Ensure environmental variables are set
+export ORACLE_SID=capstone
+export ORAENV_ASK=NO
+. oraenv
+
+./runMonitor.sh
+echo 'Starting Monitor Loop'
+
+./runTest.sh
+echo 'Starting Test'
+
+
+
+
+
+# Add conditional to check if dir exists
+#mkdir logs
+#mkdir data
+
+#LogDirectory='logs'
+#DataDirectory='data'
+
+#DBUSER='whitlocn'
+#DBUSERPASSWORD='capPass'
+#DB='dbcap'
+
+#sqlplus /nolog  <<EOF  > ${LogDirectory}/query.log
+#CONN ${DBUSER}/${DBUSERPASSWORD}@${DB}
+
+#spool ${DataDirectory}/query_output.dat
+#select *
+#from CAPSTONE_DEMO.CAPSTONE_PARALLEL_TEST_V1;
+#spool off
+
+#EOF
+
+echo 'complete'
+
