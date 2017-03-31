@@ -1,21 +1,22 @@
 'use strict';
 
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const oradb = require('./server/oradb/oradb.js');
+const oradb = require('./oradb/oradb.js');
 
 /******************************************************************************
  * Express config
  ******************************************************************************/
 
 const PORT = 3000;
+const DIST = path.resolve(__dirname, '../client/dist');
 
 let app = express();
 app.use(morgan('dev'));
-app.use('/app', express.static(__dirname + '/app'));
-app.use('/npm', express.static(__dirname + '/node_modules'));
+app.use('/', express.static(DIST));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -76,7 +77,7 @@ app.post('/api/query', (req, res) => {
 
 // Default
 app.all('*', (req, res) => {
-    res.sendFile(__dirname + '/app/index.html');
+    res.sendFile(`${DIST}/index.html`);
 });
 
 /******************************************************************************

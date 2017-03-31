@@ -20,7 +20,7 @@ oracle.getConnection(
     (err, connection) => {
         if(err){
             console.error(err);
-            process.exit(1);
+            //process.exit(1);
         }else{
             console.log('oradb: Connection successful.');
             db = connection;
