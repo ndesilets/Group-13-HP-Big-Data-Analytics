@@ -40,6 +40,7 @@ BEGIN
 END;
 /
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -70,6 +71,7 @@ END;
 ALTER TABLE dr_part_date_day_interval DROP CONSTRAINT prefix_key;
 ALTER TABLE dr_part_date_day_interval ADD CONSTRAINT prefix_key PRIMARY KEY(press_local_time,device_id, measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -100,6 +102,7 @@ END;
 ALTER TABLE dr_part_date_day_interval DROP CONSTRAINT non_prefix_key;
 ALTER TABLE dr_part_date_day_interval ADD CONSTRAINT non_prefix_key PRIMARY KEY(device_id, press_local_time,  measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -130,6 +133,7 @@ END;
 DROP INDEX unique_P_index;
 CREATE UNIQUE INDEX unique_P_index ON dr_part_date_day_interval(press_local_time,device_id, measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -157,6 +161,7 @@ BEGIN
 END;
 /
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 DROP INDEX unique_NP_index;
 CREATE UNIQUE INDEX unique_NP_index ON dr_part_date_day_interval(device_id, press_local_time,  measurement_type_key, measurement);
 
@@ -187,6 +192,7 @@ BEGIN
 END;
 /
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 DROP INDEX nonunique_P_index;
 CREATE INDEX nonunique_P_index ON dr_part_date_day_interval(press_local_time, device_id, measurement_type_key, measurement);
 
@@ -217,6 +223,7 @@ BEGIN
 END;
 /
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 DROP INDEX nonunique_NP_index;
 CREATE INDEX nonunique_NP_index ON dr_part_date_day_interval(device_id, press_local_time,  measurement_type_key, measurement);
 
@@ -252,6 +259,7 @@ END;
 DROP INDEX local_prefix_unique;
 CREATE UNIQUE INDEX local_prefix_unique ON dr_part_date_day_interval(press_local_time, device_id, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -282,6 +290,7 @@ END;
 DROP INDEX local_nonprefix_unique;
 CREATE UNIQUE INDEX local_nonprefix_unique ON dr_part_date_day_interval(device_id, press_local_time, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -313,6 +322,7 @@ END;
 DROP INDEX local_prefix_nonunique;
 CREATE INDEX local_prefix_nonunique ON dr_part_date_day_interval(press_local_time, device_id, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -343,6 +353,7 @@ END;
 DROP INDEX local_nonprefix_nonunique;
 CREATE INDEX local_nonprefix_nonunique ON dr_part_date_day_interval(device_id, press_local_time, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_date_day_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);

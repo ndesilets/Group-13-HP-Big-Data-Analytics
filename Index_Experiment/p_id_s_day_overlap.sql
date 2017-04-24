@@ -12,7 +12,7 @@ PARTITION BY range(DEVICE_ID)
 INTERVAL (1)
 SUBPARTITION BY range(PRESS_LOCAL_TIME)
 SUBPARTITION TEMPLATE
-  (
+  ( 
     SUBPARTITION PART1 VALUES LESS THAN (TO_DATE('1-7-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART2 VALUES LESS THAN (TO_DATE('2-7-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART3 VALUES LESS THAN (TO_DATE('3-7-2016', 'dd-mm-yyyy')),
@@ -186,7 +186,18 @@ SUBPARTITION TEMPLATE
     SUBPARTITION PART171 VALUES LESS THAN (TO_DATE('18-12-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART172 VALUES LESS THAN (TO_DATE('19-12-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART173 VALUES LESS THAN (TO_DATE('20-12-2016', 'dd-mm-yyyy')),
-    SUBPARTITION PART174 VALUES LESS THAN (TO_DATE('21-12-2016', 'dd-mm-yyyy'))
+    SUBPARTITION PART174 VALUES LESS THAN (TO_DATE('21-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART175 VALUES LESS THAN (TO_DATE('22-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART176 VALUES LESS THAN (TO_DATE('23-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART177 VALUES LESS THAN (TO_DATE('24-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART178 VALUES LESS THAN (TO_DATE('25-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART179 VALUES LESS THAN (TO_DATE('26-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART180 VALUES LESS THAN (TO_DATE('27-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART181 VALUES LESS THAN (TO_DATE('28-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART182 VALUES LESS THAN (TO_DATE('29-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART183 VALUES LESS THAN (TO_DATE('30-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART184 VALUES LESS THAN (TO_DATE('31-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART185 VALUES LESS THAN (TO_DATE('1-1-2017', 'dd-mm-yyyy'))
   )
 (PARTITION part_01 VALUES LESS THAN (1))
 AS (SELECT DISTINCT device_id, press_local_time, measurement_type_key, measurement 
@@ -219,6 +230,7 @@ ALTER TABLE dr_part_id_sub_date_16 DROP CONSTRAINT non_prefix_key;
 ALTER TABLE dr_part_id_sub_date_16 ADD CONSTRAINT non_prefix_key PRIMARY KEY(press_local_time,device_id, measurement_type_key, measurement);
 
 -- Only running in serial due to hint
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) IGNORE_ROW_ON_DUPKEY_INDEX(dr_part_id_sub_date_16(press_local_time, device_id, measurement_type_key, measurement))*/
   INTO dr_part_id_sub_date_16 (device_id,press_local_time,measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -270,6 +282,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -324,6 +337,7 @@ END;
 ALTER TABLE dr_part_id_sub_date_16 DROP CONSTRAINT prefix_key;
 ALTER TABLE dr_part_id_sub_date_16 ADD CONSTRAINT prefix_key PRIMARY KEY(device_id, press_local_time,  measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) IGNORE_ROW_ON_DUPKEY_INDEX(dr_part_id_sub_date_16(device_id, press_local_time, measurement_type_key, measurement))*/
   INTO dr_part_id_sub_date_16 (device_id,press_local_time,measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -375,6 +389,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -481,6 +496,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -587,6 +603,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -705,6 +722,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -823,6 +841,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -931,6 +950,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -1037,6 +1057,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -1156,6 +1177,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -1274,6 +1296,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_id_sub_date_16', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_id_sub_date_16 dr
   USING (SELECT * FROM DATA_LOADER) dl

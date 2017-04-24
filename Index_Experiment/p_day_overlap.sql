@@ -41,6 +41,7 @@ ALTER TABLE dr_part_date_day_interval DROP CONSTRAINT prefix_key;
 ALTER TABLE dr_part_date_day_interval ADD CONSTRAINT prefix_key PRIMARY KEY(press_local_time,device_id, measurement_type_key, measurement);
 
 -- Only running in serial due to hint
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) IGNORE_ROW_ON_DUPKEY_INDEX(dr_part_date_day_interval(press_local_time, device_id, measurement_type_key, measurement))*/
   INTO dr_part_date_day_interval (device_id,press_local_time,measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -92,6 +93,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -146,6 +148,7 @@ END;
 ALTER TABLE dr_part_date_day_interval DROP CONSTRAINT non_prefix_key;
 ALTER TABLE dr_part_date_day_interval ADD CONSTRAINT non_prefix_key PRIMARY KEY(device_id, press_local_time,  measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) IGNORE_ROW_ON_DUPKEY_INDEX(dr_part_date_day_interval(device_id, press_local_time, measurement_type_key, measurement))*/
   INTO dr_part_date_day_interval (device_id,press_local_time,measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -197,6 +200,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -303,6 +307,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -409,6 +414,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -527,6 +533,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -645,6 +652,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -753,6 +761,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -859,6 +868,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -978,6 +988,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl
@@ -1096,6 +1107,7 @@ BEGIN
   DBMS_ERRLOG.CREATE_ERROR_LOG(DML_TABLE_NAME => 'dr_part_date_day_interval', ERR_LOG_TABLE_OWNER => 'WHITLOCN'); 
 END;
 /
+ALTER SYSTEM FLUSH SHARED_POOL;
 MERGE /*+ PARALLEL(8)*/
   INTO dr_part_date_day_interval dr
   USING (SELECT * FROM DATA_LOADER) dl

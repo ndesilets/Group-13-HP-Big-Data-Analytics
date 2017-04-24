@@ -12,7 +12,7 @@ PARTITION BY range(DEVICE_ID)
 INTERVAL (1)
 SUBPARTITION BY range(PRESS_LOCAL_TIME)
 SUBPARTITION TEMPLATE
-  (
+  ( 
     SUBPARTITION PART1 VALUES LESS THAN (TO_DATE('1-7-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART2 VALUES LESS THAN (TO_DATE('2-7-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART3 VALUES LESS THAN (TO_DATE('3-7-2016', 'dd-mm-yyyy')),
@@ -186,7 +186,18 @@ SUBPARTITION TEMPLATE
     SUBPARTITION PART171 VALUES LESS THAN (TO_DATE('18-12-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART172 VALUES LESS THAN (TO_DATE('19-12-2016', 'dd-mm-yyyy')),
     SUBPARTITION PART173 VALUES LESS THAN (TO_DATE('20-12-2016', 'dd-mm-yyyy')),
-    SUBPARTITION PART174 VALUES LESS THAN (TO_DATE('21-12-2016', 'dd-mm-yyyy'))
+    SUBPARTITION PART174 VALUES LESS THAN (TO_DATE('21-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART175 VALUES LESS THAN (TO_DATE('22-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART176 VALUES LESS THAN (TO_DATE('23-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART177 VALUES LESS THAN (TO_DATE('24-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART178 VALUES LESS THAN (TO_DATE('25-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART179 VALUES LESS THAN (TO_DATE('26-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART180 VALUES LESS THAN (TO_DATE('27-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART181 VALUES LESS THAN (TO_DATE('28-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART182 VALUES LESS THAN (TO_DATE('29-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART183 VALUES LESS THAN (TO_DATE('30-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART184 VALUES LESS THAN (TO_DATE('31-12-2016', 'dd-mm-yyyy')),
+    SUBPARTITION PART185 VALUES LESS THAN (TO_DATE('1-1-2017', 'dd-mm-yyyy'))
   )
 (PARTITION part_01 VALUES LESS THAN (1))
 AS (SELECT DISTINCT device_id, press_local_time, measurement_type_key, measurement 
@@ -199,7 +210,7 @@ AS (SELECT DISTINCT device_id, press_local_time, measurement_type_key, measureme
 -- 0.05%
 DROP TABLE data_loader;
 CREATE TABLE data_loader AS (SELECT DISTINCT device_id, press_local_time, measurement_type_key, measurement 
-from whitlocn.capstone_two_million
+from whitlocn.capstone_two_billion
   WHERE (device_id IN ('11', '12','15','16','19','24') AND press_local_time >= to_date(20171220, 'yyyymmdd'))
     OR (device_id IN ('14','23','20','25','26') AND press_local_time >= to_date(20161212, 'yyyymmdd')
     OR (device_id IN ('13','17','18','21','22') AND press_local_time >= to_date(20161221, 'yyyymmdd'))));
@@ -216,6 +227,7 @@ BEGIN
 END;
 /
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -246,6 +258,7 @@ END;
 ALTER TABLE dr_part_id_1_interval DROP CONSTRAINT non_prefix_key;
 ALTER TABLE dr_part_id_1_interval ADD CONSTRAINT non_prefix_key PRIMARY KEY(press_local_time,device_id, measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -276,6 +289,7 @@ END;
 ALTER TABLE dr_part_id_1_interval DROP CONSTRAINT prefix_key;
 ALTER TABLE dr_part_id_1_interval ADD CONSTRAINT prefix_key PRIMARY KEY(device_id, press_local_time,  measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -306,6 +320,7 @@ END;
 DROP INDEX unique_NP_index;
 CREATE UNIQUE INDEX unique_NP_index ON dr_part_id_1_interval(press_local_time,device_id, measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -336,6 +351,7 @@ END;
 DROP INDEX unique_P_index;
 CREATE UNIQUE INDEX unique_P_index ON dr_part_id_1_interval(device_id, press_local_time,  measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -366,6 +382,7 @@ END;
 DROP INDEX nonunique_NP_index;
 CREATE INDEX nonunique_NP_index ON dr_part_id_1_interval(press_local_time, device_id, measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -396,6 +413,7 @@ END;
 DROP INDEX nonunique_P_index;
 CREATE INDEX nonunique_P_index ON dr_part_id_1_interval(device_id, press_local_time,  measurement_type_key, measurement);
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -428,6 +446,7 @@ END;
 DROP INDEX local_NP_unique;
 CREATE UNIQUE INDEX local_prefix_unique ON dr_part_id_1_interval(press_local_time, device_id, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -458,6 +477,7 @@ END;
 DROP INDEX local_P_unique;
 CREATE UNIQUE INDEX local_P_unique ON dr_part_id_1_interval(device_id, press_local_time, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -489,6 +509,7 @@ END;
 DROP INDEX local_NP_nonunique;
 CREATE INDEX local_NP_nonunique ON dr_part_id_1_interval(press_local_time, device_id, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
@@ -519,6 +540,7 @@ END;
 DROP INDEX local_P_nonunique;
 CREATE INDEX local_P_nonunique ON dr_part_id_1_interval(device_id, press_local_time, measurement_type_key, measurement) LOCAL;
 
+ALTER SYSTEM FLUSH SHARED_POOL;
 INSERT /*+ PARALLEL(8) */
   INTO dr_part_id_1_interval (device_id, press_local_time, measurement_type_key, measurement) 
   (SELECT device_id, press_local_time, measurement_type_key, measurement FROM data_loader);
