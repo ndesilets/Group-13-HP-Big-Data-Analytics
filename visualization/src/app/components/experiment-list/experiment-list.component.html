@@ -1,15 +1,9 @@
 <div class="container">
   <h3>Experiments</h3>
   <hr>
-  <div *ngFor="let experiment of experiments" class="panel panel-default">
+  <div *ngFor="let experiment of experiments" [routerLink]="['/experiment', experiment.id]" class="panel panel-default">
     <div class="panel-body">
       <h4>{{experiment.name}}</h4>
-      <hr>
-      <div style="text-align: center;">
-        <a [routerLink]="['/experiment', experiment.id]" class="btn btn-link">
-          More info
-        </a>
-      </div>
     </div>
   </div>
 </div>

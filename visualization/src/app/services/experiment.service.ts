@@ -9,6 +9,7 @@ export class ExperimentService {
     {
       "id": 1,
       "name": "PGA Experiment",
+      "desc": "Test description.",
       "chart": {
         type: 'bar',
         data: {
@@ -40,6 +41,7 @@ export class ExperimentService {
     {
       "id": 2,
       "name": "SGA Experiment",
+      "desc": "Test description.",
       "chart": {
         type: 'bar',
         data: {
@@ -71,6 +73,7 @@ export class ExperimentService {
     {
       "id": 3,
       "name": "etc...",
+      "desc": "Test description.",
       "chart": {
         type: 'bar',
         data: {
