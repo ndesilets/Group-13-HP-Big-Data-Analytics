@@ -1,0 +1,1 @@
+This directory contains the files used to create and facilitate the test automation suite we developed for data collection.

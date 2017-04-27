@@ -1,0 +1,1 @@
+This directory contains the documentation generated throughout our senior design project.
