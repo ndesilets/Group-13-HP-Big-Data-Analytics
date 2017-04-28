@@ -58,7 +58,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_NUI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_NUI.sql" dr_part_date_sub_id_16
 
 -- GLOBAL INDEX EXPERIMENTS
 --------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_Date_Pre_UI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_Date_Pre_UI.sql" dr_part_date_sub_id_16
 
 ALTER TABLE dr_part_date_sub_id_16 DROP CONSTRAINT prefix_key;
 ----------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_ID_Pre_UI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_ID_Pre_UI.sql" dr_part_date_sub_id_16
 
 ALTER TABLE dr_part_date_sub_id_16 DROP CONSTRAINT non_prefix_key;
 ----------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_Date_Pre_UI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_Date_Pre_UI.sql" dr_part_date_sub_id_16
 
 DROP INDEX unique_P_index;
 ----------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_ID_Pre_UI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_ID_Pre_UI.sql" dr_part_date_sub_id_16
 
 DROP INDEX unique_NP_index;
 --------------------------------------------------------------------------------
@@ -138,7 +138,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_NUI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_NUI.sql" dr_part_date_sub_id_16
 
 DROP INDEX nonunique_P_index;
 --------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_NUI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_NUI.sql" dr_part_date_sub_id_16
 
 DROP INDEX nonunique_NP_index;
 
@@ -172,7 +172,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_Date_Pre_UI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_Date_Pre_UI.sql" dr_part_date_sub_id_16
 
 DROP INDEX local_prefix_unique;
 --------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_ID_Pre_UI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_ID_Pre_UI.sql" dr_part_date_sub_id_16
 
 DROP INDEX local_nonprefix_unique;
 
@@ -205,7 +205,7 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_NUI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_NUI.sql" dr_part_date_sub_id_16
 
 DROP INDEX local_prefix_nonunique;
 --------------------------------------------------------------------------------
@@ -221,6 +221,6 @@ BEGIN
 END;
 /
 
-@index_tests/Tests_NUI.sql dr_part_date_sub_id_16
+@"/home/oracle/Group-13-HP-Big-Data-Analytics/Production/Test_Automation/exp_scripts/INDEX_EXPERIMENT/index_tests/Tests_NUI.sql" dr_part_date_sub_id_16
 
 DROP INDEX local_nonprefix_nonunique;
