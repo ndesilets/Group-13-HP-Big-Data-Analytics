@@ -1,0 +1,3 @@
+# Toolkit Web App
+
+This is a web based toolkit that was originally intended to run user queries, record telemetry data as the query ran, and then store the results for a particular query for comparison. We ended up not using this due to time constraints and it wasn't considered a critical piece of the project. Instead we focused more on our research and experimentation to help our clients for their HOTSOS presentation that took place at the end of February.
