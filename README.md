@@ -14,9 +14,12 @@ BT Cache: Look at temperature controlled large object cache
 IMCS: In-Memory processing and compressed data store
 
 Side Experiments:
-Ramdisk
-External tablespace for app reporting
-Test automation suite
+Ramdisk: Results from pointing temporary tablespace to a segment of RAM provided as much performance increase as we saw in the PGA experiments. Clients were not really interested in this option
+		 because available resources were available.
+External tablespace for app reporting: Set up to read flat files produced by tkprof output when we were looking more in trace files. This was going to be used for the initial web app that we
+		 were putting together.
+Test automation suite: Series of shell scripts that were used to facilitate the exexution of our experiments, a resource monitoring loop was run in the background to collect data reguarding the
+		 user observed and database execution run time. Command line tool that accepts the snapshot time and a series of directory names in the exp_scripts directory. 
 Index experiments
 	Global experiments
 	- No index
