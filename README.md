@@ -21,26 +21,28 @@ External tablespace for app reporting: Set up to read flat files produced by tkp
 Test automation suite: Series of shell scripts that were used to facilitate the exexution of our experiments, a resource monitoring loop was run in the background to collect data reguarding the
 		 user observed and database execution run time. Command line tool that accepts the snapshot time and a series of directory names in the exp_scripts directory. 
 Index experiments
+
 	Global experiments
-	- No index
-	- Primary Key
-	- Uniqued
-	- Non-unique
+	* No index
+	* Primary Key
+	* Uniqued
+	* Non-unique
+	
 	Local Index
-	- Unique
-	- Non-unique
+	* Unique
+	* Non-unique
 	Evaluated for each test type
-	- Prefix/Non-Prefix
+	* Prefix/Non-Prefix
 	
 Partition/subpartition strategies
-	- Partition by date
-	- Partition by date subpartition by ID
-	- Partition by ID
-	- Partition by ID subpartition by date
+	* Partition by date
+	* Partition by date subpartition by ID
+	* Partition by ID
+	* Partition by ID subpartition by date
 	
 Insertion methods
-	- Traditional
-	- No duplicates hint
-	- Merge
-	- Merge w/ error logging
+	* Traditional
+	* No duplicates hint
+	* Merge
+	* Merge w/ error logging
 	
