@@ -8,6 +8,16 @@ we will also use the GitHub Wiki feature to keep a blog of our progress.
 
 Any TeX files will have both the source code (.tex) and a copy of the pdf for ease of access.
 
+<h3>Folders to consider for grading:</h3>
+<ul>
+	<li>Production</li>
+	<li>... Talk to Nic about organization</li>
+
+</ul>
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
 <h2>Main experiments:</h2>
 <ul>
 	<li> PGA experiment: Attempt to prevent workarea spillover to disk</li>
