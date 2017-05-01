@@ -31,5 +31,6 @@ Any TeX files will have both the source code (.tex) and a copy of the pdf for ea
 <h2>Side Experiments:</h2>
 <ul>
 	<li>Ramdisk: Results from pointing temporary tablespace to a segment of RAM provided as much performance increase as we saw in the PGA experiments. Clients were not really interested in this option because available resources were available.</li>
+	<li>Indexing/partitioning: Testing performance of bulk inserts using a variety of table indexing and partitioning strategies to find optimal configuration for our client's use cases.</li>
 	<li>External tablespace for app reporting: Set up to read flat files produced by tkprof output when we were looking more in trace files. This was going to be used for the initial web app that we were putting together.</li>
 </ul>
