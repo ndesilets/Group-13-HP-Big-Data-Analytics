@@ -10,8 +10,8 @@ Any TeX files will have both the source code (.tex) and a copy of the pdf for ea
 
 <h3>Folders to consider for grading:</h3>
 <ul>
-	<li>Production/Index_Experiment</li>
-	<li>Production/Test_Automation</li>
+	<li>Production/Test_Automation (contains test automation suite, main experiments)</li>
+	<li>Production/Index_Experiment (contains index experiment, stretch goal)</li>
 </ul>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,39 +33,3 @@ Any TeX files will have both the source code (.tex) and a copy of the pdf for ea
 	<li>Ramdisk: Results from pointing temporary tablespace to a segment of RAM provided as much performance increase as we saw in the PGA experiments. Clients were not really interested in this option because available resources were available.</li>
 	<li>External tablespace for app reporting: Set up to read flat files produced by tkprof output when we were looking more in trace files. This was going to be used for the initial web app that we were putting together.</li>
 </ul>
-
-<h2>Index experiments:</h2>
-<h3>Global experiments:</h3>
-<ul>
-	<li>No index</li>
-	<li>Primary Key</li>
-	<li>Uniqued</li>
-	<li>Non-unique</li>
-</ul>
-	
-<h3>Local Index:</h3>
-<ul>
-	<li>Unique</li>
-	<li>Non-unique</li>
-</ul>
-
-<h3>Evaluated for each test type</h3>
-<ul>
-	<li>Prefix/Non-Prefix</li>
-</ul>
-	
-<h2>Partition/subpartition strategies</h2>
-<ul>
-	<li>Partition by date</li>
-	<li>Partition by date subpartition by ID</li>
-	<li>Partition by ID</li>
-	<li>Partition by ID subpartition by date</li>
-</ul>
-
-<h2>Insertion methods</h2>
-<ul>
-	<li>Traditional</li>
-	<li>No duplicates hint</li>
-	<li>Merge</li>
-	<li>Merge w/ error logging</li>
-</ul>	
