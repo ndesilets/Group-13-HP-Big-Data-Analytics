@@ -17,18 +17,21 @@ Any TeX files will have both the source code (.tex) and a copy of the pdf for ea
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-<h2>Main experiments:</h2>
+<h2>Project Deliverables:</h2>
 <ul>
-	<li> PGA experiment: Attempt to prevent workarea spillover to disk</li>
-	<li> BT Cache: Look at temperature controlled large object cache</li>
-	<li> IMCS: In-Memory processing and compressed data store</li>
+	<li>Main Experiments:</li>
+	<ul>
+		<li> Program Global Area (PGA) experiment: Attempt to prevent workarea spillover to disk.</li>
+		<li> Big Table Cache: Look at temperature controlled large object cache.</li>
+		<li> In-Memory Column Store (IMCS): In-Memory processing and compressed columnar data store.</li>
+	</ul>
+	<li>Test Automation Suite: Series of shell scripts that were used to facilitate the exexution of our experiments, a resource monitoring loop was run in the background to collect data reguarding the user observed and database execution run time. Command line tool that accepts the snapshot time and a series of directory names in the exp_scripts directory</li>
 </ul>
 
 <h2>Side Experiments:</h2>
 <ul>
 	<li>Ramdisk: Results from pointing temporary tablespace to a segment of RAM provided as much performance increase as we saw in the PGA experiments. Clients were not really interested in this option because available resources were available.</li>
 	<li>External tablespace for app reporting: Set up to read flat files produced by tkprof output when we were looking more in trace files. This was going to be used for the initial web app that we were putting together.</li>
-	<li>Test automation suite: Series of shell scripts that were used to facilitate the exexution of our experiments, a resource monitoring loop was run in the background to collect data reguarding the user observed and database execution run time. Command line tool that accepts the snapshot time and a series of directory names in the exp_scripts directory</li>
 </ul>
 
 <h2>Index experiments:</h2>
