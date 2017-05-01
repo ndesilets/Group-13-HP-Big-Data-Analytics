@@ -10,9 +10,8 @@ Any TeX files will have both the source code (.tex) and a copy of the pdf for ea
 
 <h3>Folders to consider for grading:</h3>
 <ul>
-	<li>Production</li>
-	<li>... Talk to Nic about organization</li>
-
+	<li>Production/Index_Experiment</li>
+	<li>Production/Test_Automation</li>
 </ul>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
