@@ -11,7 +11,7 @@ footer{
   background: rgba(54, 209, 220, 0.75); /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, rgba(54, 209, 220, 0.75), rgba(91, 134, 229, 0.75)); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, rgba(54, 209, 220, 0.75), rgba(91, 134, 229, 0.75)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-color: none;
+  border: none;
   border-radius: 0;
 }
 

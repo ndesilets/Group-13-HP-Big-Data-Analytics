@@ -6,11 +6,12 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ExperimentComponent } from './components/experiment/experiment.component';
-import { ExperimentListComponent } from './components/experiment-list/experiment-list.component';
+import { ExperimentsComponent } from './components/experiments/experiments.component';
+import { AbtcExperimentComponent } from './components/abtc-experiment/abtc-experiment.component';
+import { ImcsExperimentComponent } from './components/imcs-experiment/imcs-experiment.component';
+import { PgaExperimentComponent } from './components/pga-experiment/pga-experiment.component';
+import { RamdiskExperimentComponent } from './components/ramdisk-experiment/ramdisk-experiment.component';
 import { AppRoutingModule } from './routes.module';
-
-import { ExperimentService } from './services/experiment.service';
 
 import 'bootstrap/dist/css/bootstrap.css';
 //import '../styles.css';
@@ -18,8 +19,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 @NgModule({
   declarations: [
     AppComponent,
-    ExperimentComponent,
-    ExperimentListComponent
+    ExperimentsComponent,
+    AbtcExperimentComponent,
+    ImcsExperimentComponent,
+    PgaExperimentComponent,
+    RamdiskExperimentComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +31,6 @@ import 'bootstrap/dist/css/bootstrap.css';
     HttpModule,
     BrowserAnimationsModule,
     AppRoutingModule
-  ],
-  providers: [
-    ExperimentService
   ],
   bootstrap: [AppComponent]
 })
