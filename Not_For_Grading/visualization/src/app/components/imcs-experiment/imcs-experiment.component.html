@@ -1,3 +1,37 @@
 <div class="container">
-    Test
+    <h3>In-Memory Column Store</h3>
+
+    <hr>
+
+    <p>	
+		This is a feature new to Oracle 12c, the IMCS stored data in columnar format rather than traditional row format. The objects which can be flagged for storage within this memory structure include:
+		tables, columns, partitions, and indexes. This means that the specificity of object selection has very high granularity, allowing for optimal flexability. Columns of data have header blocks which
+		contain pre-aggregated values (ie. min and max)of data within each compression unit, allowing for selective access to columns based on their content values. This is especially useful when performing
+		analytic queries that rely on a where clause to filter results, only the columns of interest need to be accessed, thus relieving some run time overhead.
+		<br/><br/>
+		Additional benefits from this feature include six levels of block compression:
+	</p>
+		<ul>
+			<li>NO MEMCOMPRESS: Data populated without any compression</li>
+			<li>FOR DML: Minimal compression, optimized for DML performance</li>
+			<li>FOR QUERY LOW: Optimized for query performance (default)</li>
+			<li>FOR QUERY HIGH: Optimized for query performance as well as space saving </li>
+			<li>FOR CAPACITY LOW: Balanced with a greater bias towards space saving</li>
+			<li>FOR CAPACITY HIGH: Optimized for space saving</li>
+		</ul>
+	<br/>
+	<!-- Potentially mention something about how compressed blocks can be accessed without decompression -->
+	<h4>Parameters:</h4>
+	<ul>
+		<li>INMEMORY_SIZE: Initialization parameter for allocating memory resources to the IMCS</li>
+		<li>PARALLEL_DEGREE_POLICY: This parameter must be set to Auto or Adaptive to enable In-Memory</li>
+	</ul>
+	
+	<h4>Views:</h4>
+	<ul>
+		<li>V$IM_SEGMENTS: Details information aboubt all the in-memory segments within the database</li>
+		<li>V$INMEMORY_AREA: Contains information on the space allocated inside the In-Memory area</li>
+	</ul>
+	<!-- <img src="/assets/IMCS_Overview.png"> -->
+	<img src="/assets/IMCS_Results.png">
 </div>

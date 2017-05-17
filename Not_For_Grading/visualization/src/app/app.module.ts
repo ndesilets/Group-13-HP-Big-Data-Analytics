@@ -11,6 +11,7 @@ import { AbtcExperimentComponent } from './components/abtc-experiment/abtc-exper
 import { ImcsExperimentComponent } from './components/imcs-experiment/imcs-experiment.component';
 import { PgaExperimentComponent } from './components/pga-experiment/pga-experiment.component';
 import { RamdiskExperimentComponent } from './components/ramdisk-experiment/ramdisk-experiment.component';
+import { StatementQueuingComponent} from './components/statement-queuing/statement-queuing.component';
 import { AppRoutingModule } from './routes.module';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -23,7 +24,8 @@ import 'bootstrap/dist/css/bootstrap.css';
     AbtcExperimentComponent,
     ImcsExperimentComponent,
     PgaExperimentComponent,
-    RamdiskExperimentComponent
+    RamdiskExperimentComponent,
+	StatementQueuingComponent
   ],
   imports: [
     BrowserModule,

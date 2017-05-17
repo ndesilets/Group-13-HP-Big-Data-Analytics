@@ -1,3 +1,40 @@
 <div class="container">
-    Test
+    <h3>Program Global Area Experiment:</h3>
+
+    <hr>
+
+    <p>	
+		The PGA is a memory region that contains data and control information for a server process. It is non-shared memory created by Oracle Database when a server process is
+		started. Access to the PGA is exclusive to the server process, there is one PGA for each server process. The overall memory allocated to each PGA is referred to as
+		the total instance PGA memory, while the collection of each instance PGA is referred to as the instance PGA. The memory threshold for this structure is set by a system
+		parameter. Each PGA contains a session memory and private SQL area. 		
+		<br/><br/>
+		Our experiment attempted to look into what system parameters we could alter to provide more memory allocation to parallel processes, thus relieving the need to go to disk for memory
+		intensive operations like sorts, hashes and merges. By relieving this performance bottle neck, we hoped to increase query speeds. This was the first experiment our team set up.
+	</p>
+	<br/>
+	
+	<h4>Parameters:</h4>
+	<ul>
+		<li>PGA_AGGREGATE_LIMIT: Upper bound threshold for memory alloted to instance parallel processes</li>
+		<li>PGA_AGGREGATE_TARGET: Target values for PGA, below threshold, that the system considers safe</li>
+		<li>WORK_AREA_SIZE_POLICY: When set to auto, uses PGA_AGGREGATE_TARGET, else uses WORK_AREA_SIZE parameter values</li>
+	</ul>
+	
+	<h4>Undocumented Parameters:</h4>
+	<ul>
+		<li>_PGA_MAX_SIZE: System defined memory size alloted to each work area (ie. sort, hash, merge)</li>
+		<li>_SMM_MAX_SIZE: System defined parameter for serial processing work areas</li>
+		<li>_SMM_PX_MAX_SIZE: System defined parameter for parallel processing work areas</li>
+	</ul>
+	
+	<h4>Views:</h4>
+	<ul>
+		<li>V$PGASTAT: Provides PGA memory usage statistics</li>
+		<li>V$PROCESS: Contains information about the currently active processes within the instance</li>
+		<li>V$SQL_WORKAREA: Displays information about work areas used by SQL cursors</li>
+		<li>V$SQL_WORKAREA_ACTIVE: Contains an instantaneous view of work areas currently allocated by the system</li>		
+	</ul>
+	<img src="/assets/BTC_Results.png">
+	<img src="/assets/BTC_Results2.png">
 </div>

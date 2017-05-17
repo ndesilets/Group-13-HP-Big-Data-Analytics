@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>Statement Queuing</h3>
+
+    <hr>
+
+    <p>	
+		This is a feature new to Oracle 12c, parallel statements are queued if running the statements would increase the number of active parallel servers above the value of
+		PARALLEL_SERVERS_TARGET initialization parameter. For example, if PARALLEL_SERVERS_TARGET is set to 64, the number of current active servers is 60, and a new parallel
+		statement needs 16 parallel servers, it would be queued because the summation of 16 and 60 results in a value higher that the parameter value. Therefore, this statement
+		would not be executed until the available processes become available. 		
+		<br/><br/>
+		The results from this experiment clearly demonstrated the importance of this feature within a high throughput parallel environment. We were able to see a 6x improvement
+		over 48 of the same statements launched concurrently. If queries are received by the database when this feature is not enabled, and there are a deficit of processes, then
+		the statements will not be queued and will be downgraded, effectively reducing the requested resources for the execution to a potentially serial operation.
+		
+	</p>
+
+	<br/>
+	
+	<h4>Parameters:</h4>
+	<ul>
+		<li>INMEMORY_SIZE: Initialization parameter for allocating memory resources to the IMCS</li>
+		<li>PARALLEL_DEGREE_POLICY: This parameter must be set to Auto or Adaptive to enable statement queuing</li>
+	</ul>
+	
+	<h4>Views:</h4>
+	<ul>
+		<li>V$IM_SEGMENTS: Details information aboubt all the in-memory segments within the database</li>
+		<li>V$INMEMORY_AREA: Contains information on the space allocated inside the In-Memory area</li>
+	</ul>
+	<img src="/assets/Statement_Queuing.png">
+	<img src="/assets/Statement_Queuing_Result.png">
+</div>

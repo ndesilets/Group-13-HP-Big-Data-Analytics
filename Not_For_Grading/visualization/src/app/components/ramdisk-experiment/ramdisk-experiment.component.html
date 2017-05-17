@@ -1,0 +1,15 @@
+<div class="container">
+    <h3>Temporary Tablespace Ramdisk</h3>
+
+    <hr>
+
+    <p>	
+		Temporary tablespaces contain transient data that persists only for the duration of the session. This memory structure is what is used when a memory intensive operation
+		such as a sort, hash, or merge is executed and available PGA work area for those processes is depleted. The operation must then tranfer the blocks to temporary tablespace
+		where the operation can be completed. The IO overhead for this process is what our clients were experiencing as long run times for nightly queries.
+		<br/><br/>
+		By implementing a tmpfs unix temporary filesystem that resides in memory and pointing the parameter defined temporary tablespace to this partition, we were able to observe
+		the same performance increases that we saw in the PGA experiment. This was not necessarily the solution that our clients were interested in, so it was not investigated further.
+	</p>
+
+</div>

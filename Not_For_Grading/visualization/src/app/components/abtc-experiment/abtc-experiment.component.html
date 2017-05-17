@@ -3,7 +3,26 @@
 
     <hr>
 
-    <p>
-        Can be used to increase parallel query performance by caching large table data and other objects (indexes, partitions) in memory. Complements the traditional block buffer cache by adding in the capability of caching entire tables and other objects in memory. By doing so, this lets parallel slaves avoid having to perform direct reads and instead pull data cached in memory.
-    </p>
+    <p>	
+		This is a feature new to Oracle 12c, the ABTC is allocated a portion of the memory previously assigned to the buffer cache. ABTC is designed to integrate queries with the
+		the buffer cache to enhance the In-Memory query capabilites of an Oracle Database. ABTC uses temperature and object based algorithms to track medium and big tables, objects
+		above a specificed threshold parameter. While the ABTC is promarily desinged to enhance performance for data warehouse workloads, it can alse be used to improve mix workloads.
+		This feature can be used to increase parallel query performance by caching large objects such as tables, indexes and partitions. The benefits in parallel processing are mainly
+		seen from removing the need for parallel slaves to perform direct reads from disk and rather have them access the blocks from cached memeory.
+	</p>
+	<br/>
+	
+	<h4>Parameters:</h4>
+	<ul>
+		<li>DB_BIG_TABLE_CACHE_PERCENT: Initialization parameter for allocating memory resources from buffer cache to ABTC</li>
+		<li>PARALLEL_DEGREE_POLICY: This parameter must be set to Auto or Adaptive to enable ABTC</li>
+	</ul>
+	
+	<h4>Views:</h4>
+	<ul>
+		<li>V$BT_SCAN_CACHE: Details the parameters and status of the ABTC</li>
+		<li>V$BT_SCAN_OBJ_TEMPS: Details the objects currently tracked by the ABTC and their respective temperatures</li>
+	</ul>
+	<img src="/assets/BTC_Results.png">
+	<img src="/assets/BTC_Results2.png">
 </div>

@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ExperimentsComponent {
   private experiments: [any] = [
+	{
+      name: 'PGA Size',
+      route: 'pga-experiment'
+    },
     {
       name: 'Automatic Big Table Caching',
       route: 'abtc-experiment'
@@ -15,15 +19,15 @@ export class ExperimentsComponent {
       name: 'In-Memory Column Store',
       route: 'imcs-experiment'
     },
-    {
-      name: 'PGA Size',
-      route: 'pga-experiment'
+	{
+      name: 'Statement Queuing',
+      route: 'statement-queuing'
     },
     {
-      name: 'Temp Table Ramdisk',
+      name: 'Temporary Tablespace Ramdisk',
       route: 'ramdisk'
     }
-  ];
+	];
   
   constructor(){
     
