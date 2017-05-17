@@ -1,4 +1,7 @@
 <nav class="navbar navbar-default">
+  <div id="back-container" *ngIf="isHome == false">
+    <span id="back" class="glyphicon glyphicon-arrow-left" (click)="goBack()"></span>
+  </div>
   <div class="container-fluid center-content">
     <div class="navbar-header">
       <a class="navbar-brand">Experiment Visualizations</a>

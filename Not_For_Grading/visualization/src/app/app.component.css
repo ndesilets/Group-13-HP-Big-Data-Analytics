@@ -23,3 +23,19 @@ footer{
   display: flex;
   justify-content: center;
 }
+
+#back-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#back{
+  font-size: 16pt;
+  line-height: 0;
+}
