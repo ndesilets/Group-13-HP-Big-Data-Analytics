@@ -12,6 +12,7 @@ import { ImcsExperimentComponent } from './components/imcs-experiment/imcs-exper
 import { PgaExperimentComponent } from './components/pga-experiment/pga-experiment.component';
 import { RamdiskExperimentComponent } from './components/ramdisk-experiment/ramdisk-experiment.component';
 import { StatementQueuingComponent} from './components/statement-queuing/statement-queuing.component';
+import { IndexPartitionComponent } from './components/index-partition/index-partition.component';
 import { AppRoutingModule } from './routes.module';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -25,7 +26,8 @@ import 'bootstrap/dist/css/bootstrap.css';
     ImcsExperimentComponent,
     PgaExperimentComponent,
     RamdiskExperimentComponent,
-	StatementQueuingComponent
+	StatementQueuingComponent,
+	IndexPartitionComponent
   ],
   imports: [
     BrowserModule,

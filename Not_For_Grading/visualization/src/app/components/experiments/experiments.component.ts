@@ -23,9 +23,13 @@ export class ExperimentsComponent {
       name: 'Statement Queuing',
       route: 'statement-queuing'
     },
+	{
+      name: 'Indexes and Partitioning',
+      route: 'index-partition'
+    },
     {
       name: 'Temporary Tablespace Ramdisk',
-      route: 'ramdisk'
+      route: 'ramdisk-experiment'
     }
 	];
   

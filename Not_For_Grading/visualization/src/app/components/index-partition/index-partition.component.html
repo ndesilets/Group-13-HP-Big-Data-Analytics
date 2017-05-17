@@ -1,0 +1,42 @@
+<div class="container">
+    <h3>Indexes and Partitioning</h3>
+
+    <hr>
+
+    <p>	
+		This set of experiments was designed to quantify the effect of indexing and partitioning strategeys on bulk DML operations. An index is a schema object that contains
+		an entry for each value that appears in the indexed column(s) of a table and provides direct, fast access to rows upon query. However, maintaining an index is extremely
+		costly when performing bulk inserts on a million or billion row table. In order to investigate this effect we looks at global and local indexing, considering both the
+		prefix and non-prefix index types. If a table is partitioned by date, then a prefixed index would have the leftmost column of date.
+		
+		<br/><br/>
+		
+		In order to create experiments to test indexing we created partitioned and subpartitioned tables that would allow us to see if there was any benefit in prefix vs.
+		non-prefixed index. We also simulated our clients production environment by creating a data reader table, roughly 200 million rows, and a data loader table that was 5% of that (10 million).
+		We set up two versions of the data loader table, the first with only new records and the second with overlapping data. The list of different configurations for each topic has been listed below.:
+	</p>
+	<ul>
+		<li class='toprow'>Index Experiments:</li>
+		<ul>
+			<li>Global index (prefix and non-prefix)</li>
+			<li>Local index (prefix and non-prefix</li>
+		</ul>
+		<li class='toprow'>Partition Experiments:</li>
+		<ul>
+			<li>Partition by date</li>
+			<li>Partition by device id</li>
+			<li>Subpartition by date</li>
+			<li>Subpartition by device id</li>
+		</ul>
+		<li class='toprow'>Data Configurations:</li>
+		<ul>
+			<li>Exact, non-overlapping data</li>
+			<li>Overlapping data</li>
+		</ul>
+	</ul>
+
+	<br/>
+	
+	<img src="/assets/DR_DL.png">
+	<!-- <img src="/assets/.png"> Need image of results-->
+</div>

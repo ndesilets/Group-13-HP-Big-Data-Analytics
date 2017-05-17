@@ -7,6 +7,7 @@ import { ImcsExperimentComponent } from './components/imcs-experiment/imcs-exper
 import { PgaExperimentComponent } from './components/pga-experiment/pga-experiment.component';
 import { RamdiskExperimentComponent } from './components/ramdisk-experiment/ramdisk-experiment.component';
 import { StatementQueuingComponent } from './components/statement-queuing/statement-queuing.component';
+import { IndexPartitionComponent } from './components/index-partition/index-partition.component';
 
 const routes: Routes = [
   { path : 'experiments', component: ExperimentsComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path : 'experiments/pga-experiment', component: PgaExperimentComponent },
   { path : 'experiments/statement-queuing', component: StatementQueuingComponent },
   { path : 'experiments/ramdisk-experiment', component: RamdiskExperimentComponent },
+  { path : 'experiments/index-partition', component: IndexPartitionComponent },
   { path : '', redirectTo: '/experiments', pathMatch: 'full' }
 ];
 
