@@ -16,7 +16,7 @@ import { IndexPartitionComponent } from './components/index-partition/index-part
 import { AppRoutingModule } from './routes.module';
 
 import 'bootstrap/dist/css/bootstrap.css';
-//import '../styles.css';
+import '../styles.css';
 
 @NgModule({
   declarations: [
