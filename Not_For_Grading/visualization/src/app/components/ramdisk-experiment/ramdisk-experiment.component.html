@@ -3,13 +3,50 @@
 
     <hr>
 
+	<h4>Details</h4>
+
     <p>	
-		Temporary tablespaces contain transient data that persists only for the duration of the session. This memory structure is what is used when a memory intensive operation
-		such as a sort, hash, or merge is executed and available PGA work area for those processes is depleted. The operation must then tranfer the blocks to temporary tablespace
-		where the operation can be completed. The IO overhead for this process is what our clients were experiencing as long run times for nightly queries.
-		<br/><br/>
-		By implementing a tmpfs unix temporary filesystem that resides in memory and pointing the parameter defined temporary tablespace to this partition, we were able to observe
-		the same performance increases that we saw in the PGA experiment. This was not necessarily the solution that our clients were interested in, so it was not investigated further.
+		Temporary tablespaces contain transient data that persists only for the duration of the session. This memory structure is what is used when a memory intensive operation such as a sort, hash, or merge is executed and available PGA work area for those processes is depleted. The operation must then tranfer the blocks to temporary tablespace where the operation can be completed. The IO overhead for this process is what our clients were experiencing as long run times for nightly queries.
+	</p>
+	
+	<p>
+		By implementing a tmpfs unix temporary filesystem that resides in memory and pointing the parameter defined temporary tablespace to this partition, we were able to observe the same performance increases that we saw in the PGA experiment. This was not necessarily the solution that our clients were interested in, so it was not investigated further. However, it can be an effective stopgap solution if enough free RAM is available.
 	</p>
 
+	<br>
+
+	<h4>Test Parameters</h4>
+
+	<ul>
+		<li>Table size: 4GB</li>
+		<li>Cores available: 12</li>
+		<li>RAM available: 24GB</li>
+		<li>PGA_AGGREGATE_LIMIT: 4GB</li>
+		<li>PGA_AGGREGATE_TARGET: 2GB</li>
+		<li>Temp Table Size: 9GB</li>
+		<li>Ramdisk Size: 0GB/8GB</li>
+	</ul>
+
+	<br>
+
+	<h4>Query Tested</h4>
+
+	<pre>
+select count(*) from (
+  select  device_id,
+    measurement_type_key,
+    press_local_time,
+    avg(measurement) over (partition by device_id, measurement_type_key order by device_id, measurement_type_key)
+  from CAPSTONE_PARALLEL_TEST_V1
+order by press_local_time desc)</pre>
+
+	<br>
+
+	<h4>Results</h4>
+
+	<ul>
+		<li>Runtime: from 186 seconds to 52 seconds (3x speed increase)</li>
+		<li>CPU Usage: from 32% to 97% (less time spent waiting on I/O)</li> 
+		<li>IO Usage: from 69% to 2% (less time swapping to disk)</li>
+	</ul>
 </div>
